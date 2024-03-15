@@ -4,8 +4,8 @@
   --color-secundario: #378CE7; /* Color secundario */
   --color-terciario: #67C6E3; /* Color Terciario*/
   --color-cuaternario: #F1F0F8;; /* Color Cuaternario */
+  --color-Footer:#222831;/*color para el fotter Fondo*/
   --nav-height:80px; 
-  
 }
 
 body{
@@ -15,8 +15,8 @@ body{
 }
 
 .main{
-  padding: 10px 30px;
-  min-height: 100vh;
+  /*padding: 10px 30px;
+  min-height: 100vh;*/
 }
 /*
 #root {

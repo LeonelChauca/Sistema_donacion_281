@@ -1,0 +1,39 @@
+.Mainfooter{
+    background-color:var(--color-Footer) ;
+    color: white;
+    height: 30vh;
+}
+.secondfooter{
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.secondfooter ul li, a{
+    text-decoration: none;
+    color: #76ABAE;
+}
+.secondfooter ul li >a:hover{
+    color:white;
+}
+
+.secondfooter ul{
+    padding: 10px 0;
+    list-style-position: inside;
+}
+.secondfooter li{
+    padding: 5px;
+    
+}
+
+
+.Mainfooter h1{
+    font-size: 20px;
+    font-weight: 600;
+
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
