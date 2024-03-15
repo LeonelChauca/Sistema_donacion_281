@@ -1,0 +1,148 @@
+
+.proteger{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+.protegerTogle{
+    display: block;
+}
+.navbar {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--nav-height);
+    position: relative;
+
+}
+
+.icono {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 50px;
+}
+
+.icono>picture {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+.icono>picture>img {
+    width: 100%;
+}
+
+
+.items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    margin-right: 50px;
+}
+.item {
+    display: flex;
+    gap: 12px;
+    transition: transform 0.5s ease;
+}
+
+.item li {
+    list-style: none;
+    padding: 2px 10px;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(141, 12, 12, 0);
+    transition: border-bottom 0.2s ease; 
+}
+
+.item li a {
+    color: black;
+    text-decoration: none;
+}
+
+.item li:last-child,
+.item li:last-child a {
+    background: var(--color-primario);
+    color: white;
+    transition: background 1s ease;
+    border-radius: 5px;
+   
+}
+
+.item li:last-child{
+    box-shadow: 1px 1px 2px rgb(0, 0, 0) ;
+}
+
+
+.item li:hover:not(:last-child){
+   border-bottom: 2px solid var(--color-primario) ;
+}
+/*Barra */
+.baras {
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.baras>.bar {
+    width: 25px;
+    height: 2px;
+    background: rgb(0, 0, 0);
+    margin: 5px;
+    transition: transform 250ms, opacity 0.5s;
+}
+
+.animacionBar>.bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+    background: rgb(0, 0, 0);
+}
+
+.animacionBar>.bar:nth-child(2) {
+    opacity: 0;
+}
+
+.animacionBar>.bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+    background: rgb(0, 0, 0)
+}
+
+@media screen and (max-width: 850px) {
+
+
+    .baras{
+        z-index: 10;
+    }
+
+    .items{
+        flex-direction: column;
+        margin-right: 70px;
+    }
+
+    .item {
+        position: absolute;
+        right: 0;   
+        top: 0;     
+        background: rgb(219, 219, 219);
+        width: 200px;
+        height: 100vh;
+        flex-direction: column;
+        align-items: start;
+        padding: 2px 20px;               
+        transform: translateX(100%);  
+           
+    }
+    .item li:first-child{
+        margin-top:calc( var(--nav-height) + 10px ) ;
+    }
+
+    .item li:not(:last-child){
+        display: block;
+        width: 100%;
+    }
+    .animacionItems {
+        transform: translateX(0%);          
+    }
+    .baras {
+        visibility: visible;
+    }
+}
