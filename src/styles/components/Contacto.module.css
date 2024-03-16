@@ -1,0 +1,23 @@
+.containerC{
+    max-width: 90%;
+    margin: 0 auto;
+}
+h2{
+    padding-bottom: 20px;
+}
+.formcontainer{
+    background-color: white;
+    max-width: 100%;
+    width: 600px;
+    margin: 40px auto;
+    border-radius: 15px;
+    padding: 20px;
+}
+.boxT{
+    max-width: 90%;
+    display: flex;
+    margin: 0 auto;
+    flex-direction:column ;
+    gap: 20px;
+}
+

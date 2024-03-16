@@ -1,10 +1,19 @@
+import FormuilarioContacto from "../components/FormuilarioContacto";
+import s from "../styles/components/Contacto.module.css";
 const Contact =()=>{
+    const valores=[
+        { value: 'Voluntario', label: 'Voluntario' },
+        { value: 'Donante', label: 'Donante'},
+        { value: 'Otro', label: 'Otro'}
+    ]
    return (
-    <>
-    <h4>
-        Contacto
-    </h4>
-    </>
+    <div className={s.containerC}>
+        <h2>
+            Ponte en contacto con nosotros ! 
+        </h2>
+        <p>Si es que tienes alguna duda puedes comunicarte con nosotros </p>
+        <FormuilarioContacto/>
+    </div>
    )
 }
 
