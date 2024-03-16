@@ -15,7 +15,7 @@ body{
 }
 
 .main{
-  padding: 10px 30px;
+  
   min-height: calc( 90vh - var(--nav-height)); 
 }
 /*
