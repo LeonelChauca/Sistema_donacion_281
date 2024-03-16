@@ -1,4 +1,6 @@
 
+import { Accordion, AccordionSummary ,AccordionDetails } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import style from "../styles/components/About.module.css"
 const About = () => {
    return (
@@ -10,10 +12,9 @@ const About = () => {
                <p>
                   Sis Donación es una plataforma innovadora dedicada a combatir el hambre y el desperdicio de alimentos.
                </p>
-               <p>Nuestra misión es conectar donantes de alimentos con organizaciones benéficas y personas necesitadas de manera eficiente y transparente. Impulsados por valores como la solidaridad, la transparencia y la innovación, estamos comprometidos a construir un mundo donde cada persona tenga acceso a alimentos nutritivos y ninguna comida se desperdicie.
+               <p> Nuestra misión es conectar donantes de alimentos con organizaciones benéficas y personas necesitadas de manera eficiente y transparente. Impulsados por valores como la solidaridad, la transparencia y la innovación, estamos comprometidos a construir un mundo donde cada persona tenga acceso a alimentos nutritivos y ninguna comida se desperdicie.
                </p>
             </div>
-
          </section>
          <section className={style.historia + " " + style.section}>
             <div className={style.card}>
@@ -32,12 +33,10 @@ const About = () => {
                <p>En Sis Donación, nos guiamos por un conjunto de valores fundamentales que reflejan nuestra dedicación a la causa y orientan cada aspecto de nuestro trabajo:
                </p>
                <div className={style.card}>
-                  <ol className={style.itemValores}>
-                     <li>Compromiso con la comunidad: Estamos comprometidos con el bienestar de nuestras comunidades y nos esforzamos por crear un impacto positivo y duradero en la lucha contra el hambre.</li>
-                     <li>Innovación y excelencia: Nos comprometemos a impulsar la innovación y la excelencia en todo lo que hacemos, buscando constantemente nuevas formas de mejorar y optimizar nuestros servicios para satisfacer las necesidades cambiantes de nuestra comunidad.</li>
-                     <li>Colaboración y solidaridad: Creemos en el poder de la colaboración y la solidaridad para lograr un impacto significativo. Trabajamos en estrecha colaboración con donantes, organizaciones benéficas y voluntarios para maximizar nuestros esfuerzos y alcanzar nuestros objetivos comunes.</li>
-                     <li>Respeto por el medio ambiente: Valoramos y respetamos el medio ambiente, y nos comprometemos a reducir el desperdicio de alimentos y minimizar nuestro impacto en el planeta a través de prácticas sostenibles y ecológicamente responsables.</li>
-                  </ol>
+               <CustomAcordion title="Compromiso con la comunidad" texto="Estamos comprometidos con el bienestar de nuestras comunidades y nos esforzamos por crear un impacto positivo y duradero en la lucha contra el hambre"/>
+               <CustomAcordion title="Innovación y excelencia" texto="Nos comprometemos a impulsar la innovación y la excelencia en todo lo que hacemos, buscando constantemente nuevas formas de mejorar y optimizar nuestros servicios para satisfacer las necesidades cambiantes de nuestra comunidad."/>
+               <CustomAcordion title="Colaboración y solidaridad" texto="Creemos en el poder de la colaboración y la solidaridad para lograr un impacto significativo. Trabajamos en estrecha colaboración con donantes, organizaciones benéficas y voluntarios para maximizar nuestros esfuerzos y alcanzar nuestros objetivos comunes."/>
+               <CustomAcordion title="Respeto por el medio ambiente" texto="Valoramos y respetamos el medio ambiente, y nos comprometemos a reducir el desperdicio de alimentos y minimizar nuestro impacto en el planeta a través de prácticas sostenibles y ecológicamente responsables."/>                  
                </div>
             </div>
          </section>
@@ -45,4 +44,19 @@ const About = () => {
    )
 }
 
+function CustomAcordion({children, title, texto}) {
+   return <Accordion>
+      <AccordionSummary
+         expandIcon={<ExpandMoreIcon />}
+         aria-controls="panel1a-content"
+         id="panel1a-header"
+      >
+         <p>{title}</p>
+      </AccordionSummary>
+      <AccordionDetails>
+         <p>{texto}</p>
+      </AccordionDetails>
+   </Accordion>
+   
+}
 export default About; 

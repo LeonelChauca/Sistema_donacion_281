@@ -39,7 +39,7 @@ const Navbar = () => {
                     <li onClick={togleNav}><Link to="/">Home</Link></li>
                     <li onClick={togleNav}>
                     <Link to="/login">
-                    <Button variant="contained">Login</Button>
+                    <Button variant="contained" style={{textTransform:"none",padding:"2px 8px"}}>login</Button>
                     </Link></li>                
                 </div>
             </ul>

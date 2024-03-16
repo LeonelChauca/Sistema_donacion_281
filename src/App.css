@@ -6,6 +6,7 @@
   --color-cuaternario: #F1F0F8;; /* Color Cuaternario */
   --color-Footer:#222831;/*color para el fotter Fondo*/
   --nav-height:100px; 
+  font-size: 15px; 
 }
 
 body{

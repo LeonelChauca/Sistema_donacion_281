@@ -1,0 +1,43 @@
+
+.main{
+    padding: 10px 20px;
+    
+}
+.tabla{
+    max-width: 900px;
+    width: 90%;
+   margin:  0 auto;
+   
+}
+
+.tabla table > thead> tr{
+    background: var(--color-secundario);
+}
+.tabla thead th{
+    color: white ; 
+}
+
+.tabla tbody tr:nth-child(2n+2){
+    background: rgb(231, 231, 231);
+}
+
+.buscador{
+    min-height: 50px;
+    background: rgba(190, 190, 190, 0.151) ;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:2px; 
+    padding: 10px 0px;
+    
+}
+
+@media screen and (max-width: 500px) {
+
+    .tabla th, .tabla td {
+      font-size: 0.7rem;
+    }
+}
