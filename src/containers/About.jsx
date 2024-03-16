@@ -4,7 +4,6 @@ const About = () => {
    return (
       <>
          <h3 style={{ textAlign: "center" }}>Sobre Nosotros</h3>
-
          <section className={style.about + " " + style.section}>
             <div className={style.card}>
                <h4>Quienes Somos? </h4>
@@ -30,18 +29,18 @@ const About = () => {
          <section className={style.valores + " " + style.section}>
             <div className={style.card}>
                <h4>Nuestro valores</h4>
-               <p>         En Sis Donación, nos guiamos por un conjunto de valores fundamentales que reflejan nuestra dedicación a la causa y orientan cada aspecto de nuestro trabajo:
+               <p>En Sis Donación, nos guiamos por un conjunto de valores fundamentales que reflejan nuestra dedicación a la causa y orientan cada aspecto de nuestro trabajo:
                </p>
-               <ol className={style.itemValores}>
-                  <li>Compromiso con la comunidad: Estamos comprometidos con el bienestar de nuestras comunidades y nos esforzamos por crear un impacto positivo y duradero en la lucha contra el hambre.</li>
-                  <li>Innovación y excelencia: Nos comprometemos a impulsar la innovación y la excelencia en todo lo que hacemos, buscando constantemente nuevas formas de mejorar y optimizar nuestros servicios para satisfacer las necesidades cambiantes de nuestra comunidad.</li>
-                  <li>Colaboración y solidaridad: Creemos en el poder de la colaboración y la solidaridad para lograr un impacto significativo. Trabajamos en estrecha colaboración con donantes, organizaciones benéficas y voluntarios para maximizar nuestros esfuerzos y alcanzar nuestros objetivos comunes.</li>
-                  <li>Respeto por el medio ambiente: Valoramos y respetamos el medio ambiente, y nos comprometemos a reducir el desperdicio de alimentos y minimizar nuestro impacto en el planeta a través de prácticas sostenibles y ecológicamente responsables.</li>
-               </ol>
+               <div className={style.card}>
+                  <ol className={style.itemValores}>
+                     <li>Compromiso con la comunidad: Estamos comprometidos con el bienestar de nuestras comunidades y nos esforzamos por crear un impacto positivo y duradero en la lucha contra el hambre.</li>
+                     <li>Innovación y excelencia: Nos comprometemos a impulsar la innovación y la excelencia en todo lo que hacemos, buscando constantemente nuevas formas de mejorar y optimizar nuestros servicios para satisfacer las necesidades cambiantes de nuestra comunidad.</li>
+                     <li>Colaboración y solidaridad: Creemos en el poder de la colaboración y la solidaridad para lograr un impacto significativo. Trabajamos en estrecha colaboración con donantes, organizaciones benéficas y voluntarios para maximizar nuestros esfuerzos y alcanzar nuestros objetivos comunes.</li>
+                     <li>Respeto por el medio ambiente: Valoramos y respetamos el medio ambiente, y nos comprometemos a reducir el desperdicio de alimentos y minimizar nuestro impacto en el planeta a través de prácticas sostenibles y ecológicamente responsables.</li>
+                  </ol>
+               </div>
             </div>
          </section>
-
-
       </>
    )
 }

@@ -6,8 +6,6 @@ import style from "../styles/components/Navbar.module.css"
 import Button from '@mui/material/Button';
 // Componente de Navbar
 const Navbar = () => {
-
-
     function togleNav() {
         document.querySelector("."+style.baras).classList.toggle(style.animacionBar); 
         document.querySelector("."+style.item).classList.toggle(style.animacionItems);
@@ -39,15 +37,13 @@ const Navbar = () => {
                     <li onClick={togleNav}><Link to="/contacto">Contacto</Link></li>
                     <li onClick={togleNav}><Link to="/productos">Productos</Link></li>
                     <li onClick={togleNav}><Link to="/">Home</Link></li>
-
                     <li onClick={togleNav}>
                     <Link to="/login">
                     <Button variant="contained">Login</Button>
                     </Link></li>                
                 </div>
             </ul>
-        </nav>
-        
+        </nav>        
         </>
     );
 };

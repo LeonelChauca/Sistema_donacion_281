@@ -116,6 +116,7 @@
     .items{
         flex-direction: column;
         margin-right: 70px;
+        z-index: 100;
     }
 
     .item {
