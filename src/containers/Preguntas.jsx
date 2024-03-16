@@ -8,7 +8,7 @@ import s from '../styles/components/Preguntas.module.css';
 const Preguntas =()=>{
     return (
      <>
-        <div>
+        <div className={s.containerP}>
             <h2>Preguntas Frecuentes</h2>
             <hr className={s.hr} />
             <Acordeon titulo={"¿Cómo puedo realizar una donación?"} respuesta={"Puedes realizar una donación a través de nuestro sitio web utilizando nuestro formulario de donación seguro. También aceptamos donaciones por correo o en persona en nuestras oficinas."}/>

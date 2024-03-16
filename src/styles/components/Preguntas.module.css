@@ -1,3 +1,7 @@
 .hr{
     margin: 10px 0;
 }
+.containerP{
+    max-width: 90%;
+    margin: 0 auto;
+}

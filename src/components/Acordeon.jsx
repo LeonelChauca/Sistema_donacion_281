@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styles from '../styles/components/Acordeon.module.css';
 const Acordeon = ({titulo,respuesta}) => {
   return (
-    <div>
+    <div className={styles.contA}>
         <Accordion className={styles.Accordion}>
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
