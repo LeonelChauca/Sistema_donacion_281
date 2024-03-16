@@ -11,12 +11,12 @@
 body{
   background-color: var(--color-cuaternario);
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden ;
 }
 
 .main{
-  /*padding: 10px 30px;
-  min-height: 100vh;*/
+  padding: 10px 30px;
+  min-height: calc( 90vh - var(--nav-height)); 
 }
 /*
 #root {

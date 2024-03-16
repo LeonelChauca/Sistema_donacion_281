@@ -60,20 +60,20 @@
     color: black;
     text-decoration: none;
 }
-
+/*
 .item li:last-child,
 .item li:last-child a {
     background: var(--color-primario);
     color: white;
     transition: background 1s ease;
-    border-radius: 5px;
-   
+    border-radius: 5px;   
 }
-
+*/
+/*
 .item li:last-child{
     box-shadow: 1px 1px 2px rgb(0, 0, 0) ;
 }
-
+*/
 
 .item li:hover:not(:last-child){
    border-bottom: 2px solid var(--color-primario) ;
