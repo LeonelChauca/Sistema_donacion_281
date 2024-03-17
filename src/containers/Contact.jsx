@@ -1,11 +1,7 @@
 import FormuilarioContacto from "../components/FormuilarioContacto";
 import s from "../styles/components/Contacto.module.css";
 const Contact =()=>{
-    const valores=[
-        { value: 'Voluntario', label: 'Voluntario' },
-        { value: 'Donante', label: 'Donante'},
-        { value: 'Otro', label: 'Otro'}
-    ]
+    
    return (
     <div className={s.containerC}>
         <h2>

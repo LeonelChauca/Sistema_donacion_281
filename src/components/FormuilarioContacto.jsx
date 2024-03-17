@@ -27,9 +27,7 @@ const FormuilarioContacto = () => {
                     onSubmit={handleSubmit(onSubmit)}
                     >
                     <TextField id="standard-basic"  {...register("nombre",{required:true})} label="Tu nombre" variant="standard"  />
-                    {errors.nombre && <Alert variant="outlined" severity="success">
- 
-</Alert>}
+                    {errors.nombre && <Alert variant="outlined" severity="success"></Alert>}
                     <TextField id="standard-basic" {...register("email")} label="Email" variant="standard"  />
                     <TextField
                         id="standard-select-currency"

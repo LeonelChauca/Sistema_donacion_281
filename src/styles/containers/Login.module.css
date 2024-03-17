@@ -1,0 +1,54 @@
+.containerL{
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.formControl{
+    background-color: white;
+    border-radius: 30px;
+    max-width: 90%;
+    width: 700px;
+    padding: 80px 20px;
+    margin: 80px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:30px;
+}
+
+.textN{
+    max-width: 100%;
+    width: 700px;
+}
+.contText{
+    display: flex;
+    margin: 0 auto;
+    max-width: 100%;
+    justify-content: space-between;
+    width: 700px;
+}
+
+.submit{
+    max-width: 100%;
+    width: 700px;
+}
+
+@keyframes aparecer {
+    0%   {opacity: 0;}
+    25%  {opacity: 1;}
+    50%  {opacity: 1;}
+    85%  {opacity: 1;}
+    100% {opacity: 0;}
+  }
+
+.navAlert{
+    position: absolute;
+    top: 170px;
+    right: 0;
+    opacity: 0;
+    animation-name: aparecer;
+    animation-duration: 5s;
+}
+
+
