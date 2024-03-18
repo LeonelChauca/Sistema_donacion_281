@@ -4,6 +4,7 @@ import { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
@@ -14,6 +15,7 @@ import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import { useForm } from "react-hook-form";
+import axios  from 'axios';
 
 const FormularioLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +24,12 @@ const FormularioLogin = () => {
     event.preventDefault();
   };
   const { register, handleSubmit,formState: { errors } } = useForm()
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = (data) => {
+    axios.post('https://proyecto-281-production.up.railway.app/api/auth/', data)
+    .then(response => {
+      console.log(response)
+    })
+  }
   return (
     <form action="" className={style.formControl} onSubmit={handleSubmit(onSubmit)} >
                 <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -34,7 +41,7 @@ const FormularioLogin = () => {
                     <OutlinedInput
                         id="outlined-adornment-password"
                         type={showPassword ? 'text' : 'password'}
-                        {...register("Contrasenia")}
+                        {...register("password")}
                         endAdornment={
                         <InputAdornment position="end">
                             <IconButton
