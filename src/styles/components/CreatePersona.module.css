@@ -1,0 +1,22 @@
+.containerMain{
+    background-color: white;
+    width: 90%;
+    margin: 0 auto;
+
+}
+.containerMain h1{
+    font-size: 20px;
+    padding: 20px;
+}
+.containerF{
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.containerSelect{
+    max-width: 50%;
+    width: 200px;
+}
+.boxC{
+    width: 100%;
+}

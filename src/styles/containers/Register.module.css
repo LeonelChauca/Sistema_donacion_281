@@ -1,0 +1,42 @@
+.containerR{
+    background-color: white;
+    max-width: 80%;
+    width: 800px;
+    margin: 40px auto;
+    border-radius: 20px;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 100px;
+}
+.containerMain{
+    width: 90%;
+    margin: 0 auto;
+}
+.botonP{
+    display: flex;
+    max-width: 90%;
+    width: 400px;
+    height: 80px;
+    padding: 10px 30px;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    transition: all .3s ease-in-out  ;
+}
+.botonP img{
+    width: 60px;
+    margin-right: 30px;
+    
+}
+.botonP:hover{
+    background-color:var(--color-terciario);
+    max-width: 98%;
+    width: 450px;
+}

@@ -31,7 +31,7 @@ const FormuilarioContacto = () => {
                     <TextField id="standard-basic" {...register("email")} label="Email" variant="standard"  />
                     <TextField
                         id="standard-select-currency"
-                        select
+                        selec
                         label="Deseas mas informacion sobre"
                         defaultValue="Otro"
                         helperText="Selecciona una opcion*"
