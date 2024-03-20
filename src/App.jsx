@@ -18,6 +18,8 @@ import Login from './containers/Login.jsx';
 // Componentes 
 import NotFound from "./components/NotFound.jsx"
 import Register from './containers/Register.jsx';
+import { CreateEmpresa } from './components/CreateEmpresa.jsx';
+import { CreatePersona } from './components/CreatePersona.jsx';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path="/contacto" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path='/Registro' element={<Register/>} />
+          <Route path='/CreateEmpresa' element={<CreateEmpresa/>} />
+          <Route path='/CreatePersona' element={<CreatePersona/>} />
           <Route path='/*' element={<NotFound/>} />
 
         </Routes>
