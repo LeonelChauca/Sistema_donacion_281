@@ -150,14 +150,11 @@
     .animacionItems {
         transform: translateX(0%);          
     }
-    .animacionBar{
-        position: fixed;
-    }
+    
     .baras {
         visibility: visible;
     }
     .protegerTogle{
         display: block;
     }
-
 }

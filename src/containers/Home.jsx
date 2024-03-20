@@ -4,13 +4,24 @@ import alimento from "../assets/img/home/alimento.jpg"
 import dinero from "../assets/img/home/dinero.png"
 import producto from "../assets/img/home/producto.jpg"
 
+import { createContext, useContext, useState } from 'react';
+import {Navigate} from "react-router-dom";
 
 // UI
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
+const urlContext = createContext();
+
 const Home = () => {
+
+    const [change, setChange] = useState(null); 
+
+    if (change){
+        return <Navigate to={`/${change}`} />
+    }
     return (
-        <main>
+        <urlContext.Provider value={{setChange}}>
+            <main>
             <Portada />
             <section className={style.optimizacion}>
                 <div className={style.card}>
@@ -28,13 +39,15 @@ const Home = () => {
             </section>
             <Alimentos />
             <Producto />
-            <Dinero />
-
+            <Dinero  />
         </main>
+        </urlContext.Provider>
+        
     )
 }
 
 function Portada() {
+    const { setChange } = useContext(urlContext);
     return <section className={style.portada}>
         <div className={style.texto}>
             <h1 style={{ color: "var(--color-secundario)" }}>
@@ -46,9 +59,9 @@ function Portada() {
                 Nuestra plataforma te permite rastrear, coordinar y generar informes fácilmente
             </p>
             <br></br>
-            <Button variant="outlined" href="#">
-                Nose
-            </Button>
+            <BtnAction texto="Donar" url="contacto"/>     
+             <pre style={{display:"inline"}}>  </pre>      
+            <BtnAction texto="Recibir" url="registar_receptor" variant="contained"/>
         </div>
         <figure className={style.figure}>
             <img src={persona} alt="donacion" />
@@ -57,6 +70,7 @@ function Portada() {
 }
 
 function Alimentos() {
+    const { setChange } = useContext(urlContext);
     return <section className={style.portada}>
         <figure className={style.figure}>
             <img src={alimento} alt="donacion" />
@@ -91,17 +105,17 @@ function Producto() {
             </i>
             </p>
             <br></br>
-            <Button variant="outlined" href="#">
-                Contactanos
-            </Button>
+            <BtnAction texto="Contactanos" url="contacto"/>
+            
         </div>
         <figure className={style.figure}>
             <img src={producto} alt="donacion" />
         </figure>
     </section>
-}
+    }
 
 function Dinero() {
+    
     return <section className={style.portada}>
         <figure className={style.figure}>
             <img src={dinero} alt="donacion" />
@@ -111,12 +125,20 @@ function Dinero() {
             <p> podemos llegar aún más lejos y brindar ayuda donde más se necesita. <i>¡Cada contribución cuenta</i>
             </p>
             <br></br>
-            <Button variant="outlined" href="#">
-                Contactanos
-            </Button>
+            <BtnAction texto="Contactanos" url="contacto"/>            
         </div>
 
     </section>
+}
+
+function BtnAction({texto="Hola", url="#",variant="outlined"}){
+    const { setChange } = useContext(urlContext);
+    return (
+    <Button  style={{textTransform:"none"}} variant={variant} onClick={()=>{setChange(()=>url)}}>                
+                {texto}
+                
+    </Button>
+    )
 }
 
 export default Home; 
