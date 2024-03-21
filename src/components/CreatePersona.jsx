@@ -23,7 +23,7 @@ export const CreatePersona = () => {
     const { register, handleSubmit,formState: { errors },setValue } = useForm()
     const onSubmit = (data) => {
         console.log(data);
-        axios.post('http://localhost:3001/persona',data)
+        axios.post('https://proyecto-281-production.up.railway.app/api/auth/new',data)
         .then(response => {
             console.log(response);
         })

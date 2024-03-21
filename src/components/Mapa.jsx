@@ -22,8 +22,8 @@ const Mapa = ({ setValue }) => {
     );
   }, []);
   useEffect(() => {
-    setValue('lat', locacion.lat);
-    setValue('lng', locacion.lng); 
+    setValue('lat', locacion.lat.toString());
+    setValue('lng', locacion.lng.toString()); 
   }, [locacion])
   const handleMarkerDragEnd = (e) => {
     const newPosition = e.target.getLatLng();

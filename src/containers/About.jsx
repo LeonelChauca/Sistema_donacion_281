@@ -10,7 +10,7 @@ const About = () => {
             <div className={style.card}>
                <h4>Quienes Somos? </h4>
                <p>
-                  Sis Donación es una plataforma innovadora dedicada a combatir el hambre y el desperdicio de alimentos.
+                  Sis Donación es una plataforma innovadora dedicada a recepción y donación de productos y alimentos  para combatir el hambre y el desperdicio de alimentos.
                </p>
                <p> Nuestra misión es conectar donantes de alimentos con organizaciones benéficas y personas necesitadas de manera eficiente y transparente. Impulsados por valores como la solidaridad, la transparencia y la innovación, estamos comprometidos a construir un mundo donde cada persona tenga acceso a alimentos nutritivos y ninguna comida se desperdicie.
                </p>

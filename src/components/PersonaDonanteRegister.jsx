@@ -8,7 +8,7 @@ const PersonaDonanteRegister = ({register,setValue}) => {
     <div>
         <h4>Datos de donante </h4>
         <div className={' animate__animated animate__fadeInDown '+style.container} >
-            <TextField {...register("direccion")} id="outlined-basic" label="Direccion" variant="outlined" />
+            <TextField {...register("direccion_dn")} id="outlined-basic" label="Direccion" variant="outlined" />
         </div>
         <Mapa setValue={setValue}/>
     </div>

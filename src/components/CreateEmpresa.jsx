@@ -21,7 +21,7 @@ export const CreateEmpresa = () => {
     const { register, handleSubmit,formState: { errors },setValue } = useForm()
     const onSubmit = (data) => {
         console.log(data);
-        axios.post('http://localhost:3001/empresa',data)
+        axios.post('proyecto-281-production.up.railway.app/api/auth/new',data)
         .then(response => {
             console.log(response);
         })

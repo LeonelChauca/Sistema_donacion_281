@@ -7,10 +7,25 @@ import style from "../styles/components/Navbar.module.css"
 import Button from '@mui/material/Button';
 // Componente de Navbar
 const Navbar = () => {
+
+    function scrollerBlock(e) {
+        
+            e.preventDefault();
+        
+    }
     function togleNav() {
         document.querySelector("."+style.baras).classList.toggle(style.animacionBar); 
         document.querySelector("."+style.item).classList.toggle(style.animacionItems);
-        document.querySelector("."+style.proteger).classList.toggle(style.protegerTogle);        
+        document.querySelector("."+style.proteger).classList.toggle(style.protegerTogle);
+        
+        if(document.querySelector("."+style.proteger).classList.contains(style.protegerTogle)){
+            document.addEventListener('wheel',scrollerBlock, { passive: false });            
+            document.addEventListener('touchmove',scrollerBlock, { passive: false });
+        }else {
+            document.removeEventListener('wheel',scrollerBlock, { passive: false });            
+            document.removeEventListener('touchmove',scrollerBlock, { passive: false });
+        }
+        
     }
     return (<>
     
@@ -37,7 +52,7 @@ const Navbar = () => {
                     <li onClick={togleNav}><Link to="/preguntas">Preguntas</Link></li>
                     <li onClick={togleNav}><Link to="/contacto">Contacto</Link></li>
                     <li onClick={togleNav}><Link to="/productos">Productos</Link></li>
-                    <li onClick={togleNav}><Link to="/">Home</Link></li>
+                    <li onClick={togleNav}><Link to="/">Inicio</Link></li>
                     <li onClick={togleNav}>
                     <Link to="/login">
                     <Button variant="contained" style={{textTransform:"none",padding:"2px 8px"}}>login</Button>
