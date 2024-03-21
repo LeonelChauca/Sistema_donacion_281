@@ -25,7 +25,7 @@ const Register = () => {
             <img src={iconPersona} alt="DonacionPersona" />Persona
           </Link>
           <Link to="/CreateEmpresa" className={style.botonP}>
-            <img src={iconEmpresa} alt="DonacionPersona" />Empresa
+            <img src={iconEmpresa} alt="DonacionPersona" />Organizacion
           </Link>
         </div>
 

@@ -10,6 +10,9 @@ import { PersonaRegister } from './PersonaRegister';
 import 'animate.css';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
+import PersonaDonanteRegister from './PersonaDonanteRegister';
+import PersonaVoluntarioRegister from './PersonaVoluntarioRegister';
+import axios from 'axios';
 
 export const CreatePersona = () => {
 
@@ -17,9 +20,16 @@ export const CreatePersona = () => {
     const handleChange = (event) => {
         setselectP(event.target.value);
     };
-    const { register, handleSubmit,formState: { errors } } = useForm()
+    const { register, handleSubmit,formState: { errors },setValue } = useForm()
     const onSubmit = (data) => {
         console.log(data);
+        axios.post('http://localhost:3001/persona',data)
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+        })
       }
   return (
     <div  className={"animate__animated animate__backInLeft "+style.containerMain}>
@@ -35,13 +45,13 @@ export const CreatePersona = () => {
                     >
                     <MenuItem value={"Voluntario"}>Voluntario</MenuItem>
                     <MenuItem value={"Donante"}>Donante</MenuItem>
-                    <MenuItem value={"Donado"}>Donado</MenuItem>
+                    <MenuItem value={"Receptor"}>Receptor</MenuItem>
                 </Select>
                 <FormHelperText>Elije uno*</FormHelperText>
             </FormControl>
             <Box className={style.boxC}>
-                    {selectP=="Donante" ? <PersonaRegister register={register}/> :''}
-                    {selectP=="Voluntario" ? <PersonaRegister register={register}/> :''}
+                    {selectP=="Donante" ?<div><PersonaRegister register={register} /> <PersonaDonanteRegister register={register} setValue={setValue}/></div>  :''}
+                    {selectP=="Voluntario" ? <div><PersonaRegister register={register} /> <PersonaVoluntarioRegister register={register}/></div> :''}
             </Box>
             <button type='submit'>Enviar</button>
         </form>
