@@ -36,6 +36,7 @@ const FormularioLogin = () => {
       
     })
     .catch(error => {
+      console.log(error);
       if (error.response) {
         setErrorMessage(true);
       }

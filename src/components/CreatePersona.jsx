@@ -22,6 +22,8 @@ export const CreatePersona = () => {
     };
     const { register, handleSubmit,formState: { errors },setValue } = useForm()
     const onSubmit = (data) => {
+        data.ci = parseInt(data.ci);
+        data.nro_cel = parseInt(data.nro_cel);
         console.log(data);
         axios.post('https://proyecto-281-production.up.railway.app/api/auth/new',data)
         .then(response => {
