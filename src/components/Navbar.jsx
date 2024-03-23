@@ -35,7 +35,7 @@ const Navbar = () => {
         <nav  className={style.navbar}  >
             <div className={style.icono}>
                 <picture>
-                <img src={icon} alt="Icono"></img>
+                <img src="/icon.png" alt="Icono"></img>
                 </picture>
                 <h3>
                 Sis Donación

@@ -23,18 +23,20 @@
 .icono {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
     margin-left: 50px;
 }
 
 .icono>picture {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 50px;    
+    display: flex;
+    align-items: center;
 }
 
 .icono>picture>img {
     width: 100%;
+    object-position: center center;
 }
 
 
