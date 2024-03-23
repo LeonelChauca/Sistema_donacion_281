@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import PersonaDonanteRegister from './PersonaDonanteRegister';
 import PersonaVoluntarioRegister from './PersonaVoluntarioRegister';
 import axios from 'axios';
+import Button from '@mui/material/Button';
 
 export const CreatePersona = () => {
 
@@ -38,6 +39,7 @@ export const CreatePersona = () => {
         <h1>Tipo de persona :</h1>
         <form className={style.containerF} onSubmit={handleSubmit(onSubmit)}>
             <FormControl className={style.containerSelect}>
+            <FormHelperText>Seleccione un las las opciones</FormHelperText>
                 <Select
                     displayEmpty
                     value={selectP}
@@ -49,13 +51,13 @@ export const CreatePersona = () => {
                     <MenuItem value={"Donante"}>Donante</MenuItem>
                     <MenuItem value={"Receptor"}>Receptor</MenuItem>
                 </Select>
-                <FormHelperText>Elije uno*</FormHelperText>
+                
             </FormControl>
             <Box className={style.boxC}>
                     {selectP=="Donante" ?<div><PersonaRegister register={register} /> <PersonaDonanteRegister register={register} setValue={setValue}/></div>  :''}
                     {selectP=="Voluntario" ? <div><PersonaRegister register={register} /> <PersonaVoluntarioRegister register={register}/></div> :''}
             </Box>
-            <button type='submit'>Enviar</button>
+            <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Guardar</Button>
         </form>
         
     </div>

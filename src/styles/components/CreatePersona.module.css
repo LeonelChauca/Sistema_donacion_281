@@ -2,6 +2,7 @@
     background-color: white;
     width: 90%;
     margin: 0 auto;
+    max-width: 800px;
 
 }
 .containerMain h1{
@@ -16,10 +17,16 @@
 .containerSelect{
     max-width: 50%;
     width: 200px;
+
 }
 .boxC{
     width: 100%;
 }
 hr{
     margin: 10px 0;
+}
+.btnGuardar{
+    margin: 20px auto !important;
+    text-align: center !important;
+    display: block !important;
 }

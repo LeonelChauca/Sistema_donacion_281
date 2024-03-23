@@ -8,9 +8,12 @@ const PersonaVoluntarioRegister = ({register}) => {
     <div>
         <h4>Datos del Voluntario</h4>
         <div className={' animate__animated animate__fadeInDown '+style.container} >
-            <TextField {...register("horario")}id="outlined-basic" label="Horario" variant="outlined" />
-            <TextField {...register("turno")}id="outlined-basic" label="turno" variant="outlined" />
-
+            <TextField className={style.validar}  {...register("horario")}id="outlined-basic" label="Horario" variant="outlined" 
+            required
+            />
+            <TextField className={style.validar} {...register("turno")}id="outlined-basic" label="turno" variant="outlined" 
+            required
+            />
         </div>
     </div>
   )
