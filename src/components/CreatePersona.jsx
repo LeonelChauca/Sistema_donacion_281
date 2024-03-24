@@ -26,6 +26,7 @@ export const CreatePersona = () => {
         data.ci = parseInt(data.ci);
         data.nro_cel = parseInt(data.nro_cel);
         console.log(data);
+        
         axios.post('https://proyecto-281-production.up.railway.app/api/auth/new',data)
         .then(response => {
             console.log(response);
@@ -33,6 +34,7 @@ export const CreatePersona = () => {
         .catch(error => {
             console.log(error);
         })
+        
       }
   return (
     <div  className={"animate__animated animate__backInLeft "+style.containerMain}>

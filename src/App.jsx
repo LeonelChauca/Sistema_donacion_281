@@ -37,7 +37,6 @@ function App() {
           <Route path='/CreateEmpresa' element={<CreateEmpresa/>} />
           <Route path='/CreatePersona' element={<CreatePersona/>} />
           <Route path='/*' element={<NotFound/>} />
-
         </Routes>
       </main>      
       <Footer />

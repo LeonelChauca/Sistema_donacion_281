@@ -7,6 +7,8 @@
   --color-Footer:#222831;/*color para el fotter Fondo*/
   --nav-height:100px; 
   font-size: 15px; 
+  --color-invalido:rgb(255, 145, 0); 
+    --color-valido:rgb(4, 114, 62);
 }
 
 body{

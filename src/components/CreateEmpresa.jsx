@@ -12,6 +12,7 @@ import 'animate.css';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import OrganizacionRegistro from './OrganizacionRegistro';
+import Button from '@mui/material/Button';
 
 export const CreateEmpresa = () => {
   const [selectP, setselectP] = useState('');
@@ -53,7 +54,7 @@ export const CreateEmpresa = () => {
                     {selectP=="orgDonante" ? <div> <hr /> <h4>Primeramente registra la persona que se encargara de la empresa :</h4>  <PersonaRegister  register={register}/> <OrganizacionRegistro register={register} setValue={setValue}/> </div>:''}
                     {selectP=="orgReceptor" ? <div> <hr /> <h4>Primeramente registra la persona que se encargara de la empresa :</h4>  <PersonaRegister  register={register}/> <OrganizacionRegistro register={register} setValue={setValue}/></div> :''}
             </Box>
-            <button type='submit'>Enviar</button>
+            <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Guardar</Button>
         </form>
         
     </div>

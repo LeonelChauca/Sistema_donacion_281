@@ -1,7 +1,4 @@
-:root{
-    --color-invalido:rgb(255, 145, 0); 
-    --color-valido:rgb(4, 114, 62);
-}
+
 .estado{
     text-align: center;
 }

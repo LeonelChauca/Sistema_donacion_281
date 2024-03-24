@@ -59,9 +59,7 @@ function Portada() {
                 Nuestra plataforma te permite rastrear, coordinar y generar informes fácilmente
             </p>
             <br></br>
-            <BtnAction texto="Donar" url="contacto"/>     
-             <pre style={{display:"inline"}}>  </pre>      
-            <BtnAction texto="Recibir" url="registar_receptor" variant="contained"/>
+            <BtnAction texto="Solicitar registro" url="registro"/>                
         </div>
         <figure className={style.figure}>
             <img src={persona} alt="donacion" />
@@ -134,9 +132,8 @@ function Dinero() {
 function BtnAction({texto="Hola", url="#",variant="outlined"}){
     const { setChange } = useContext(urlContext);
     return (
-    <Button  style={{textTransform:"none"}} variant={variant} onClick={()=>{setChange(()=>url)}}>                
-                {texto}
-                
+    <Button  style={{textTransform:"none", fontSize:"1.1rem"}} variant={variant} onClick={()=>{setChange(()=>url)}}>                
+                {texto}                
     </Button>
     )
 }

@@ -14,16 +14,20 @@ const Navbar = () => {
         
     }
     function togleNav() {
-        document.querySelector("."+style.baras).classList.toggle(style.animacionBar); 
-        document.querySelector("."+style.item).classList.toggle(style.animacionItems);
-        document.querySelector("."+style.proteger).classList.toggle(style.protegerTogle);
-        
-        if(document.querySelector("."+style.proteger).classList.contains(style.protegerTogle)){
-            document.addEventListener('wheel',scrollerBlock, { passive: false });            
-            document.addEventListener('touchmove',scrollerBlock, { passive: false });
-        }else {
-            document.removeEventListener('wheel',scrollerBlock, { passive: false });            
-            document.removeEventListener('touchmove',scrollerBlock, { passive: false });
+        if(window.innerWidth < 850){
+            document.querySelector("."+style.baras).classList.toggle(style.animacionBar); 
+            document.querySelector("."+style.item).classList.toggle(style.animacionItems);
+            document.querySelector("."+style.proteger).classList.toggle(style.protegerTogle);
+            
+            if(document.querySelector("."+style.proteger).classList.contains(style.protegerTogle)){
+                document.addEventListener('wheel',scrollerBlock, { passive: false });            
+                document.addEventListener('touchmove',scrollerBlock, { passive: false });
+            }else {
+                document.removeEventListener('wheel',scrollerBlock, { passive: false });            
+                document.removeEventListener('touchmove',scrollerBlock, { passive: false });
+            }        
+        }else{
+            document.querySelector("."+style.proteger).classList.remove(style.protegerTogle)
         }
         
     }

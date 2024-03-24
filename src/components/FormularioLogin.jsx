@@ -24,6 +24,18 @@ const FormularioLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const [errorMessage, setErrorMessage] = useState(false);
+
+   const user={
+    exp:"[a-zA-Z][a-zA-Z0-9]{3,15}", 
+    title:"Usuario Invalido"
+   }
+
+   const pass={
+    exp:"[a-zA-Z0-9]{5,}", 
+    title:"Password Invalido"
+   }
+
+
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -43,16 +55,23 @@ const FormularioLogin = () => {
     })
   }
   return (
-    <form action="" className={style.formControl} onSubmit={handleSubmit(onSubmit)} >
+    <form action="" className={style.formControl} onSubmit={handleSubmit(onSubmit)}  >
                 <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                     <LockOutlinedIcon />
                 </Avatar>
                 <div className={style.textN}>
-                  <TextField className={style.textN} {...register("user",{required:true})} id="outlined-basic" label="Usuario" variant="outlined" />
+                  <TextField className={style.textN} {...register("user",{required:true})} id="outlined-basic" label="Usuario" variant="outlined"                   
+                  inputProps={{
+                    pattern: user.exp,
+                    title:user.title
+                  }}
+                  required
+                  />
                   {errors.user && <div className={style.errorT}> <ErrorIcon></ErrorIcon> <p>Este campo es requerido.</p></div> }
                 </div> 
                 <div className={style.textN}> 
-                  <FormControl className={style.textN}  variant="outlined">
+                  <FormControl className={style.textN}  variant="outlined" 
+                  >
                       <InputLabel htmlFor="outlined-adornment-password" >Password</InputLabel>
                       <OutlinedInput
                           id="outlined-adornment-password"
@@ -71,6 +90,11 @@ const FormularioLogin = () => {
                           </InputAdornment>
                           }
                           label="Password"
+                          inputProps={{
+                            pattern: user.exp,
+                            title:user.title
+                          }}
+                          required
                       />
                   </FormControl>                  
                   {errors.password && <div className={style.errorT}> <ErrorIcon></ErrorIcon> <p>Este campo es requerido.</p></div> }
@@ -83,7 +107,7 @@ const FormularioLogin = () => {
                     className={style.submit}
                     onClick={handleSubmit(onSubmit)}
                     >
-                    Iniciar Sesion
+                    Iniciar Sesión
                 </Button>
                 {errorMessage && <Alert variant="filled" severity="error" className={style.navAlert}>
                     Usuario o contraseña incorrecta
@@ -92,12 +116,12 @@ const FormularioLogin = () => {
                 <div className={style.contText}>
                     <div>
                         <Link href="#" variant="body2">
-                        Forgot password?
+                        Se te olvido la contraseña
                         </Link>
                     </div>
                     <div >
                         <Link component={RouterLink}  to="/registro" variant="body2">
-                        {"Don't have an account? Sign Up"}
+                        Crear una nueva cuenta
                         </Link>
                     </div>
                 </div>

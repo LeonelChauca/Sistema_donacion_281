@@ -3,16 +3,43 @@ import style from '../styles/components/OrganizacionCreate.module.css';
 import 'animate.css';
 import { Grid, TextField } from '@mui/material';
 import Mapa from './Mapa';
+import expReg from '../components/expReg.js';
 
 const OrganizacionRegistro = ({register,setValue}) => {
   return (
     <>
       <h4>Datos de la empresa :</h4>
       <div className={' animate__animated animate__fadeInDown '+style.container}>
-        <TextField {...register("Nombre_Org")} id="outlined-basic"  label="Nombre Org." variant="outlined" />
-        <TextField {...register("tipo_od")} id="outlined-basic"  label="Tipo" variant="outlined" />
-        <TextField {...register("direccion")} id="outlined-basic"  label="direccion" variant="outlined" />
-        <TextField {...register("nit")} id="outlined-basic"  label="nit" variant="outlined" />
+        <TextField {...register("Nombre_Org")}  className={style.validar} label="Nombre Org." variant="outlined" 
+        required
+        inputProps={{
+          pattern:expReg.texto.exp,
+          title:expReg.texto.msg
+        }}
+        />
+        <TextField {...register("tipo_od")}  className={style.validar}  label="Tipo" variant="outlined" 
+        
+        required
+        inputProps={{
+          pattern:expReg.texto.exp,
+          title:expReg.texto.msg
+        }}
+        />
+        <TextField {...register("direccion")}  className={style.validar}  label="direccion" variant="outlined"
+        required
+        inputProps={{
+          pattern:expReg.direccion.exp,
+          title:expReg.direccion.msg
+        }}
+        
+        />
+        <TextField {...register("nit")} className={style.validar}   label="nit" variant="outlined" 
+        required
+        inputProps={{
+          pattern:expReg.number.exp,
+          title:expReg.number.msg
+        }}
+        />
       </div>
       <h4>Selecciona la direccion principal de la empresa :</h4>
       <Mapa setValue={setValue}/>
