@@ -6,12 +6,20 @@ import icon from "../assets/img/icon/donar.png"
 import style from "../styles/components/Navbar.module.css"
 import Button from '@mui/material/Button';
 
+<<<<<<< HEAD
 // Controllers
+=======
+// Controller 
+>>>>>>> parent of f385083 (Intentando solucionar)
 import {useStore} from "../controllers/Auth.js"
 
 // Componente de Navbar
 const Navbar = () => {
+<<<<<<< HEAD
     const logged = useStore((state)=>state.logged)
+=======
+    const login=useStore((state)=>state.login); 
+>>>>>>> parent of f385083 (Intentando solucionar)
     function scrollerBlock(e) {
         
             e.preventDefault();
@@ -60,7 +68,12 @@ const Navbar = () => {
                     <li onClick={togleNav}><Link to="/preguntas">Preguntas</Link></li>
                     <li onClick={togleNav}><Link to="/contacto">Contacto</Link></li>
                     {
+<<<<<<< HEAD
                         logged&&<li onClick={togleNav}><Link to="/productos">Productos</Link></li>
+=======
+                        login&&
+                        <li onClick={togleNav}><Link to="/productos">Productos</Link></li>
+>>>>>>> parent of f385083 (Intentando solucionar)
                     }
                     <li onClick={togleNav}><Link to="/">Inicio</Link></li>
                     <li onClick={togleNav}>

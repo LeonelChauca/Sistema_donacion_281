@@ -20,10 +20,21 @@ import NotFound from "./components/NotFound.jsx"
 import Register from './containers/Register.jsx';
 import { CreateEmpresa } from './components/CreateEmpresa.jsx';
 import { CreatePersona } from './components/CreatePersona.jsx';
+<<<<<<< HEAD
 // Controllers 
 import { useStore } from './controllers/Auth.js';     
 function App() {
   const logged = useStore((state)=>state.logged)
+=======
+
+//controller 
+import {useStore} from "./controllers/Auth.js"
+
+
+function App() {
+
+  const login=useStore((state)=>state.login); 
+>>>>>>> parent of f385083 (Intentando solucionar)
   return (
     <>
       <Navbar />
@@ -31,12 +42,17 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {
+<<<<<<< HEAD
           logged&&<Route path="/productos" element={<Productos />} />
           }
           
+=======
+            login&&<Route path="/productos" element={<Productos />} />
+          }          
+>>>>>>> parent of f385083 (Intentando solucionar)
           <Route path="/about" element={<About />} />
           <Route path="/preguntas" element={<Preguntas />} />
-          <Route path="/contacto" element={<Contact />} />
+          <Route path="/contacto" element={<Contact />} />          
           <Route path="/login" element={<Login />} />
           <Route path='/Registro' element={<Register/>} />
           <Route path='/CreateEmpresa' element={<CreateEmpresa/>} />

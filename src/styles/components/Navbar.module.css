@@ -1,5 +1,3 @@
-
-
 .proteger{
     display: none;
     position: fixed;
@@ -9,14 +7,12 @@
     background: rgba(8, 8, 8, 0.315);
     overflow: hidden;
 }
-
 .navbar {    
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: var(--nav-height);
     position: relative;
-
 }
 
 .icono {
