@@ -5,13 +5,9 @@ import icon from "../assets/img/icon/donar.png"
 
 import style from "../styles/components/Navbar.module.css"
 import Button from '@mui/material/Button';
-
-// Controller 
-import {useStore} from "../controllers/Auth.js"
-
 // Componente de Navbar
 const Navbar = () => {
-    const login=useStore((state)=>state.login); 
+
     function scrollerBlock(e) {
         
             e.preventDefault();
@@ -59,10 +55,7 @@ const Navbar = () => {
                     <li onClick={togleNav}><Link to="/about">Sobre Nosotros</Link></li>
                     <li onClick={togleNav}><Link to="/preguntas">Preguntas</Link></li>
                     <li onClick={togleNav}><Link to="/contacto">Contacto</Link></li>
-                    {
-                        login&&
-                        <li onClick={togleNav}><Link to="/productos">Productos</Link></li>
-                    }
+                    <li onClick={togleNav}><Link to="/productos">Productos</Link></li>
                     <li onClick={togleNav}><Link to="/">Inicio</Link></li>
                     <li onClick={togleNav}>
                     <Link to="/login">

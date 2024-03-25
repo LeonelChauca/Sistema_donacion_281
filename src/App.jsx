@@ -21,25 +21,17 @@ import Register from './containers/Register.jsx';
 import { CreateEmpresa } from './components/CreateEmpresa.jsx';
 import { CreatePersona } from './components/CreatePersona.jsx';
 
-//controller 
-import {useStore} from "./controllers/Auth.js"
-
-
 function App() {
-
-  const login=useStore((state)=>state.login); 
   return (
     <>
       <Navbar />
       <main className="main">
         <Routes>
           <Route path="/" element={<Home />} />
-          {
-            login&&<Route path="/productos" element={<Productos />} />
-          }          
+          <Route path="/productos" element={<Productos />} />
           <Route path="/about" element={<About />} />
           <Route path="/preguntas" element={<Preguntas />} />
-          <Route path="/contacto" element={<Contact />} />          
+          <Route path="/contacto" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path='/Registro' element={<Register/>} />
           <Route path='/CreateEmpresa' element={<CreateEmpresa/>} />
