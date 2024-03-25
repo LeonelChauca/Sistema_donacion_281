@@ -20,15 +20,20 @@ import NotFound from "./components/NotFound.jsx"
 import Register from './containers/Register.jsx';
 import { CreateEmpresa } from './components/CreateEmpresa.jsx';
 import { CreatePersona } from './components/CreatePersona.jsx';
-
+// Controllers 
+import { useStore } from './controllers/Auth.js';     
 function App() {
+  const logged = useStore((state)=>state.logged)
   return (
     <>
       <Navbar />
       <main className="main">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/productos" element={<Productos />} />
+          {
+          logged&&<Route path="/productos" element={<Productos />} />
+          }
+          
           <Route path="/about" element={<About />} />
           <Route path="/preguntas" element={<Preguntas />} />
           <Route path="/contacto" element={<Contact />} />
