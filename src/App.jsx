@@ -29,6 +29,7 @@ function App() {
     <>
       <Navbar />
         <main className="main">
+          
           <Routes>
             <Route path="/" element={<Home />} />
             {

@@ -3,7 +3,7 @@ import { create } from 'zustand'
 let useStore = create((set) => ({
   user:"", 
   token:"",  
-  rol:"",
+  rol:"admin",
   logged:false,
 
   setUser: (user) => set({ user: user }),
