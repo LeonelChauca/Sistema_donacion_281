@@ -1,0 +1,10 @@
+.main{
+    background: var(--color-cuaternario); 
+    min-height: 100vh;    
+    padding-left: calc(var(--witdhNavOpen) + 20px);  
+    transition: padding-left 0.5s;  
+}
+.close {
+    padding-left: calc(var(--witdhNavClose) + 20px);    
+}
+

@@ -20,37 +20,49 @@ import Register from './containers/Register.jsx';
 import { CreateEmpresa } from './components/CreateEmpresa.jsx';
 import { CreatePersona } from './components/CreatePersona.jsx';
 //controller 
-import {useStore} from "./controllers/Auth.js"
+import { useStore } from "./controllers/Auth.js"
+
+
+//Admin 
+import Admin from './admin/Admin.jsx';
+
 
 function App() {
-  const logged = useStore((state)=>state.logged)
-  const login=useStore((state)=>state.login); 
-  return (
-    <>
-      <Navbar />
-        <main className="main">
-          
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {
-              logged&&<Route path="/productos" element={<Productos />} />
-            }
-            {
-              login&&<Route path="/productos" element={<Productos />} />
-            }
-                  
-            <Route path="/about" element={<About />} />
-            <Route path="/preguntas" element={<Preguntas />} />
-            <Route path="/contacto" element={<Contact />} />          
-            <Route path="/login" element={<Login />} />
-            <Route path='/Registro' element={<Register/>} />
-            <Route path='/CreateEmpresa' element={<CreateEmpresa/>} />
-            <Route path='/CreatePersona' element={<CreatePersona/>} />
-            <Route path='/*' element={<NotFound/>} />
-          </Routes>
-        </main>      
-      <Footer />
-    </>
-  )
+  const logged = useStore((state) => state.logged)
+  const rol = useStore((state) => state.rol)
+  const login = useStore((state) => state.login);
+  
+  switch (rol) {
+    case "admin":
+      if(logged){
+        return <Admin />        
+      }
+       
+    default:
+      return  <>
+            <Navbar />
+            <main className="main">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                {
+                  logged && <Route path="/productos" element={<Productos />} />
+                }
+                {
+                  login && <Route path="/productos" element={<Productos />} />
+                }
+
+                <Route path="/about" element={<About />} />
+                <Route path="/preguntas" element={<Preguntas />} />
+                <Route path="/contacto" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+                <Route path='/Registro' element={<Register />} />
+                <Route path='/CreateEmpresa' element={<CreateEmpresa />} />
+                <Route path='/CreatePersona' element={<CreatePersona />} />
+                <Route path='/*' element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+          </>
+  }
 }
 export default App
