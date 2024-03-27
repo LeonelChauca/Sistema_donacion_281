@@ -1,0 +1,9 @@
+.containerPt{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.containerPt h3{
+    margin-left: 20px;
+}

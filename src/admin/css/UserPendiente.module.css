@@ -1,0 +1,14 @@
+.containerU{
+    width: 95%;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.containerU h2{
+    text-transform:uppercase;
+
+}
+.containerTable{
+    width: 90%;
+    margin: 0 auto;
+}

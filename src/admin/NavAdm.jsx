@@ -58,6 +58,9 @@ export default function NavAdm({ closeNav, setCloseNav }) {
                     <MenuItem texto="Productos" url="/productos" >
                         <ViewListRoundedIcon />
                     </MenuItem>
+                    <MenuItem texto="Usuarios pendientes " url="/usuarios-pendiente" >
+                        <PeopleAltIcon />
+                    </MenuItem>
                 </div>
 
                 <div className={style.bottom_content}>

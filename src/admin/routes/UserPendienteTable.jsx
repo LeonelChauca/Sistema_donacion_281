@@ -1,0 +1,243 @@
+import React from 'react'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import style from '../css/UserPendienteTable.module.css'
+import PersonIcon from '@mui/icons-material/Person';
+import { TablaPendientes } from './TablaPendientes';
+import columnasTableUserPendiente from '../table.js'
+export const UserPendienteTable = () => {
+    const datos=[
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'3350331',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+        {
+            ci:'9226859',
+            nombre:'leo',
+            ap_paterno:'chauca',
+            ap_materno:'maydana',
+            fecha_nac:'20021008',
+            celular:'9226859',
+            correo:'leonelchauca0@gmail.com'
+        },
+
+    ]
+  return (
+    <div className={style.containerPt}>
+        <Accordion className={style.Accordion}>
+            <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2-content"
+            id="panel2-header"
+            >
+            <PersonIcon color='primary'/>
+            <h3>Usuarios</h3>
+            </AccordionSummary>
+            <AccordionDetails>
+                <TablaPendientes columnas={columnasTableUserPendiente} datos={datos}/>
+            </AccordionDetails>
+        </Accordion>
+        <Accordion className={style.Accordion}>
+            <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2-content"
+            id="panel2-header"
+            >
+            <BusinessCenterIcon color='primary' />
+            <h3>Organizaciones</h3>
+        </AccordionSummary>
+            <AccordionDetails>
+                <h1>hola</h1>
+            </AccordionDetails>
+        </Accordion>
+    </div>
+  )
+}

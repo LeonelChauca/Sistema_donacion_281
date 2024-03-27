@@ -1,0 +1,28 @@
+.containerB{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.containerB button{
+    width: 100%;
+    padding:7px 5px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    
+}
+.habilitar{
+    background-color: #3f51b5;
+    cursor: pointer;
+    transition: background-color .3s ease;
+
+}
+.deshabilitar{
+    background-color: #f44336;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.habilitar:hover{
+    background-color: skyblue; 
+}
