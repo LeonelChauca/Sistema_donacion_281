@@ -10,7 +10,7 @@ const OrganizacionRegistro = ({register,setValue}) => {
     <>
       <h4>Datos de la empresa :</h4>
       <div className={' animate__animated animate__fadeInDown '+style.container}>
-        <TextField {...register("Nombre_Org")}  className={style.validar} label="Nombre Org." variant="outlined" 
+        <TextField {...register("nombre_od")}  className={style.validar} label="Nombre Org." variant="outlined" 
         required
         inputProps={{
           pattern:expReg.texto.exp,
@@ -25,7 +25,7 @@ const OrganizacionRegistro = ({register,setValue}) => {
           title:expReg.texto.msg
         }}
         />
-        <TextField {...register("direccion")}  className={style.validar}  label="direccion" variant="outlined"
+        <TextField {...register("direccion_od")}  className={style.validar}  label="direccion" variant="outlined"
         required
         inputProps={{
           pattern:expReg.direccion.exp,
@@ -33,11 +33,19 @@ const OrganizacionRegistro = ({register,setValue}) => {
         }}
         
         />
-        <TextField {...register("nit")} className={style.validar}   label="nit" variant="outlined" 
+        <TextField {...register("nit_od")} className={style.validar}   label="nit" variant="outlined" 
         required
         inputProps={{
           pattern:expReg.number.exp,
           title:expReg.number.msg
+        }}
+        />
+
+        <TextField {...register("puesto_trabajo_ob")} className={style.validar}   label="puesto" variant="outlined" 
+        required
+        inputProps={{
+          pattern:expReg.texto.exp,
+          title:expReg.texto.msg
         }}
         />
       </div>

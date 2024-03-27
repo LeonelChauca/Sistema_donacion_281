@@ -13,18 +13,26 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import OrganizacionRegistro from './OrganizacionRegistro';
 import Button from '@mui/material/Button';
+import { useStore } from '../controllers/Auth.js';
 
 export const CreateEmpresa = () => {
+
+  const setLogged = useStore((state)=>state.setLogged) 
+  
+
   const [selectP, setselectP] = useState('');
     const handleChange = (event) => {
         setselectP(event.target.value);
     };
     const { register, handleSubmit,formState: { errors },setValue } = useForm()
     const onSubmit = (data) => {
-        console.log(data);
-        axios.post('proyecto-281-production.up.railway.app/api/auth/new',data)
+   
+        axios.post('https://proyecto-281-production.up.railway.app/api/auth/new',data)
         .then(response => {
-            console.log(response);
+          
+ //         console.log(response.data.ok);
+   //       setLogged(response.data.ok); 
+          
         })
         .catch(error => {
             console.log(error);

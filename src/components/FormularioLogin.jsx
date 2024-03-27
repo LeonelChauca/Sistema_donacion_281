@@ -41,7 +41,7 @@ const FormularioLogin = () => {
   };
   const { register, handleSubmit,formState: { errors } } = useForm()
   const onSubmit = (data) => {
-    setErrorMessage(false);
+    setErrorMessage(null);
     axios.post('https://proyecto-281-production.up.railway.app/api/auth/', data)
     .then(response => {
       console.log(response)
@@ -50,7 +50,7 @@ const FormularioLogin = () => {
     .catch(error => {
       console.log(error);
       if (error.response) {
-        setErrorMessage(true);
+        setErrorMessage(error.response.data.msg);
       }
     })
   }
@@ -110,7 +110,7 @@ const FormularioLogin = () => {
                     Iniciar Sesión
                 </Button>
                 {errorMessage && <Alert variant="filled" severity="error" className={style.navAlert}>
-                    Usuario o contraseña incorrecta
+                    {errorMessage}
                 </Alert>}
                 
                 <div className={style.contText}>

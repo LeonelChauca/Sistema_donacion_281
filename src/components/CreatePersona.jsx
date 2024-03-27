@@ -14,8 +14,11 @@ import PersonaDonanteRegister from './PersonaDonanteRegister';
 import PersonaVoluntarioRegister from './PersonaVoluntarioRegister';
 import axios from 'axios';
 import Button from '@mui/material/Button';
+import { useStore } from '../controllers/Auth.js';
 
 export const CreatePersona = () => {
+    const setLogged = useStore((state)=>state.setLogged) 
+    const logged = useStore((state)=>state.logged) 
 
     const [selectP, setselectP] = useState('');
     const handleChange = (event) => {
@@ -30,6 +33,7 @@ export const CreatePersona = () => {
         axios.post('https://proyecto-281-production.up.railway.app/api/auth/new',data)
         .then(response => {
             console.log(response);
+            setLogged(response.data.ok);
         })
         .catch(error => {
             console.log(error);
