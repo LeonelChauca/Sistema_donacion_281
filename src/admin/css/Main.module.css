@@ -1,10 +1,20 @@
 .main{
+    position: relative;
     background: var(--color-cuaternario); 
     min-height: 100vh;    
-    padding-left: calc(var(--witdhNavOpen) + 20px);  
-    transition: padding-left 0.5s;  
+    left: calc(var(--witdhNavOpen) + 20px);  
+    transition: all 0.5s;      
+    width: calc(100vw - var(--witdhNavOpen) - 22px );    
 }
 .close {
-    padding-left: calc(var(--witdhNavClose) + 20px);    
+    left: calc(var(--witdhNavClose) + 20px);    
+    width: calc(100vw - var(--witdhNavClose) - 22px );
 }
 
+@media screen and (max-width: 500px) {
+    .main{
+        position: absolute;
+        left: calc(var(--witdhNavClose) + 20px);            
+        width: calc(100vw - var(--witdhNavClose) - 22px );    
+    }    
+}

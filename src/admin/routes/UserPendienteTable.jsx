@@ -7,7 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import style from '../css/UserPendienteTable.module.css'
 import PersonIcon from '@mui/icons-material/Person';
 import { TablaPendientes } from './TablaPendientes';
-import columnasTableUserPendiente from '../table.js'
+import columnasTableUserPendiente from '../js/table.js'
 export const UserPendienteTable = () => {
     const datos=[
         {

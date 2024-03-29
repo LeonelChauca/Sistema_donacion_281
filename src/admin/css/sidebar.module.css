@@ -22,7 +22,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100%;
     width: var(--witdhNavOpen);
     padding: 10px 14px;
     background: var(--sidebar-color);
