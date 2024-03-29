@@ -62,7 +62,7 @@ export const CreateEmpresa = () => {
                     {selectP=="orgDonante" ? <div> <hr /> <h4>Primeramente registra la persona que se encargara de la empresa :</h4>  <PersonaRegister  register={register}/> <OrganizacionRegistro register={register} setValue={setValue}/> </div>:''}
                     {selectP=="orgReceptor" ? <div> <hr /> <h4>Primeramente registra la persona que se encargara de la empresa :</h4>  <PersonaRegister  register={register}/> <OrganizacionRegistro register={register} setValue={setValue}/></div> :''}
             </Box>
-            <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Guardar</Button>
+            <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Postular</Button>
         </form>
         
     </div>
