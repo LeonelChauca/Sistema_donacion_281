@@ -18,13 +18,16 @@ import ErrorIcon from '@mui/icons-material/Error';
 import Alert from '@mui/material/Alert';
 import { useForm } from "react-hook-form";
 import axios  from 'axios';
+import { useStore } from "../controllers/Auth.js"
+import * as jose from 'jose'
+
 import Register from '../containers/Register';
 
 const FormularioLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const [errorMessage, setErrorMessage] = useState(false);
-
+  const {setUser,setToken,setLogged,setLogin,setRol} = useStore();
    const user={
     exp:"[a-zA-Z][a-zA-Z0-9]{3,15}", 
     title:"Usuario Invalido"
@@ -34,7 +37,7 @@ const FormularioLogin = () => {
     exp:"[a-zA-Z0-9]{5,}", 
     title:"Password Invalido"
    }
-
+   
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -44,13 +47,22 @@ const FormularioLogin = () => {
     setErrorMessage(null);
     axios.post('https://proyecto-281-production.up.railway.app/api/auth/', data)
     .then(response => {
-      console.log(response)
-      
+      if(response.status=='200'){
+        console.log(response); 
+        const jwtDecode=jose.decodeJwt(response.data.token) 
+        setUser(jwtDecode.name);
+        setToken(jwtDecode);
+        setLogged(response.data.ok);
+        setRol(jwtDecode.tipo)
+        setLogin(true);
+      }
     })
     .catch(error => {
       console.log(error);
       if (error.response) {
+        
         setErrorMessage(error.response.data.msg);
+
       }
     })
   }

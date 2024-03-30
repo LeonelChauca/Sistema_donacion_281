@@ -5,7 +5,7 @@ const getLogged=()=>{
    }
    //Deveria ser falso , si no esta logeado , 
    //Solo para el desarrollo se lo considera de esta logeado
-   return true ; 
+   return false ; 
 }
 let useStore = create((set) => ({
   user:localStorage.getItem("user")??"Leo", 
@@ -19,9 +19,9 @@ let useStore = create((set) => ({
   setLogged:(login)=>set({logged:login}),
 
   login:false,
-  setUser: (user) => set({ user: user }),
-  setToken: (token) => set({ token: token}),
-  setRol:(rol)=>set({rol:rol}), 
+  //setUser: (user) => set({ user: user }),
+  //setToken: (token) => set({ token: token}),
+  //setRol:(rol)=>set({rol:rol}), 
   setLogin:(login)=>set({login:login})
 }))
 

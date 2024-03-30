@@ -33,7 +33,7 @@ function App() {
   const login = useStore((state) => state.login);
   
   switch (rol) {
-    case "admin":
+    case "administrador":
       if(logged){
         return <Admin />        
       }
