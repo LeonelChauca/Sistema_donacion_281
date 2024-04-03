@@ -47,9 +47,6 @@ function App() {
                 {
                   logged && <Route path="/productos" element={<Productos />} />
                 }
-                {
-                  login && <Route path="/productos" element={<Productos />} />
-                }
 
                 <Route path="/about" element={<About />} />
                 <Route path="/preguntas" element={<Preguntas />} />

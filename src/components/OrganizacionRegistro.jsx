@@ -41,7 +41,7 @@ const OrganizacionRegistro = ({register,setValue}) => {
         }}
         />
 
-        <TextField {...register("puesto_trabajo_ob")} className={style.validar}   label="puesto" variant="outlined" 
+        <TextField {...register("puesto_trabajo_d")} className={style.validar}   label="puesto" variant="outlined" 
         required
         inputProps={{
           pattern:expReg.texto.exp,

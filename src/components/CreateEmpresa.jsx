@@ -52,15 +52,16 @@ export const CreateEmpresa = () => {
                     inputProps={{ 'aria-label': 'Without label' }}
                     >
                     <MenuItem value={"orgDonante"}>Org. Donante</MenuItem>
-                    <MenuItem value={"orgReceptor"}>Org. Receptor</MenuItem>
-                    <MenuItem value={"otro"}>Otro</MenuItem>
+                    <MenuItem value={"orgReceptora"}>Org. Receptor</MenuItem>
+                    <MenuItem value={"orgBenefica"}>Org. Benefica</MenuItem>
                 </Select>
                 <FormHelperText>Elije uno*</FormHelperText>
             </FormControl>
             <Box className={style.boxC}>
                     
                     {selectP=="orgDonante" ? <div> <hr /> <h4>Primeramente registra la persona que se encargara de la empresa :</h4>  <PersonaRegister  register={register}/> <OrganizacionRegistro register={register} setValue={setValue}/> </div>:''}
-                    {selectP=="orgReceptor" ? <div> <hr /> <h4>Primeramente registra la persona que se encargara de la empresa :</h4>  <PersonaRegister  register={register}/> <OrganizacionRegistro register={register} setValue={setValue}/></div> :''}
+                    {selectP=="orgReceptora" ? <div> <hr /> <h4>Primeramente registra la persona que se encargara de la empresa :</h4>  <PersonaRegister  register={register}/> <OrganizacionRegistro register={register} setValue={setValue}/></div> :''}
+                    {selectP=="orgBenefica" ? <div> <hr /> <h4>Primeramente registra la persona que se encargara de la empresa :</h4>  <PersonaRegister  register={register}/> <OrganizacionRegistro register={register} setValue={setValue}/></div> :''}
             </Box>
             <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Postular</Button>
         </form>

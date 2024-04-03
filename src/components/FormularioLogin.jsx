@@ -4,6 +4,7 @@ import { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
+import CircularProgress from '@mui/material/CircularProgress';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
@@ -20,14 +21,12 @@ import { useForm } from "react-hook-form";
 import axios  from 'axios';
 import { useStore } from "../controllers/Auth.js"
 import * as jose from 'jose'
-
-import Register from '../containers/Register';
-
 const FormularioLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const [errorMessage, setErrorMessage] = useState(false);
   const {setUser,setToken,setLogged,setLogin,setRol} = useStore();
+  const [Loading, setLoading] = useState(false);
    const user={
     exp:"[a-zA-Z][a-zA-Z0-9]{3,15}", 
     title:"Usuario Invalido"
@@ -44,6 +43,7 @@ const FormularioLogin = () => {
   };
   const { register, handleSubmit,formState: { errors } } = useForm()
   const onSubmit = (data) => {
+    setLoading(true);
     setErrorMessage(null);
     axios.post('https://proyecto-281-production.up.railway.app/api/auth/', data)
     .then(response => {
@@ -51,7 +51,7 @@ const FormularioLogin = () => {
         console.log(response); 
         const jwtDecode=jose.decodeJwt(response.data.token) 
         setUser(jwtDecode.name);
-        setToken(jwtDecode);
+        setToken(response.data.token);
         setLogged(response.data.ok);
         setRol(jwtDecode.tipo)
         setLogin(true);
@@ -60,10 +60,9 @@ const FormularioLogin = () => {
     .catch(error => {
       console.log(error);
       if (error.response) {
-        
         setErrorMessage(error.response.data.msg);
-
       }
+      setLoading(false);
     })
   }
   return (
@@ -112,15 +111,27 @@ const FormularioLogin = () => {
                   {errors.password && <div className={style.errorT}> <ErrorIcon></ErrorIcon> <p>Este campo es requerido.</p></div> }
 
                 </div>
+                {
+                  Loading 
+                  ? <Button
+                        type="submit"
+                        variant="contained"
+                        className={style.submit}
+                        onClick={handleSubmit(onSubmit)}
+                        disabled
+                        >
+                        <CircularProgress size={25}/>
+                    </Button>
+                  : <Button
+                        type="submit"
+                        variant="contained"
+                        className={style.submit}
+                        onClick={handleSubmit(onSubmit)}
+                        >
+                        Iniciar Sesión
+                    </Button>
+                }
                 
-                <Button
-                    type="submit"
-                    variant="contained"
-                    className={style.submit}
-                    onClick={handleSubmit(onSubmit)}
-                    >
-                    Iniciar Sesión
-                </Button>
                 {errorMessage && <Alert variant="filled" severity="error" className={style.navAlert}>
                     {errorMessage}
                 </Alert>}

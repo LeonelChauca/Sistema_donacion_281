@@ -15,6 +15,7 @@ import PersonaVoluntarioRegister from './PersonaVoluntarioRegister';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import { useStore } from '../controllers/Auth.js';
+import { PersonaReceptora } from './PersonaReceptora.jsx';
 
 export const CreatePersona = () => {
     const setLogged = useStore((state)=>state.setLogged) 
@@ -53,15 +54,16 @@ export const CreatePersona = () => {
                     onChange={handleChange}
                     inputProps={{ 'aria-label': 'Without label' }}
                     >
-                    <MenuItem value={"Voluntario"}>Voluntario</MenuItem>
-                    <MenuItem value={"Donante"}>Donante</MenuItem>
-                    <MenuItem value={"Receptor"}>Receptor</MenuItem>
+                    <MenuItem value={"voluntario"}>Voluntario</MenuItem>
+                    <MenuItem value={"donante"}>Donante</MenuItem>
+                    <MenuItem value={"receptorNatural"}>Receptor</MenuItem>
                 </Select>
                 
             </FormControl>
             <Box className={style.boxC}>
-                    {selectP=="Donante" ?<div><PersonaRegister register={register} /> <PersonaDonanteRegister register={register} setValue={setValue}/></div>  :''}
-                    {selectP=="Voluntario" ? <div><PersonaRegister register={register} /> <PersonaVoluntarioRegister register={register}/></div> :''}
+                    {selectP=="donante" ?<div><PersonaRegister register={register} /> <PersonaDonanteRegister register={register} setValue={setValue}/></div>  :''}
+                    {selectP=="voluntario" ? <div><PersonaRegister register={register} /> <PersonaVoluntarioRegister register={register}/></div> :''}
+                    {selectP=="receptorNatural" ? <div><PersonaRegister register={register} /> <PersonaReceptora register={register} setValue={setValue}/></div> :''}
             </Box>
             <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Guardar</Button>
         </form>
