@@ -68,7 +68,7 @@ export const CreatePersona = () => {
                     {selectP=="voluntario" ? <div><PersonaRegister register={register} /> <PersonaVoluntarioRegister register={register}/></div> :''}
                     {selectP=="receptorNatural" ? <div><PersonaRegister register={register} /> <PersonaReceptora register={register} setValue={setValue}/></div> :''}
             </Box>
-            <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Guardar</Button>
+            <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Postular</Button>
         </form>
         
     </div>
