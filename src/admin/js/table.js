@@ -5,9 +5,14 @@ const columnasTableUserPendiente=[
         minWidth:100,
     },
     {
-        id:'ci',
-        label:'CI',
+        id:'id_user',
+        label:'Id de Usuario',
         minWidth:100,
+    },
+    {
+        id:'user',
+        label:'Usuario',
+        minWidth:180,
     },
     {
         id:'nombre',
@@ -15,23 +20,13 @@ const columnasTableUserPendiente=[
         minWidth:180,
     },
     {
-        id:'ap_paterno',
+        id:'apellido_pat',
         label:'Apellido Paterno',
         minWidth:180,
     },
     {
-        id:'ap_materno',
+        id:'apellido_mat',
         label:'Apellido Materno',
-        minWidth:180,
-    },
-    {
-        id:'fecha_nac',
-        label:'Fecha de Nacimiento',
-        minWidth:180,
-    },
-    {
-        id:'celular',
-        label:'Celular',
         minWidth:180,
     },
     {

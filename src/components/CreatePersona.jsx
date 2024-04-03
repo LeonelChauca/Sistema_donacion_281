@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import style from '../styles/components/CreatePersona.module.css';
+import { AlertaOkRegistro } from './sweetAlert.js';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -35,9 +36,11 @@ export const CreatePersona = () => {
         .then(response => {
             console.log(response);
             setLogged(response.data.ok);
+            AlertaOkRegistro();
         })
         .catch(error => {
             console.log(error);
+            AlertaErrorRegistro(error.response.data.msg);
         })
         
       }

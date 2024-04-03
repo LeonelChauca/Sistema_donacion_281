@@ -8,10 +8,14 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import style from '../css/table.module.css'
+import { useStore } from "../../controllers/Auth.js"
+import axios from 'axios';
+
 
 export const TablaPendientes = ({columnas=[{}],datos=[{}]}) => {
     const [Pagina, setPagina] = useState(0);
     const [FilasXpagina, setFilasXpagina] = useState(10)
+    const token=useStore((state)=>state.token);
   
     const handleChangePage = (event, newPage) => {
         setPagina(newPage);
@@ -23,8 +27,18 @@ export const TablaPendientes = ({columnas=[{}],datos=[{}]}) => {
     };
 
     const retornar=(value)=>{
-        console.log(value)
-        }
+        axios.post('https://proyecto-281-production.up.railway.app/api/review/userValidated',{
+          id_user:value,
+          estado:1,
+        },{
+          headers:{
+            'x-token':token
+          }
+        })
+        .then((response)=>{
+          console.log(response)
+        })
+    }
 
     return (
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -55,8 +69,8 @@ export const TablaPendientes = ({columnas=[{}],datos=[{}]}) => {
                           <TableCell key={column.id} align={column.align}>
                             {column.id=='habilitar' ?
                                 <div className={style.containerB}>
-                                    <button onClick={()=>retornar(row.ci)} className={style.habilitar}>Habilitar</button>
-                                    <button onClick={()=>retornar(row.ci)} className={style.deshabilitar}>Deshabilitar</button>
+                                    <button onClick={()=>retornar(row.id_user)} className={style.habilitar}>Habilitar</button>
+                                    <button onClick={()=>retornar(row.id_user)} className={style.deshabilitar}>Deshabilitar</button>
                                 </div> 
                                 : value}
                           </TableCell>
