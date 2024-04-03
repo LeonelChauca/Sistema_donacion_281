@@ -1,7 +1,11 @@
-export default function Home(){
+
+
+export default function Home() {
     return (
         <div>
-            <h1>Administrador</h1>
+            <h2>Administrador</h2>
+
+          
         </div>
     )
 }

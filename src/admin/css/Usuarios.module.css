@@ -1,0 +1,90 @@
+.listaUsers{
+  padding: 20px 5px ;
+}
+
+.main{
+    display: flex;
+    gap:10px ; 
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card{
+    width: 140px;
+    height: 140px;
+    background: rgb(241, 241, 241) ;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 0px 10px rgb(58, 58, 58) ;
+    cursor: pointer;
+    position: relative;
+ 
+    overflow: hidden;
+}
+.card::before{
+    top:0; 
+    left: 0;
+    
+    position: absolute;  
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg) translateX(100%);
+    background: var(--color-secundario);
+    border-radius: 5px;
+    transition:transform 0.5s cubic-bezier(0.88, -0.12, 0.17, 1.24); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff00;
+    font-weight: bold;
+    content: attr(data-info);  
+}
+.card:nth-child(n+1)::before{
+    background: rgba(4, 131, 93, 0.7);
+}
+.card:nth-child(2n+2)::before{
+    background: rgb(48, 124, 134,0.7);
+}
+.card:nth-child(3n+3)::before{
+    background: rgb(138, 19, 218,0.7);
+}
+
+
+.cardActive:before {    
+    transform: rotate(0deg);
+    color: #ffffff;
+    
+}
+.card:hover .cardContent{
+    z-index: 100;
+}
+.card figure {
+    text-align: center;
+}
+.card figure  img {
+   width: 60%; 
+   
+}
+
+.cardContent{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;  
+}
+
+.tabla{
+    position: relative;
+    max-width: 800px;
+    margin-top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.acciones{
+    display: flex !important;
+    
+}

@@ -8,7 +8,7 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import ViewListRoundedIcon from '@mui/icons-material/ViewListRounded';
 
-import style from  "./css/sidebar.module.css"
+import style from "./css/sidebar.module.css"
 // npm 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -28,7 +28,7 @@ export default function NavAdm({ closeNav, setCloseNav }) {
     }
 
     return (
-        <nav className={style.sidebar + (closeNav ?  ` ${style.close}` : "")}>
+        <nav className={style.sidebar + (closeNav ? ` ${style.close}` : "")}>
             <header>
                 <div className={style.image_text}>
                     <span className={style.image}>
@@ -51,10 +51,10 @@ export default function NavAdm({ closeNav, setCloseNav }) {
                     <MenuItem texto="Home" url="/" >
                         <HomeWorkRoundedIcon />
                     </MenuItem>
-
-                    <MenuItem texto="Usuarios" url="/usuarios" >
+                    {rol == "administrador" && <MenuItem texto="Usuarios" url="/usuarios" >
                         <PeopleAltIcon />
-                    </MenuItem>
+                    </MenuItem>}
+
                     <MenuItem texto="Productos" url="/productos" >
                         <ViewListRoundedIcon />
                     </MenuItem>
@@ -70,8 +70,6 @@ export default function NavAdm({ closeNav, setCloseNav }) {
                             <span className={style.text} >Logout</span>
                         </a>
                     </li>
-                    
-
                 </div>
             </div>
 

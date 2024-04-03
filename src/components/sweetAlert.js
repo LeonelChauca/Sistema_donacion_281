@@ -14,3 +14,24 @@ export const AlertaErrorRegistro=(mensaje="Error")=>{
         icon: "error"
       });
 }
+
+export const ConfirmacionEliminarUser=(title="Are you sure?", text="You won't be able to revert this!", eliminar, parametro)=>{
+  Swal.fire({
+    title,
+    text,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      eliminar(parametro); 
+      Swal.fire({
+        title: "Eliminar",
+        text: "Se elimino correctamente",
+        icon: "success"
+      });
+    }
+  });
+}

@@ -54,7 +54,14 @@ const FormularioLogin = () => {
         setToken(response.data.token);
         setLogged(response.data.ok);
         setRol(jwtDecode.tipo)
-        setLogin(true);
+       
+       localStorage.setItem("id_user", response.data.id_user);
+       localStorage.setItem("user",jwtDecode.name); 
+       localStorage.setItem("token", response.data.token);  
+       localStorage.setItem("rol", jwtDecode.tipo); 
+       localStorage.setItem("logged", response.data.ok); 
+      }else {
+        setLogged(false);
       }
     })
     .catch(error => {

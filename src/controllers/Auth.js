@@ -8,9 +8,10 @@ const getLogged=()=>{
    return false ; 
 }
 let useStore = create((set) => ({
-  user:localStorage.getItem("user")??"Leo", 
+  id_user: localStorage.getItem("id_user")??"",
+  user:localStorage.getItem("user")??"", 
   token:localStorage.getItem("token")??"",  
-  rol:localStorage.getItem("rol")??"admin",
+  rol:localStorage.getItem("rol")??"",
   logged:getLogged(),
 
   setUser: (user) => set({ user: user }),
@@ -18,11 +19,11 @@ let useStore = create((set) => ({
   setRol:(rol)=>set({rol:rol}), 
   setLogged:(login)=>set({logged:login}),
 
-  login:false,
+  //login:false,
   //setUser: (user) => set({ user: user }),
   //setToken: (token) => set({ token: token}),
   //setRol:(rol)=>set({rol:rol}), 
-  setLogin:(login)=>set({login:login})
+  //setLogin:(login)=>set({login:login})
 }))
 
 export  {useStore}; 

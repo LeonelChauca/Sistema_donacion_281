@@ -21,8 +21,9 @@ export default function Main({closeNav}){
     return (
         <main className={style.main + (closeNav?" "+style.close:"")}>
                <Routes>
-                <Route path="/" element={<Home />} />               
-                <Route path="/usuarios" element={<Usuarios />} />  
+                <Route path="/" element={<Home />} />     
+                {rol=="administrador"&&<Route path="/usuarios" element={<Usuarios />} />  }
+                
                 <Route path="/productos" element={<Productos />} /> 
                 <Route path='/Usuarios-pendiente' element={<UserPendiente />} /> 
                 <Route path='/*' element={<NotFound />} />

@@ -37,7 +37,13 @@ function App() {
       if(logged){
         return <Admin />        
       }
-       
+      break ; 
+     case "receptor_natural": 
+     if(logged){
+       return <Admin/>
+     } 
+     break; 
+      
     default:
       return  <>
             <Navbar />
