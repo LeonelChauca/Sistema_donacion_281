@@ -26,7 +26,7 @@ export const TablaPendientes = ({columnas=[{}],datos=[{}]}) => {
         setPagina(0);
     };
 
-    const retornar=(value)=>{
+    const habilitar=(value)=>{
         axios.post('https://proyecto-281-production.up.railway.app/api/review/userValidated',{
           id_user:value,
           estado:1,
@@ -39,7 +39,19 @@ export const TablaPendientes = ({columnas=[{}],datos=[{}]}) => {
           console.log(response)
         })
     }
-
+    const deshabilitar=(value)=>{
+        axios.post('https://proyecto-281-production.up.railway.app/api/review/userValidated',{
+          id_user:value,
+          estado:0,
+        },{
+          headers:{
+            'x-token':token
+          }
+        })
+        .then((response)=>{
+          console.log(response)
+        })
+    }
     return (
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
         <TableContainer sx={{ maxHeight: 440 }}>
@@ -69,8 +81,8 @@ export const TablaPendientes = ({columnas=[{}],datos=[{}]}) => {
                           <TableCell key={column.id} align={column.align}>
                             {column.id=='habilitar' ?
                                 <div className={style.containerB}>
-                                    <button onClick={()=>retornar(row.id_user)} className={style.habilitar}>Habilitar</button>
-                                    <button onClick={()=>retornar(row.id_user)} className={style.deshabilitar}>Deshabilitar</button>
+                                    <button onClick={()=>habilitar(row.id_user)} className={style.habilitar}>Habilitar</button>
+                                    <button onClick={()=>deshabilitar(row.id_user)} className={style.deshabilitar}>Deshabilitar</button>
                                 </div> 
                                 : value}
                           </TableCell>
