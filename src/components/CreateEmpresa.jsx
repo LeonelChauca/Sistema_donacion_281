@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import style from '../styles/components/CreatePersona.module.css';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
+import CircularProgress from '@mui/material/CircularProgress';
+import { AlertaOkRegistro, AlertaErrorRegistro } from './sweetAlert.js';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
@@ -18,7 +20,7 @@ import { useStore } from '../controllers/Auth.js';
 export const CreateEmpresa = () => {
 
   const setLogged = useStore((state)=>state.setLogged) 
-  
+  const [Loading, setLoading] = useState(false);
 
   const [selectP, setselectP] = useState('');
     const handleChange = (event) => {
@@ -26,16 +28,21 @@ export const CreateEmpresa = () => {
     };
     const { register, handleSubmit,formState: { errors },setValue } = useForm()
     const onSubmit = (data) => {
-   
+      setLoading(true);
         axios.post('https://proyecto-281-production.up.railway.app/api/auth/new',data)
         .then(response => {
           
  //         console.log(response.data.ok);
    //       setLogged(response.data.ok); 
+            AlertaOkRegistro();
           
         })
         .catch(error => {
             console.log(error);
+            AlertaErrorRegistro(error.response.data.msg)
+        })
+        .finally(()=>{
+          setLoading(false);
         })
       }
   return (
@@ -63,7 +70,10 @@ export const CreateEmpresa = () => {
                     {selectP=="orgReceptora" ? <div> <hr /> <h4>Primeramente registra la persona que se encargara de la empresa :</h4>  <PersonaRegister  register={register}/> <OrganizacionRegistro register={register} setValue={setValue}/></div> :''}
                     {selectP=="orgBenefica" ? <div> <hr /> <h4>Primeramente registra la persona que se encargara de la empresa :</h4>  <PersonaRegister  register={register}/> <OrganizacionRegistro register={register} setValue={setValue}/></div> :''}
             </Box>
-            <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Postular</Button>
+            {Loading ? <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP=="" || Loading}> <CircularProgress size={25}/></Button>
+              : <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Postular</Button>
+            }
+            
         </form>
         
     </div>

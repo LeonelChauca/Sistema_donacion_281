@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import style from '../styles/components/CreatePersona.module.css';
-import { AlertaOkRegistro } from './sweetAlert.js';
+import { AlertaOkRegistro, AlertaErrorRegistro } from './sweetAlert.js';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
+import CircularProgress from '@mui/material/CircularProgress';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
@@ -23,6 +24,7 @@ export const CreatePersona = () => {
     const logged = useStore((state)=>state.logged) 
 
     const [selectP, setselectP] = useState('');
+    const [Loading, setLoading] = useState(false);
     const handleChange = (event) => {
         setselectP(event.target.value);
     };
@@ -31,6 +33,7 @@ export const CreatePersona = () => {
         data.ci = parseInt(data.ci);
         data.nro_cel = parseInt(data.nro_cel);
         console.log(data);
+        setLoading(true);
         
         axios.post('https://proyecto-281-production.up.railway.app/api/auth/new',data)
         .then(response => {
@@ -39,8 +42,10 @@ export const CreatePersona = () => {
             AlertaOkRegistro();
         })
         .catch(error => {
-            console.log(error);
             AlertaErrorRegistro(error.response.data.msg);
+        })
+        .finally(()=>{
+            setLoading(false);
         })
         
       }
@@ -68,7 +73,11 @@ export const CreatePersona = () => {
                     {selectP=="voluntario" ? <div><PersonaRegister register={register} /> <PersonaVoluntarioRegister register={register}/></div> :''}
                     {selectP=="receptorNatural" ? <div><PersonaRegister register={register} /> <PersonaReceptora register={register} setValue={setValue}/></div> :''}
             </Box>
-            <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Postular</Button>
+            {
+                Loading ? <Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP=="" || Loading}> <CircularProgress size={25}/></Button>
+                :<Button className={style.btnGuardar} variant="contained" type="submit" disabled={selectP==""}>Postular</Button>
+            }
+            
         </form>
         
     </div>

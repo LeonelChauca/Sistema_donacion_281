@@ -9,10 +9,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import style from '../css/table.module.css'
 import { useStore } from "../../controllers/Auth.js"
+import { AlertaConfirmacionHab,AlertaDesactivarUsuarioAdmin } from '../../components/sweetAlert.js';
 import axios from 'axios';
 
 
-export const TablaPendientes = ({columnas=[{}],datos=[{}]}) => {
+export const TablaPendientes = ({columnas=[{}],datos=[{}],setDatos=[{}]}) => {
     const [Pagina, setPagina] = useState(0);
     const [FilasXpagina, setFilasXpagina] = useState(10)
     const token=useStore((state)=>state.token);
@@ -36,21 +37,41 @@ export const TablaPendientes = ({columnas=[{}],datos=[{}]}) => {
           }
         })
         .then((response)=>{
-          console.log(response)
+          console.log(response);
+          AlertaConfirmacionHab();
+          axios.get('https://proyecto-281-production.up.railway.app/api/review/userPendings',{
+            headers:{
+                'x-token':token
+            }
+            })
+            .then((response)=>{
+              setDatos(response.data)
+            })
         })
     }
-    const deshabilitar=(value)=>{
+    const deshabilitar= async(value)=>{
+      const confirm=await AlertaDesactivarUsuarioAdmin();
+      if(confirm){
         axios.post('https://proyecto-281-production.up.railway.app/api/review/userValidated',{
           id_user:value,
-          estado:0,
+          estado:2,
         },{
           headers:{
             'x-token':token
           }
         })
-        .then((response)=>{
+        .then(response=>{
           console.log(response)
+          axios.get('https://proyecto-281-production.up.railway.app/api/review/userPendings',{
+            headers:{
+                'x-token':token
+            }
+            })
+            .then((response)=>{
+              setDatos(response.data)
+            })
         })
+      }
     }
     return (
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>

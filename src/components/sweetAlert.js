@@ -15,6 +15,13 @@ export const AlertaErrorRegistro=(mensaje="Error")=>{
       });
 }
 
+export const AlertaConfirmacionHab=()=>{  
+   Swal.fire({
+      title:" Usuario habilitado correctamente",
+      text: `Usuario Registrado`,
+      icon:"success"
+   })
+}
 export const ConfirmacionEliminarUser=(title="Are you sure?", text="You won't be able to revert this!", eliminar, parametro)=>{
   Swal.fire({
     title,
@@ -34,4 +41,28 @@ export const ConfirmacionEliminarUser=(title="Are you sure?", text="You won't be
       });
     }
   });
+}
+
+/*alertas para admin*/ 
+export const AlertaDesactivarUsuarioAdmin=()=>{
+  return new Promise((resolve,reject)=>{
+    Swal.fire({
+      title: "Estas seguro?",
+      text: "La accion no se podra revertir!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Borrar!",
+      cancelButtonText:'No',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        resolve(true)
+      }
+      else{
+        resolve(false)
+      }
+    });
+  })
+  
 }
