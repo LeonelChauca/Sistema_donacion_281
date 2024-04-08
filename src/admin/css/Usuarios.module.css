@@ -33,7 +33,7 @@
     transform: rotate(45deg) translateX(100%);
     background: var(--color-secundario);
     border-radius: 5px;
-    transition:transform 0.5s cubic-bezier(0.88, -0.12, 0.17, 1.24); 
+    transition:transform 0.5s cubic-bezier(0, 1.04, 0.17, 1.24); 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,7 +50,6 @@
 .card:nth-child(3n+3)::before{
     background: rgb(138, 19, 218,0.7);
 }
-
 
 .cardActive:before {    
     transform: rotate(0deg);
