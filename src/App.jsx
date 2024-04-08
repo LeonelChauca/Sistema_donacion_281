@@ -38,7 +38,7 @@ function App() {
         return <Admin />        
       }
       break ; 
-     case "receptor_natural": 
+     case "donante_natural": 
      if(logged){
        return <Admin/>
      } 
