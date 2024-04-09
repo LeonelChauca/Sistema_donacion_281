@@ -13,7 +13,7 @@ import style from '../styles/containers/Login.module.css';
 import Avatar from '@mui/material/Avatar';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink ,useNavigate} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import ErrorIcon from '@mui/icons-material/Error';
 import Alert from '@mui/material/Alert';
@@ -21,12 +21,15 @@ import { useForm } from "react-hook-form";
 import axios  from 'axios';
 import { useStore } from "../controllers/Auth.js"
 import * as jose from 'jose'
+
 const FormularioLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const [errorMessage, setErrorMessage] = useState(false);
   const {setUser,setToken,setLogged,setLogin,setRol} = useStore();
   const [Loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
    const user={
     exp:"[a-zA-Z][a-zA-Z0-9]{3,15}", 
     title:"Usuario Invalido"
@@ -54,12 +57,12 @@ const FormularioLogin = () => {
         setToken(response.data.token);
         setLogged(response.data.ok);
         setRol(jwtDecode.tipo)
-       
-       localStorage.setItem("id_user", response.data.id_user);
-       localStorage.setItem("user",jwtDecode.name); 
-       localStorage.setItem("token", response.data.token);  
-       localStorage.setItem("rol", jwtDecode.tipo); 
-       localStorage.setItem("logged", response.data.ok); 
+        localStorage.setItem("id_user", response.data.id_user);
+        localStorage.setItem("user",jwtDecode.name); 
+        localStorage.setItem("token", response.data.token);  
+        localStorage.setItem("rol", jwtDecode.tipo); 
+        localStorage.setItem("logged", response.data.ok); 
+        navigate("/")
       }else {
         setLogged(false);
       }

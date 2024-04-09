@@ -25,6 +25,8 @@ import { useStore } from "./controllers/Auth.js"
 
 //Admin 
 import Admin from './admin/Admin.jsx';
+import Donante from './donante/Dontante.jsx';
+import Voluntario from './voluntario/Voluntario.jsx';
 
 
 function App() {
@@ -38,12 +40,27 @@ function App() {
         return <Admin />        
       }
       break ; 
+     case "donante":
      case "donante_natural": 
+     case "encargado_donante":
      if(logged){
-       return <Admin/>
+       return <Donante/>
      } 
      break; 
-      
+     case "voluntario":
+     if(logged){
+       return <Voluntario/>
+     } 
+    break; 
+    case "encargado_org_ben":
+      case "encargado_receptor": 
+      case "receptor_natural":
+      if(logged){
+        {
+          // Cunado se tenga el user Receptor , Se cambia Donanate -> Receptor
+        }
+        return <Donante/>
+      } 
     default:
       return  <>
             <Navbar />
@@ -53,7 +70,6 @@ function App() {
                 {
                   logged && <Route path="/productos" element={<Productos />} />
                 }
-
                 <Route path="/about" element={<About />} />
                 <Route path="/preguntas" element={<Preguntas />} />
                 <Route path="/contacto" element={<Contact />} />

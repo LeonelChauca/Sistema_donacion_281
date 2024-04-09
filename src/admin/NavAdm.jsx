@@ -2,17 +2,17 @@
 import { useStore } from "../controllers/Auth.js"
 
 // Iconos 
-import HomeWorkRoundedIcon from '@mui/icons-material/HomeWorkRounded';
+
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
-import ViewListRoundedIcon from '@mui/icons-material/ViewListRounded';
+
 
 import style from "./css/sidebar.module.css"
 // npm 
 import { Link, useNavigate } from "react-router-dom";
 
-export default function NavAdm({ closeNav, setCloseNav }) {
+export default function NavAdm({children, closeNav, setCloseNav }) {
     const user = useStore((state) => state.user);
     const rol = useStore((state) => state.rol);
     const setLogged = useStore((state) => state.setLogged);
@@ -48,19 +48,9 @@ export default function NavAdm({ closeNav, setCloseNav }) {
                         <i className={style.icon}></i>
                         <input type="text" placeholder="Buscar..." />
                     </li>
-                    <MenuItem texto="Home" url="/" >
-                        <HomeWorkRoundedIcon />
-                    </MenuItem>
-                    {rol == "administrador" && <MenuItem texto="Usuarios" url="/usuarios" >
-                        <PeopleAltIcon />
-                    </MenuItem>}
-
-                    <MenuItem texto="Productos" url="/productos" >
-                        <ViewListRoundedIcon />
-                    </MenuItem>
-                    <MenuItem texto="Usuarios pendientes " url="/usuarios-pendiente" >
-                        <PeopleAltIcon />
-                    </MenuItem>
+                  {
+                    children
+                  }
                 </div>
 
                 <div className={style.bottom_content}>
@@ -77,18 +67,3 @@ export default function NavAdm({ closeNav, setCloseNav }) {
     )
 }
 
-function MenuItem({ children, texto = "Menu", url = "#" }) {
-    return (
-        <ul>
-            <li>
-
-                <Link to={url}>
-                    {children}
-                    <span className={style.text}>{texto}</span>
-                </Link>
-
-            </li>
-
-        </ul>
-    )
-}
