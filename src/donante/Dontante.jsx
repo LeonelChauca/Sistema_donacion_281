@@ -7,8 +7,11 @@ import MenuItem from '../admin/MenuItem.jsx'
 import NotFound from "../components/NotFound.jsx";
 
 import HomeWorkRoundedIcon from '@mui/icons-material/HomeWorkRounded';
+import AddReactionIcon from '@mui/icons-material/AddReaction';
 
 import { Home } from "./routes/Home.jsx";
+import { RealizarDonacion } from "./routes/RealizarDonacion.jsx";
+import SendIcon from '@mui/icons-material/Send';
 
 export default function Donante() {
     const [closeNav, setCloseNav] = useState(true);
@@ -19,8 +22,11 @@ export default function Donante() {
                 // Aqui los item de  navs 
                 }
 
-                <MenuItem texto="Home" url="/" >
+                <MenuItem texto="Inicio" url="/" >
                     <HomeWorkRoundedIcon />
+                </MenuItem>
+                <MenuItem texto="Realiza donacion" url="/Realizar-donacion" >
+                    <AddReactionIcon />
                 </MenuItem>
             </NavAdm>
             <Main closeNav={closeNav} >
@@ -30,7 +36,8 @@ export default function Donante() {
             <Routes>
                     <Route path='/' element={<Home/>} />
                     <Route path='/*' element={<NotFound />} />
-                </Routes>
+                    <Route path='/Realizar-donacion' element={<RealizarDonacion />} />
+            </Routes>
             </Main>
         </>
     )
