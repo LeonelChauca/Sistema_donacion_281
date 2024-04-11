@@ -44,9 +44,9 @@ export default function Voluntario() {
                 <MenuItem texto="Postulacion" url="/" handleClick={handleClick} open={open}>
                     <PostAddIcon />
                 </MenuItem>
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                            <MenuItem texto="Respresentante" url="/p_representante"  style={{BorderLeft:"1px solid red"}}>
+                <Collapse in={open} timeout="auto" unmountOnExit  >
+                    <List component="div" disablePadding style={{background:"rgb(249 248 248)",borderRadius:6}}>
+                            <MenuItem texto="Respresentante" url="/p_representante" >
                                 <SensorOccupiedIcon />
                             </MenuItem>
                             <MenuItem texto="Colaborador" url="/p_colaborador" >
