@@ -1,0 +1,15 @@
+.containerMain{
+    width: 100%;
+    padding: 40px;
+}
+.containerVista{
+    background-color: white;
+    width: 90%;
+    max-width:1200px ;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+.containerAcor{
+    padding: 10px;
+    margin: 50px 0;
+}

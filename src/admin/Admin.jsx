@@ -16,6 +16,7 @@ import { Route, Routes,useNavigate } from 'react-router-dom';
 import HomeWorkRoundedIcon from '@mui/icons-material/HomeWorkRounded';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import ViewListRoundedIcon from '@mui/icons-material/ViewListRounded';
+import { ResponsableDonacion } from "./routes/Responsable-donacion/ResponsableDonacion.jsx";
 
 export default function Admin() {
     const [closeNav, setCloseNav] = useState(true);
@@ -30,7 +31,7 @@ export default function Admin() {
                     <PeopleAltIcon />
                 </MenuItem>}
 
-                <MenuItem texto="Donaciones" url="/productos" >
+                <MenuItem texto="Responsable donacion" url="/Responsable-donacion" >
                     <ViewListRoundedIcon />
                 </MenuItem>
                 <MenuItem texto="Dinero" url="/productos" >
@@ -56,6 +57,7 @@ export default function Admin() {
 
                     <Route path="/productos" element={<Productos />} />
                     <Route path='/Usuarios-pendiente' element={<UserPendiente />} />
+                    <Route path='/Responsable-donacion' element={<ResponsableDonacion />} />
                     <Route path='/*' element={<NotFound />} />
                 </Routes>
             </Main>
