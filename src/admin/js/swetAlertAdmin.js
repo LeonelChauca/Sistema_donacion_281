@@ -28,9 +28,10 @@ export const ConfirmacionOkEncargado=(title="Esta seguro de Seleccionar como Enc
     confirmButtonText: "Confirmar"
   }).then((result) => {
     if (result.isConfirmed) {
-        Accion();
-         AlertaOkEncargado();
+        
+        AlertaOkEncargado();
         setAct(!Act);
+        Accion();
     }
   });
 }
