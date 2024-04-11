@@ -26,7 +26,7 @@ const FormularioLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const [errorMessage, setErrorMessage] = useState(false);
-  const {setUser,setToken,setLogged,setLogin,setRol} = useStore();
+  const {setUser,setidUser,setToken,setLogged,setLogin,setRol} = useStore();
   const [Loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -56,7 +56,8 @@ const FormularioLogin = () => {
         setUser(jwtDecode.name);
         setToken(response.data.token);
         setLogged(response.data.ok);
-        setRol(jwtDecode.tipo)
+        setRol(jwtDecode.tipo);
+        setidUser(response.data.id_user);
         localStorage.setItem("id_user", response.data.id_user);
         localStorage.setItem("user",jwtDecode.name); 
         localStorage.setItem("token", response.data.token);  

@@ -30,6 +30,18 @@ export default function Admin() {
                     <PeopleAltIcon />
                 </MenuItem>}
 
+                <MenuItem texto="Donaciones" url="/productos" >
+                    <ViewListRoundedIcon />
+                </MenuItem>
+                <MenuItem texto="Dinero" url="/productos" >
+                    <ViewListRoundedIcon />
+                </MenuItem>
+                <MenuItem texto="Productos" url="/productos" >
+                    <ViewListRoundedIcon />
+                </MenuItem>
+                <MenuItem texto="Productos" url="/productos" >
+                    <ViewListRoundedIcon />
+                </MenuItem>
                 <MenuItem texto="Productos" url="/productos" >
                     <ViewListRoundedIcon />
                 </MenuItem>

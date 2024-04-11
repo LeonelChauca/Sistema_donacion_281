@@ -14,6 +14,7 @@ let useStore = create((set) => ({
   rol:localStorage.getItem("rol")??"",
   logged:getLogged(),
 
+  setidUser: (iduser) => set({ id_user: iduser }),
   setUser: (user) => set({ user: user }),
   setToken: (token) => set({ token: token}),
   setRol:(rol)=>set({rol:rol}), 
