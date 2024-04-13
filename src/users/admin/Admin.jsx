@@ -1,11 +1,11 @@
-import Main from "./Main.jsx";
-import NavAdm from "./NavAdm";
+import Main from "../components/Main.jsx";
+import NavAdm from "../components/NavAdm";
 import { useState } from "react";
 
-import MenuItem from "./MenuItem.jsx"
-import { useStore } from "../controllers/Auth.js"
+import MenuItem from "../components/MenuItem.jsx"
+import { useStore } from "../../controllers/Auth.js"
 
-import NotFound from "../components/NotFound.jsx";
+import NotFound from "../../components/NotFound.jsx";
 import Home from "./routes/Home.jsx";
 import Usuarios from "./routes/Usuarios.jsx";
 import Productos from "./routes/Productos.jsx";

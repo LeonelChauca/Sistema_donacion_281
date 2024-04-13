@@ -13,7 +13,7 @@ import Select from '@mui/material/Select';
 import { TablaPendientes } from './TablaPendientes';
 import {columnasTableUserPendiente,columnasTableOrgPendienteOr,columnasTableOrgPendienteOb, columnasTableOrgPendienteOd}  from '../js/table.js'
 import axios from 'axios';
-import { useStore } from "../../controllers/Auth.js"
+import { useStore } from "../../../controllers/Auth.js"
 
 export const UserPendienteTable = () => {
     const [selectUser, setSelectUser] = useState('');

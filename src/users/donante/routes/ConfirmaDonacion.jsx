@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useStore } from "../../controllers/Auth.js"
+import { useStore } from "../../../controllers/Auth.js"
 import { useForm } from "react-hook-form";
 import dayjs from 'dayjs'
 import Axios from "axios";

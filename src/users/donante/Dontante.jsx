@@ -1,10 +1,10 @@
-import Main from "../admin/Main.jsx";
-import NavAdm from "../admin/NavAdm.jsx";
+import Main from "../components/Main.jsx";
+import NavAdm from "../components/NavAdm.jsx";
 import { useState,createContext, useContext } from "react";
 
 import { Route, Routes,useNavigate } from 'react-router-dom';
-import MenuItem from '../admin/MenuItem.jsx'
-import NotFound from "../components/NotFound.jsx";
+import MenuItem from '../components/MenuItem.jsx'
+import NotFound from "../../components/NotFound.jsx";
 
 import HomeWorkRoundedIcon from '@mui/icons-material/HomeWorkRounded';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
@@ -13,7 +13,7 @@ import { Home } from "./routes/Home.jsx";
 import { RealizarDonacion } from "./routes/RealizarDonacion.jsx";
 import SendIcon from '@mui/icons-material/Send';
 import { ConfirmaDonacion } from "./routes/ConfirmaDonacion.jsx";
-import { useStore } from "../controllers/Auth.js"
+import { useStore } from "../../controllers/Auth.js"
 
 //use context
 export const ProductContext = createContext();

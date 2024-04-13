@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { TableRD } from './TableRD';
-import { useStore } from "../../../controllers/Auth"
+import { useStore } from "../../../../controllers/Auth"
 import {createDataRD} from './columnas'
 import Axios from 'axios';
 export const ResponsableDonacion = () => {

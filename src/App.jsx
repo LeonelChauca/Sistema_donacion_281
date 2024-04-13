@@ -23,10 +23,10 @@ import { CreatePersona } from './components/CreatePersona.jsx';
 import { useStore } from "./controllers/Auth.js"
 
 
-//Admin 
-import Admin from './admin/Admin.jsx';
-import Donante from './donante/Dontante.jsx';
-import Voluntario from './voluntario/Voluntario.jsx';
+//Users
+import Admin from './users/admin/Admin.jsx';
+import Donante from './users/donante/Dontante.jsx';
+import Voluntario from './users/voluntario/Voluntario.jsx';
 
 
 function App() {
@@ -58,8 +58,10 @@ function App() {
       if(logged){
         {
           // Cunado se tenga el user Receptor , Se cambia Donanate -> Receptor
+          return <Receptor/>
         }
-        return <Donante/>
+
+        
       } 
     default:
       return  <>

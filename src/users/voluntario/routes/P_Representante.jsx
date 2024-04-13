@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useStore } from "../../controllers/Auth.js"
+import { useStore } from "../../../controllers/Auth.js"
 
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -16,7 +16,7 @@ import Button from '@mui/material/Button';
 import style from "../css/postulacion.module.css"
 
 import axios from 'axios';
-import { AlertaConfirmacionDonacion, masInfo } from "../../components/sweetAlert.js";
+import { AlertaConfirmacionDonacion, masInfo } from "../js/Alertas.js";
 
 export default function P_Representante() {
 

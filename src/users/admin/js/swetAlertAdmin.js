@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2'
-import { useStore } from "../../controllers/Auth.js"
+//import { useStore } from "../../controllers/Auth.js"
 import Axios from 'axios';
 
 export const AlertaOkEncargado=()=>{

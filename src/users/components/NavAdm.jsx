@@ -1,10 +1,8 @@
 
-import { useStore } from "../controllers/Auth.js"
-
+import { useStore } from "../../controllers/Auth.js"
 // Iconos 
 
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
 

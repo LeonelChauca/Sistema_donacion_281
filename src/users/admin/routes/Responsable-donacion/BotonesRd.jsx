@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from '@mui/material/Button';
-import {useStore} from '../../../controllers/Auth.js'
+import {useStore} from '../../../../controllers/Auth.js'
 import {AlertaErrorEncargado,ConfirmacionOkEncargado} from '../../js/swetAlertAdmin.js'
 import Axios from 'axios';
 

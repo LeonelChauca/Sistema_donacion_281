@@ -8,8 +8,8 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import style from '../css/table.module.css'
-import { useStore } from "../../controllers/Auth.js"
-import { AlertaConfirmacionHab,AlertaDesactivarUsuarioAdmin } from '../../components/sweetAlert.js';
+import { useStore } from "../../../controllers/Auth.js"
+import { AlertaConfirmacionHab,AlertaDesactivarUsuarioAdmin } from '../../../components/sweetAlert.js';
 import axios from 'axios';
 
 

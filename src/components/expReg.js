@@ -6,7 +6,7 @@ const number={exp:"^[0-9]{5,10}$", msg:"Solo números #>=5 y =<10"}
 const nit={exp:"^[0-9]{5}$", msg:"Nit invalido"}
 const tel ={exp:"^(7|6)[0-9]{7}$", msg:"Numero de teléfono invalido  tiene que ser de 7 dígitos "}
 const correo={exp:"[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}", msg:"Email invalido"}
-const direccion={exp: "^[a-zA-Z][a-zA-Z0-9 ]{3,}$", msg:"La dirección invalida #caracteres>3 "}
+const direccion={exp: "^[a-zA-Z][a-zA-Z0-9\" ]{3,}$", msg:"La dirección invalida #caracteres>3 "}
 const expReg = {
     texto,
     user,

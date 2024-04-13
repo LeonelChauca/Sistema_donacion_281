@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useStore } from "../../controllers/Auth.js"
+import { useStore } from "../../../controllers/Auth.js"
 import axios from "axios";
 import style from '../css/Usuarios.module.css'
 
@@ -19,7 +19,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 
 
-import {ConfirmacionEliminarUser} from "../../components/sweetAlert.js"
+import {ConfirmacionEliminarUser} from "../../../components/sweetAlert.js"
 
 export default function Usuarios() {
 
