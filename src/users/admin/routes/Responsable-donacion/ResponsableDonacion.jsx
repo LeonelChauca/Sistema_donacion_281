@@ -10,6 +10,7 @@ import { TableRD } from './TableRD';
 import { useStore } from "../../../../controllers/Auth"
 import {createDataRD} from './columnas'
 import Axios from 'axios';
+import Alert from '@mui/material/Alert';
 export const ResponsableDonacion = () => {
     const token=useStore((state)=>state.token);
     const [Act, setAct] = useState(false);
@@ -31,6 +32,7 @@ export const ResponsableDonacion = () => {
         <h2>Responsable donaciones</h2>
         <div className={style.containerVista}>
             {
+                data.length===0 ? <Alert severity='info'>No existen donaciones pendientes</Alert> :
                 data.map((dats) => (
                     <Accordion key={dats.id_donacion} className={style.containerAcor}>
                         <AccordionSummary

@@ -11,6 +11,8 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useStore } from "../../../controllers/Auth.js"
 import { useForm } from "react-hook-form";
 import dayjs from 'dayjs'
+import Alert from '@mui/material/Alert';
+
 import Axios from "axios";
 
 
@@ -50,22 +52,34 @@ export const ConfirmaDonacion = () => {
                         />
                     </LocalizationProvider>    
                 </div> 
+                {
+                    Productos.alimento.length>0 && <div className={style.formAction}>
+                        <Typography variant="h5" color="primary" >DONACION TIPO ALIMENTO</Typography>
+                        <TableSimple rows={Productos.alimento} columns={createDataAlimento}/>
+                    </div>
+                }
+                {
+                    Productos.dinero.length>0 &&<div className={style.formAction}>
+                        <Typography variant="h5" color="primary">DONACION TIPO DINERO</Typography>
+                        <TableSimple rows={Productos.dinero} columns={createDataDinero}/>
+                    </div>
+                }
+                {
+                    Productos.producto.length>0 && <div className={style.formAction}>
+                        <Typography variant="h5" color="primary">DONACION TIPO PRODUCTO</Typography>
+                        <TableSimple rows={Productos.producto} columns={createDataProducto}/>
+                    </div>
+                }
+                {
+                    Productos.alimento.length===0 && Productos.dinero.length===0 && Productos.producto.length===0 ? <div className={style.formAction}>
+                        <Alert severity="error" style={{margin:'20px 0'}}>No existen donaciones para confirmar</Alert>
+                        <Button disabled variant="contained" type="submit">Realizar Donacion</Button>
+                    </div>
+                    :<div className={style.formAction}>
+                        <Button variant="contained" type="submit">Realizar Donacion</Button>
+                    </div>
+                }
                 
-                <div className={style.formAction}>
-                    <Typography variant="h5" color="primary" >DONACION TIPO ALIMENTO</Typography>
-                    <TableSimple rows={Productos.alimento} columns={createDataAlimento}/>
-                </div>
-                <div className={style.formAction}>
-                    <Typography variant="h5" color="primary">DONACION TIPO DINERO</Typography>
-                    <TableSimple rows={Productos.dinero} columns={createDataDinero}/>
-                </div>
-                <div className={style.formAction}>
-                    <Typography variant="h5" color="primary">DONACION TIPO PRODUCTO</Typography>
-                    <TableSimple rows={Productos.producto} columns={createDataProducto}/>
-                </div>
-                <div className={style.formAction}>
-                    <Button variant="contained" type="submit">Realizar Donacion</Button>
-                </div>
                 
             </form>
             

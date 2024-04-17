@@ -11,8 +11,7 @@ import style from '../css/table.module.css'
 import { useStore } from "../../../controllers/Auth.js"
 import { AlertaConfirmacionHab,AlertaDesactivarUsuarioAdmin } from '../../../components/sweetAlert.js';
 import axios from 'axios';
-
-
+import Alert from '@mui/material/Alert';
 export const TablaPendientes = ({columnas=[{}],datos=[{}],setDatos=[{}]}) => {
     const [Pagina, setPagina] = useState(0);
     const [FilasXpagina, setFilasXpagina] = useState(10)
@@ -74,57 +73,59 @@ export const TablaPendientes = ({columnas=[{}],datos=[{}],setDatos=[{}]}) => {
       }
     }
     return (
-        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-        <TableContainer sx={{ maxHeight: 440 }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow >
-                {columnas.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{ minWidth: column.minWidth }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {datos
-                .slice(Pagina * FilasXpagina, Pagina * FilasXpagina + FilasXpagina)
-                .map((row,index) => {
-                  return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                      {columnas.map((column) => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.id=='habilitar' ?
-                                <div className={style.containerB}>
-                                    <button onClick={()=>habilitar(row.id_user)} className={style.habilitar}>Habilitar</button>
-                                    <button onClick={()=>deshabilitar(row.id_user)} className={style.deshabilitar}>Deshabilitar</button>
-                                </div> 
-                                : value}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
-          component="div"
-          count={datos.length}
-          rowsPerPage={FilasXpagina}
-          page={Pagina}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          labelRowsPerPage="Filas por página"
-        />
-      </Paper>
+      datos.length === 0 
+      ? <Alert severity='info'>No existen pendientes </Alert> 
+      : <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+          <TableContainer sx={{ maxHeight: 440 }}>
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow >
+                  {columnas.map((column) => (
+                    <TableCell
+                      key={column.id}
+                      align={column.align}
+                      style={{ minWidth: column.minWidth }}
+                    >
+                      {column.label}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {datos
+                  .slice(Pagina * FilasXpagina, Pagina * FilasXpagina + FilasXpagina)
+                  .map((row,index) => {
+                    return (
+                      <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                        {columnas.map((column) => {
+                          const value = row[column.id];
+                          return (
+                            <TableCell key={column.id} align={column.align}>
+                              {column.id=='habilitar' ?
+                                  <div className={style.containerB}>
+                                      <button onClick={()=>habilitar(row.id_user)} className={style.habilitar}>Habilitar</button>
+                                      <button onClick={()=>deshabilitar(row.id_user)} className={style.deshabilitar}>Deshabilitar</button>
+                                  </div> 
+                                  : value}
+                            </TableCell>
+                          );
+                        })}
+                      </TableRow>
+                    );
+                  })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[10, 25, 100]}
+            component="div"
+            count={datos.length}
+            rowsPerPage={FilasXpagina}
+            page={Pagina}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            labelRowsPerPage="Filas por página"
+            />
+        </Paper>
   )
 }

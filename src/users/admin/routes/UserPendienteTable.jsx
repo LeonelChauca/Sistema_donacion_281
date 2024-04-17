@@ -13,6 +13,7 @@ import Select from '@mui/material/Select';
 import { TablaPendientes } from './TablaPendientes';
 import {columnasTableUserPendiente,columnasTableOrgPendienteOr,columnasTableOrgPendienteOb, columnasTableOrgPendienteOd}  from '../js/table.js'
 import axios from 'axios';
+import Alert from '@mui/material/Alert';
 import { useStore } from "../../../controllers/Auth.js"
 
 export const UserPendienteTable = () => {
@@ -49,7 +50,7 @@ export const UserPendienteTable = () => {
             <h3>Usuarios</h3>
             </AccordionSummary>
             <AccordionDetails>
-                <FormControl style={{width:'40%'}}>
+                <FormControl style={{width:'40%',margin:'20px'}}>
                     <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
@@ -63,7 +64,7 @@ export const UserPendienteTable = () => {
                         <MenuItem value={"receptores_naturales"}>Receptores</MenuItem>
                     </Select>
                 </FormControl>
-                {selectUser=="voluntarios" ? <TablaPendientes columnas={columnasTableUserPendiente} datos={datos.voluntarios} setDatos={setdatos}/> :''}
+                {selectUser=="voluntarios"  ? <TablaPendientes columnas={columnasTableUserPendiente} datos={datos.voluntarios} setDatos={setdatos}/> :''}
                 {selectUser=="donantes_naturales" ? <TablaPendientes columnas={columnasTableUserPendiente} datos={datos.donantes_naturales} setDatos={setdatos}/> :''}
                 {selectUser=="receptores_naturales"  ? <TablaPendientes columnas={columnasTableUserPendiente} datos={datos.receptores_naturales} setDatos={setdatos}/> :''}
                 {/*<TablaPendientes columnas={columnasTableUserPendiente} datos={datos}/>*/}
@@ -79,7 +80,7 @@ export const UserPendienteTable = () => {
             <h3>Organizaciones</h3>
         </AccordionSummary>
             <AccordionDetails>
-            <FormControl style={{width:'40%'}}>
+            <FormControl style={{width:'40%',margin:'20px'}}>
                     <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
