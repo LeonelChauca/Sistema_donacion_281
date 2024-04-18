@@ -16,6 +16,9 @@ import { Route, Routes,useNavigate } from 'react-router-dom';
 import HomeWorkRoundedIcon from '@mui/icons-material/HomeWorkRounded';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import ViewListRoundedIcon from '@mui/icons-material/ViewListRounded';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+
+
 import { ResponsableDonacion } from "./routes/Responsable-donacion/ResponsableDonacion.jsx";
 
 export default function Admin() {
@@ -35,7 +38,7 @@ export default function Admin() {
                     <ViewListRoundedIcon />
                 </MenuItem>
                 <MenuItem texto="Dinero" url="/productos" >
-                    <ViewListRoundedIcon />
+                    <MonetizationOnIcon />
                 </MenuItem>
                 <MenuItem texto="Productos" url="/productos" >
                     <ViewListRoundedIcon />

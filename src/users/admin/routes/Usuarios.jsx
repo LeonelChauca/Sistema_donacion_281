@@ -105,11 +105,6 @@ function StickyHeadTable({ setDataTabla, dataTabla }) {
         setDataTabla({ ...dataTabla, data: dataTabla.data.filter(item => item.id_user != fila.id_user)})
         
     }
-     useEffect(()=>{
-        console.log(dataTabla)
-     },[]); 
-
-
     return (
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
             <TableContainer sx={{ maxHeight: 440 }}>
