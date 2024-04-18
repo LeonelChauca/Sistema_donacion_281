@@ -16,7 +16,7 @@ import Button from '@mui/material/Button';
 import style from "../css/postulacion.module.css"
 
 import axios from 'axios';
-import { AlertaConfirmacionDonacion, masInfo } from "../js/Alertas.js";
+import { AlertaConfirmacionDonacion, masInfo,envPostulacion } from "../js/Alertas.js";
 
 export default function P_Representante() {
 
@@ -25,19 +25,28 @@ export default function P_Representante() {
   const id_user = useStore((state) => state.id_user);
 
   const postular = (donacion) => {
-    axios.post('https://proyecto-281-production.up.railway.app/api/donation/postularResponsableDonacion', {
-      id_donacion: donacion,
-      id_user
-    }, {
-      headers: {
-        'x-token': token
+    envPostulacion().then((numero)=>{
+      if(numero){
+        axios.post('https://proyecto-281-production.up.railway.app/api/donation/postularResponsableDonacion', {
+          id_donacion: donacion,
+          id_user,
+          cantidad:numero,
+          }, {
+            headers: {
+              'x-token': token
+            }
+          })
+          .then((response) => {
+            console.log(response);
+            AlertaConfirmacionDonacion();
+            getDonaciones();
+          })
+          .catch((error)=>{
+            console.log(error);
+          })
       }
     })
-      .then((response) => {
-        console.log(response);
-        AlertaConfirmacionDonacion();
-        getDonaciones();
-      })
+    
   }
 
   const getDonaciones = () => {
@@ -129,8 +138,6 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
           </TableHead>
           <TableBody>
             {
-
-
               dataTabla?.data
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((fila, i) => {
@@ -153,7 +160,6 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
                           Postular
                         </Button>
                         <Button variant="contained" onClick={(e) => {
-                          
                           masInfoDonacion(fila['id_donacion']); 
                         }}
                           style={{ marginLeft:5, background: "blue", borderRadius: "8px", textTransform: "none" }}>

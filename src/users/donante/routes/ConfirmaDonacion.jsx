@@ -9,6 +9,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useStore } from "../../../controllers/Auth.js"
+import {okConfirmacion,errorFConfirmacion} from "../js/alertas.js";
 import { useForm } from "react-hook-form";
 import dayjs from 'dayjs'
 import Alert from '@mui/material/Alert';
@@ -25,11 +26,19 @@ export const ConfirmaDonacion = () => {
     }
     const onsubmit=(event)=>{
         event.preventDefault();
-        Axios.post('https://proyecto-281-production.up.railway.app/api/donation/addDonation',Productos,{
-            headers:{
-                'x-token':token
-            },
-        })
+        if(Productos.fecha_d){
+            Axios.post('https://proyecto-281-production.up.railway.app/api/donation/addDonation',Productos,{
+                headers:{
+                    'x-token':token
+                },
+            })
+            .then((response)=>{
+                okConfirmacion();
+            })
+        }
+        else{
+            errorFConfirmacion();
+        }
     }
     return (
         <div className={style.containerMain}>

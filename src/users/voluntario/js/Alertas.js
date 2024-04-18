@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2'
+import axios from 'axios'
 
 export const AlertaConfirmacionDonacion=()=>{  
   Swal.fire({
@@ -47,5 +48,26 @@ export const masInfo=(lista)=>{
     html:cadena,
     
   });
+}
+
+export async function envPostulacion() {
+  const { value: numero } = await Swal.fire({
+    title: "Importante",
+    text:"En caso seas elegido, cuantos voluntarios necesitarias",
+    input: "number",
+    icon:"question",
+    inputAttributes: {
+      min: 1, 
+      max: 15,
+    },
+    showCancelButton: true,
+    confirmButtonText: "Aceptar",
+    cancelButtonText: "Cancelar",
+  });
+  if (numero) {
+    return numero;
+  } else {
+    return null;
+  }
 }
 
