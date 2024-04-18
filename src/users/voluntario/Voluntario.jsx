@@ -17,6 +17,8 @@ import { Home } from "./routes/Home.jsx";
 import P_Representante from "./routes/P_Representante.jsx";
 import P_Colaborador from "./routes/P_Colaborador.jsx";
 
+import VerPostulaciones from "./routes/VerPostulaciones.jsx"
+
 import DesplegarMenu from "../components/DesplegarMenu.jsx";
 
 export default function Voluntario() {
@@ -41,7 +43,7 @@ export default function Voluntario() {
                 </DesplegarMenu>
 
 
-                <MenuItem texto="Postulaciones" url="/" >
+                <MenuItem texto="Ver Postulaciones" url="/ver_postulaciones" >
                     <RuleIcon />
                 </MenuItem>
             </NavAdm>
@@ -53,6 +55,7 @@ export default function Voluntario() {
                     <Route path='/' element={<Home />} />
                     <Route path='/p_representante' element={<P_Representante />} />
                     <Route path='/p_colaborador' element={<P_Colaborador />} />
+                    <Route path='/ver_postulaciones' element={<VerPostulaciones />} />
                     <Route path='/*' element={<NotFound />} />
                 </Routes>
             </Main>
