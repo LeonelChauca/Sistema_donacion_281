@@ -39,12 +39,12 @@ export default function Usuarios() {
             }
         })
             .then((response) => {
-                console.log(response);
+                console.log(response.data);
                 if (response.status === 200) {
                     setDataVoluntario({ indice: Object.keys(response.data.voluntarios[0]), data: response.data.voluntarios });
                     setDataDonante({ indice: Object.keys(response.data.donantes_naturales[0]??response.data.encargados_donantes[0]??{}), data: [...response.data.donantes_naturales, ...response.data.encargados_donantes] });
                     setDataReceptores({ indice: Object.keys(response.data.receptores_naturales[0]??response.data.encargados_receptores[0]??response.data.encargados_organizacion_benefica[0]??{}), data: [...response.data.receptores_naturales, ...response.data.encargados_receptores, ...response.data.encargados_organizacion_benefica] });
-                    setDataTodos({ indice: Object.keys(response.data.receptores_naturales[0]??response.data.encargados_receptores[0]??response.data.encargados_organizacion_benefica[0]??{}), 
+                    setDataTodos({ indice: Object.keys(response.data.receptores_naturales[0]??response.data.encargados_receptores[0]??response.data.encargados_organizacion_benefica[0]??response.data.voluntarios[0]??response.data.donantes_naturales[0]??response.data.encargados_donantes[0]??{}), 
                     data: [...response.data.receptores_naturales, ...response.data.encargados_receptores, ...response.data.encargados_organizacion_benefica, ...response.data.voluntarios,...response.data.donantes_naturales, ...response.data.encargados_donantes] });     
                 }
                 //setdatos(response.data)
@@ -105,6 +105,9 @@ function StickyHeadTable({ setDataTabla, dataTabla }) {
         setDataTabla({ ...dataTabla, data: dataTabla.data.filter(item => item.id_user != fila.id_user)})
         
     }
+     useEffect(()=>{
+        console.log(dataTabla)
+     },[]); 
 
 
     return (
@@ -145,6 +148,7 @@ function StickyHeadTable({ setDataTabla, dataTabla }) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
+                        
                         {dataTabla?.data
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map((fila, i ) => {
