@@ -4,7 +4,7 @@ import Collapse from '@mui/material/Collapse';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 
 import { useState } from "react";
-export default function DesplegarMenu({children, texto="Postulacion",  url="/"}) {
+export default function DesplegarMenu({children, texto="Postulacion",  url="#" }) {
 
     const [open, setOpen] = useState(false);
     const handleClick = () => {

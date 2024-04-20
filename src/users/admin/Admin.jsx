@@ -33,18 +33,11 @@ export default function Admin() {
                 {rol == "administrador" && <MenuItem texto="Usuarios" url="/usuarios" >
                     <PeopleAltIcon />
                 </MenuItem>}
-
                 <MenuItem texto="Responsable donacion" url="/Responsable-donacion" >
                     <ViewListRoundedIcon />
                 </MenuItem>
                 <MenuItem texto="Dinero" url="/productos" >
                     <MonetizationOnIcon />
-                </MenuItem>
-                <MenuItem texto="Productos" url="/productos" >
-                    <ViewListRoundedIcon />
-                </MenuItem>
-                <MenuItem texto="Productos" url="/productos" >
-                    <ViewListRoundedIcon />
                 </MenuItem>
                 <MenuItem texto="Productos" url="/productos" >
                     <ViewListRoundedIcon />
@@ -57,7 +50,6 @@ export default function Admin() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     {rol == "administrador" && <Route path="/usuarios" element={<Usuarios />} />}
-
                     <Route path="/productos" element={<Productos />} />
                     <Route path='/Usuarios-pendiente' element={<UserPendiente />} />
                     <Route path='/Responsable-donacion' element={<ResponsableDonacion />} />

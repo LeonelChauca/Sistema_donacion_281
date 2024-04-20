@@ -8,7 +8,21 @@ export const AlertaConfirmacionDonacion=()=>{
      icon:"success"
   })
 }
+export const AlertaConfirmacionColaboracior=()=>{  
+  Swal.fire({
+     title:"Postulacion Realizada",
+     text: `Gracias`,
+     icon:"success"
+  })
+}
 
+export const AlertaErrorColaboracior=()=>{  
+  Swal.fire({
+     title:"Error en su postulacion al colaborador",
+     text: `Intente de nuevo`,
+     icon:"error"
+  })
+}
 
 
 export const masInfo=(lista)=>{  
