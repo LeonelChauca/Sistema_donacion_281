@@ -7,6 +7,8 @@ import {TableSimple} from "./Confirma-donacion/TableSimple";
 import Button from '@mui/material/Button';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import CircularProgress from '@mui/material/CircularProgress';
+
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useStore } from "../../../controllers/Auth.js"
 import {okConfirmacion,errorFConfirmacion} from "../js/alertas.js";
@@ -20,12 +22,14 @@ import Axios from "axios";
 export const ConfirmaDonacion = () => {
     const { Productos,actualizarId,actualizarFecha,agregarDinero,agregarAlimento,agregarProducto} = useContext(ProductContext);
     const idUser=useStore((state)=>state.id_user);
+    const [loading, setloading] = useState(false);
     const token=useStore((state)=>state.token);
     const formatoFecha=(date)=>{
-        return date.format("DD-MM-YYYY");
+        return date.format("YYYY-MM-DD");
     }
     const onsubmit=(event)=>{
         event.preventDefault();
+        setloading(true);
         if(Productos.fecha_d){
             Axios.post('https://proyecto-281-production.up.railway.app/api/donation/addDonation',Productos,{
                 headers:{
@@ -34,7 +38,12 @@ export const ConfirmaDonacion = () => {
             })
             .then((response)=>{
                 okConfirmacion();
+                console.log(Productos);
             })
+            .finally(() => {
+                setloading(false); 
+            })
+            
         }
         else{
             errorFConfirmacion();
@@ -85,7 +94,9 @@ export const ConfirmaDonacion = () => {
                         <Button disabled variant="contained" type="submit">Realizar Donacion</Button>
                     </div>
                     :<div className={style.formAction}>
-                        <Button variant="contained" type="submit">Realizar Donacion</Button>
+                        {
+                            !loading ? <Button variant="contained" type="submit">Realizar Donacion</Button> : <Button disabled variant="contained" type="submit"><CircularProgress size={20} thickness={5} /></Button> 
+                        }
                     </div>
                 }
                 

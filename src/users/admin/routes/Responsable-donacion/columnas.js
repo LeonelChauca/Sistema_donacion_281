@@ -2,7 +2,7 @@ export const createDataRD=[
     {
       id: 'Accion',
       label: 'Acciones',
-      minWidth: 170,
+      minWidth: 350,
       align: 'center',
     },
     {
@@ -27,6 +27,12 @@ export const createDataRD=[
       id: 'ap_materno',
       label: 'Apellido Materno',
       minWidth: 170,
+      align: 'center',
+    },
+    {
+      id: 'cantidad',
+      label: 'Cantidad de voluntarios que solicita',
+      minWidth: 250,
       align: 'center',
     },
  ] 

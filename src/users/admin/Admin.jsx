@@ -40,15 +40,6 @@ export default function Admin() {
                 <MenuItem texto="Dinero" url="/productos" >
                     <MonetizationOnIcon />
                 </MenuItem>
-                <MenuItem texto="Productos" url="/productos" >
-                    <ViewListRoundedIcon />
-                </MenuItem>
-                <MenuItem texto="Productos" url="/productos" >
-                    <ViewListRoundedIcon />
-                </MenuItem>
-                <MenuItem texto="Productos" url="/productos" >
-                    <ViewListRoundedIcon />
-                </MenuItem>
                 <MenuItem texto="Usuarios pendientes " url="/usuarios-pendiente" >
                     <PeopleAltIcon />
                 </MenuItem>
