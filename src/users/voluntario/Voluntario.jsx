@@ -33,7 +33,7 @@ export default function Voluntario() {
                 <MenuItem texto="Home" url="/" >
                     <HomeWorkRoundedIcon />
                 </MenuItem>
-                <DesplegarMenu texto="Postulacion" url="/">
+                <DesplegarMenu texto="Postulacion">
                     < MenuItem texto="Respresentante" url="/p_representante" >
                         <SensorOccupiedIcon />
                     </MenuItem>
