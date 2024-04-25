@@ -25,8 +25,19 @@ import { useStore } from "./controllers/Auth.js"
 
 //Users
 import Admin from './users/admin/Admin.jsx';
-import Donante from './users/donante/Dontante.jsx';
-import Voluntario from './users/voluntario/Voluntario.jsx';
+import Donante, { ProductProvider } from './users/donante/Dontante.jsx';
+// Todos los componetes de Receptor 
+import Receptor from './users/receptor/Receptor.jsx';
+
+//import Voluntario from './users/voluntario/Voluntario.jsx';
+import P_Representante from './users/voluntario/routes/P_Representante.jsx';
+import P_Colaborador from './users/voluntario/routes/P_Colaborador.jsx';
+import VerPostulaciones from './users/voluntario/routes/VerPostulaciones.jsx';
+
+
+import { RealizarDonacion } from './users/donante/routes/RealizarDonacion.jsx';
+import { ConfirmaDonacion } from './users/donante/routes/ConfirmaDonacion.jsx';
+import VerPostulacionesColab from './users/voluntario/routes/VerPostulacionesColab.jsx';
 
 
 function App() {
@@ -40,38 +51,47 @@ function App() {
         return <Admin />        
       }
       break ; 
+   /*
      case "donante":
-     case "donante_natural": 
      case "encargado_donante":
      if(logged){
        return <Donante/>
      } 
      break; 
-     case "voluntario":
+    /* case "voluntario":
      if(logged){
-       return <Voluntario/>
+//       return <Voluntario/>
      } 
-    break; 
+    break; */
     case "encargado_org_ben":
       case "encargado_receptor": 
       case "receptor_natural":
       if(logged){
         {
           // Cunado se tenga el user Receptor , Se cambia Donanate -> Receptor
-          return <Receptor/>
-        }
-
-        
+       //   return <Receptor/>
+        }        
       } 
     default:
       return  <>
             <Navbar />
             <main className="main">
+            <ProductProvider>
               <Routes>
+                {(rol=="voluntario")&&<Route path='/p_representante' element={<P_Representante />} />}
+                {(rol=="voluntario")&&<Route path='/p_colaborador' element={<P_Colaborador />} />}
+                {(rol=="voluntario")&&<Route path='/ver_postulaciones' element={<VerPostulaciones />} />}  
+                {(rol=="voluntario")&&<Route path='/ver_postulaciones_colab' element={<VerPostulacionesColab/>} />}  
+                
+                 {(rol=="donante_natural" || rol=="encargado_donante" || rol=="donante")&&<Route path='/Agrega-donacion' element={<RealizarDonacion />} />}
+                 {(rol=="donante_natural" || rol=="encargado_donante" || rol=="donante")&&<Route path='/Confirma-donacion' element={<ConfirmaDonacion />} />}                
+
+
+                 {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/receptor' element={<Receptor />} />}       
+                 {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/Menu1' element={<Receptor />} />}       
+                 {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/Menu2' element={<Receptor />} />}       
+
                 <Route path="/" element={<Home />} />
-                {
-                  logged && <Route path="/productos" element={<Productos />} />
-                }
                 <Route path="/about" element={<About />} />
                 <Route path="/preguntas" element={<Preguntas />} />
                 <Route path="/contacto" element={<Contact />} />
@@ -81,9 +101,12 @@ function App() {
                 <Route path='/CreatePersona' element={<CreatePersona />} />
                 <Route path='/*' element={<NotFound />} />
               </Routes>
+              </ProductProvider>
             </main>
             <Footer />
           </>
-  }
+    }
 }
+
+
 export default App

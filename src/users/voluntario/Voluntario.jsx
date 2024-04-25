@@ -41,8 +41,6 @@ export default function Voluntario() {
                         <Diversity3Icon />
                     </MenuItem>
                 </DesplegarMenu>
-
-
                 <MenuItem texto="Ver Postulaciones" url="/ver_postulaciones" >
                     <RuleIcon />
                 </MenuItem>
