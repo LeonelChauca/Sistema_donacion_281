@@ -27,7 +27,9 @@ import { useStore } from "./controllers/Auth.js"
 import Admin from './users/admin/Admin.jsx';
 import Donante, { ProductProvider } from './users/donante/Dontante.jsx';
 // Todos los componetes de Receptor 
-import Receptor from './users/receptor/Receptor.jsx';
+import Receptor from './users/receptor/Receptor.jsx'
+import DonacionesDisponibles from './users/receptor/routes/DonacionesDisponibles';
+
 
 //import Voluntario from './users/voluntario/Voluntario.jsx';
 import P_Representante from './users/voluntario/routes/P_Representante.jsx';
@@ -38,6 +40,7 @@ import VerPostulaciones from './users/voluntario/routes/VerPostulaciones.jsx';
 import { RealizarDonacion } from './users/donante/routes/RealizarDonacion.jsx';
 import { ConfirmaDonacion } from './users/donante/routes/ConfirmaDonacion.jsx';
 import VerPostulacionesColab from './users/voluntario/routes/VerPostulacionesColab.jsx';
+import P_Entregar from './users/voluntario/routes/P_Entregar.jsx';
 
 
 function App() {
@@ -80,6 +83,7 @@ function App() {
               <Routes>
                 {(rol=="voluntario")&&<Route path='/p_representante' element={<P_Representante />} />}
                 {(rol=="voluntario")&&<Route path='/p_colaborador' element={<P_Colaborador />} />}
+                {(rol=="voluntario")&&<Route path='/p_entregar' element={<P_Entregar />} />}
                 {(rol=="voluntario")&&<Route path='/ver_postulaciones' element={<VerPostulaciones />} />}  
                 {(rol=="voluntario")&&<Route path='/ver_postulaciones_colab' element={<VerPostulacionesColab/>} />}  
                 
@@ -90,6 +94,7 @@ function App() {
                  {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/receptor' element={<Receptor />} />}       
                  {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/Menu1' element={<Receptor />} />}       
                  {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/Menu2' element={<Receptor />} />}       
+                 {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/donaciones_disponibles' element={<DonacionesDisponibles />} />}       
 
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />

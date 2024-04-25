@@ -18,7 +18,7 @@ import style from "../css/postulacion.module.css"
 import axios from 'axios';
 import { AlertaConfirmacionDonacion, masInfo,envPostulacion } from "../js/Alertas.js";
 
-export default function P_Representante() {
+export default function P_Entregar() {
 
   const [disponibles, setDisponibles] = useState({ indice: [], data: [] });
   const token = useStore((state) => state.token);
@@ -50,7 +50,7 @@ export default function P_Representante() {
   }
 
   const getDonaciones = () => {
-    axios.get('https://proyecto-281-production.up.railway.app/api/donation/getPendingDonationsVoluntario', {
+    axios.get('https://proyecto-281-production.up.railway.app/api/donation/postularResponsableDelivery', {
       headers: {
         "x-token": token,
         "id_user": id_user
@@ -84,7 +84,7 @@ export default function P_Representante() {
   return (
     <>
       <br />
-      <h2>Postulacion a representante de las donaciones</h2>
+      <h2>Postulacion para entregar las  donaciones</h2>
       <h4>Informacion de las donaciones </h4>
       <br/>
       <StickyHeadTable dataTabla={disponibles} setDataTabla={setDisponibles} postular={postular}  masInfoDonacion={masInfoDonacion}/>
@@ -108,7 +108,6 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
   function esVector(valor) {
     return Array.isArray(valor);
   }
-
   useEffect(() => {
     console.log(dataTabla)
   }, [])
@@ -120,7 +119,8 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
           <TableHead>
             <TableRow>
 
-              {
+              
+            {
                 ["id_donacion", "Fecha",[2,"Nombre del donante"]].map((elemento, i) =>{
                   
                   return <TableCell
