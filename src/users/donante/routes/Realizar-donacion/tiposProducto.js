@@ -9,7 +9,7 @@ export const tipoProducto = {
     'Productos para mascotas': ['Comida para perros', 'Comida para gatos', 'Juguetes para mascotas', 'Collar', 'Correa', 'Cama para mascotas', 'Arena para gatos', 'Snacks para perros', 'Arenero', 'Rascador para gatos']
   };
 
-  export const tipoAlimento = {
+export const tipoAlimento = {
     'Frutas y verduras': [
       'Manzana', 'Plátano', 'Naranja', 'Zanahoria', 'Lechuga', 
       'Tomate', 'Pimiento', 'Pepino', 'Espinaca', 'Calabaza',

@@ -94,9 +94,9 @@ function Receptor({togleNav}) {
         <>
         <li className={style.menuLista}> Receptor 
            <ul>
-           <li onClick={togleNav}><Link to="/Agrega-donacion">Menu1 </Link></li>
-             <li onClick={togleNav}><Link to="/Confirma-donacion">Menu 2 </Link></li>
-           </ul>        
+                <li onClick={togleNav}><Link to="/Solicitar-donacion">Solicitar Donacion </Link></li>
+                <li onClick={togleNav}><Link to="/Confirmar-donacion">Confirmar Donacion </Link></li>
+           </ul>    
         </li>   
         <li>
             Opcion2 

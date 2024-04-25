@@ -38,6 +38,8 @@ import VerPostulaciones from './users/voluntario/routes/VerPostulaciones.jsx';
 import { RealizarDonacion } from './users/donante/routes/RealizarDonacion.jsx';
 import { ConfirmaDonacion } from './users/donante/routes/ConfirmaDonacion.jsx';
 import VerPostulacionesColab from './users/voluntario/routes/VerPostulacionesColab.jsx';
+import { SolicitarDonacion } from './users/receptor/routes/SolicitarDonacion.jsx';
+import { ConfirmarSolDonacion } from './users/receptor/routes/ConfirmarSolDonacion.jsx';
 
 
 function App() {
@@ -88,8 +90,9 @@ function App() {
 
 
                  {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/receptor' element={<Receptor />} />}       
-                 {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/Menu1' element={<Receptor />} />}       
-                 {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/Menu2' element={<Receptor />} />}       
+                 {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/Solicitar-donacion' element={<SolicitarDonacion />} />}
+                        
+                 {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/Confirmar-donacion' element={<ConfirmarSolDonacion/>} />}       
 
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
