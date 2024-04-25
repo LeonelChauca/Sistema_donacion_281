@@ -98,8 +98,7 @@ function Receptor({togleNav}) {
                 <li onClick={togleNav}><Link to="/Confirmar-donacion">Confirmar Donacion </Link></li>
            </ul>    
         </li>   
-        <li>
-            Opcion2 
+        <li onClick={togleNav}><Link to="/donaciones_disponibles">Ver Donaciones </Link>
         </li>
      </>
     )
@@ -111,8 +110,9 @@ function Voluntario({togleNav}) {
         <>
            <li className={style.menuLista}> Postular
               <ul>
-              <li onClick={togleNav}><Link to="/p_representante">Responsable</Link></li>
+                <li onClick={togleNav}><Link to="/p_representante">Responsable</Link></li>
                 <li onClick={togleNav}><Link to="/p_colaborador">Colaborador</Link></li>
+                <li onClick={togleNav}><Link to="/p_entregar">Entregar</Link></li>
               </ul>           
            </li>
            <li className={style.menuLista}> Ver postulaciones
