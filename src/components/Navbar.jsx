@@ -11,18 +11,34 @@ import Button from '@mui/material/Button';
 // Controller 
 import {useStore} from "../controllers/Auth.js"
 import MenuCuenta from '../users/components/MenuCuenta.jsx';
+import { useEffect, useState } from 'react';
 
 // Componente de Navbar
 const Navbar = () => {
     const logged = useStore((state)=>state.logged)
     const rol = useStore((state) => state.rol)
-
+  
     const login=useStore((state)=>state.login); 
     function scrollerBlock(e) {
         
             e.preventDefault();
         
     }
+
+    function animacion(){
+        
+            var elemento = document.querySelector("."+style.navbar); 
+            var rect = elemento.getBoundingClientRect();
+            var scrollTop = window.scrollY || window.pageYOffset;
+            if (scrollTop>=100) {
+                elemento.classList.add(style.animar); 
+                
+                
+            }else {
+                elemento.classList.remove(style.animar); 
+                
+            }    
+   }
     function togleNav() {
         if(window.innerWidth < 850){
             document.querySelector("."+style.baras).classList.toggle(style.animacionBar); 
@@ -37,14 +53,29 @@ const Navbar = () => {
                 document.removeEventListener('touchmove',scrollerBlock, { passive: false });
             }        
         }else{
-            document.querySelector("."+style.proteger).classList.remove(style.protegerTogle)
+            document.removeEventListener('wheel',scrollerBlock, { passive: false });            
+            document.removeEventListener('touchmove',scrollerBlock, { passive: false });
         }
         
     }
+
+    useEffect(()=>{
+        window.addEventListener('scroll', animacion) ; 
+        
+        window.addEventListener("resize", togleNav);
+
+        return ()=>{
+            window.removeEventListener('scroll', animacion)
+            window.removeEventListener("resize", togleNav);
+
+        }
+    },[])
     return (<>
     
     <div className={style.proteger}  onClick={togleNav}>
-
+    </div>
+    <div className={style.height_nav}>
+        
     </div>
         <nav  className={style.navbar}  >
             <div className={style.icono}>
@@ -76,9 +107,9 @@ const Navbar = () => {
                     }
                     <li onClick={togleNav}><Link to="/">Inicio</Link></li>
                     {(logged)?
-                        <MenuCuenta></MenuCuenta>          
+                        <MenuCuenta ></MenuCuenta>          
                         :<li onClick={togleNav}>
-                         <Link to="/login">
+                         <Link to="/login" >
                            <Button variant="contained" style={{textTransform:"none",padding:"2px 8px"}}>Login</Button>
                          </Link>
                          </li> }

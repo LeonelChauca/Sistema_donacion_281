@@ -26,6 +26,16 @@ export default function MenuCuenta() {
 
     const navigate = useNavigate();
 
+    const rolesMessages = {
+        donante: "Donante",
+        encargado_donante: "Donante",
+        donante_natural: "Donante",
+        voluntario: "Voluntario",
+        encargado_org_ben: "Receptor",
+        encargado_receptor: "Receptor",
+        receptor_natural: "Receptor"
+      };
+     
     function Salir() {
         setLogged(false);
         setRol("");
@@ -39,9 +49,28 @@ export default function MenuCuenta() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    function animacion(){
+        
+        const elemento = document.querySelector('.'+style.rol)
+        var scrollTop = window.scrollY || window.pageYOffset;
+        if (scrollTop<100) {
+            elemento.classList.add(style.animacion); 
+        }else {
+            elemento.classList.remove(style.animacion); 
+        }    
+    }
+    React.useEffect(()=>{
+        window.addEventListener('scroll', animacion); 
+
+        return (()=>{
+            window.removeEventListener('scroll', animacion); 
+        })
+        
+    }, [])
     return (
         <> 
-          <p  className={style.rol}>{rol}</p>
+          <p  className={style.rol}>{rolesMessages[rol]||rol}</p>
 
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
                 <Typography>{user}</Typography>
