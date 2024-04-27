@@ -126,7 +126,7 @@ function Receptor({togleNav}) {
         <li className={style.menuLista}> Receptor 
            <ul>
                 <li onClick={togleNav}><Link to="/Solicitar-donacion">Solicitar Donacion </Link></li>
-                <li onClick={togleNav}><Link to="/Confirmar-donacion">Confirmar Donacion </Link></li>
+                <li onClick={togleNav}><Link to="/Confirma-solicitud-donacion">Confirmar Donacion </Link></li>
            </ul>    
         </li>   
         <li onClick={togleNav}><Link to="/donaciones_disponibles">Ver Donaciones </Link>

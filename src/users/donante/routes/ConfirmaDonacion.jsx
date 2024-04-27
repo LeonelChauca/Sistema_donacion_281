@@ -29,7 +29,9 @@ export const ConfirmaDonacion = () => {
     }
     const onsubmit=(event)=>{
         event.preventDefault();
+        actualizarId(idUser);
         setloading(true);
+        console.log(Productos);
         if(Productos.fecha_d){
             Axios.post('https://proyecto-281-production.up.railway.app/api/donation/addDonation',Productos,{
                 headers:{
@@ -43,7 +45,6 @@ export const ConfirmaDonacion = () => {
             .finally(() => {
                 setloading(false); 
             })
-            
         }
         else{
             errorFConfirmacion();
@@ -99,10 +100,7 @@ export const ConfirmaDonacion = () => {
                         }
                     </div>
                 }
-                
-                
             </form>
-            
         </div>
   )
 }

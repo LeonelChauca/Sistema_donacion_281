@@ -28,12 +28,13 @@ export const AlertaErrorColaboracior=()=>{
 export const masInfo=(lista)=>{  
    
   let cadena="<h4>Productos </h4>"
+  //console.log(lista.producto);
   lista.producto.map((e)=>{
     cadena+=`
     <div  style="background:#e7e7e7; margin:2px;display:flex; flex-direction: column; align-items: flex-start">
-     <p>Tipo: ${e.tipo_p}</p>
-     <p>Nombre: ${e.nombre_p}</p>
-     <p>Cantidad:${e.medida_unitaria_p}</p>
+     <p>Tipo: ${e.tipo}</p>
+     <p>Nombre: ${e.nombre}</p>
+     <p>Cantidad:${e.cantidad}</p>
     </div>
     `
   })
@@ -42,8 +43,8 @@ export const masInfo=(lista)=>{
   lista.alimento.map((e)=>{
     cadena+=`
     <div  style="background:#e7e7e7; margin:2px;display:flex; flex-direction: column; align-items: flex-start">
-    <p>Nombre:  ${e.nombre_a}</p>
-    <p>Cantidad: ${e.cantidad_a}</p>
+    <p>Nombre:  ${e.nombre}</p>
+    <p>Cantidad: ${e.cantidad}</p>
     </div>
     `
   })
@@ -53,7 +54,7 @@ export const masInfo=(lista)=>{
   lista.dinero.map((e)=>{
     cadena+=`
     <div  style="background:#e7e7e7; margin:2px;display:flex; flex-direction: column; align-items: flex-start">
-    <p>Monto:  ${e.monto} ${e.cambio}</p>
+    <p>Monto:  ${e.cantidad} ${e.cambio}</p>
     </div>
     `
   })
