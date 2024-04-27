@@ -2,6 +2,11 @@
 import { Accordion, AccordionSummary ,AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import style from "../styles/components/About.module.css"
+
+
+import team from '../assets/img/team.png'
+
+
 const About = () => {
    return (
       <>
@@ -15,6 +20,9 @@ const About = () => {
                <p> Nuestra misión es conectar donantes de alimentos con organizaciones benéficas y personas necesitadas de manera eficiente y transparente. Impulsados por valores como la solidaridad, la transparencia y la innovación, estamos comprometidos a construir un mundo donde cada persona tenga acceso a alimentos nutritivos y ninguna comida se desperdicie.
                </p>
             </div>
+            <picture className={style.team}>
+               <img src={team} alt="Equipo de trabajo "/>
+            </picture>
          </section>
          <section className={style.historia + " " + style.section}>
             <div className={style.card}>

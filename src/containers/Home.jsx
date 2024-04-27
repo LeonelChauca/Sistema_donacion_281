@@ -16,7 +16,7 @@ import Button from '@mui/material/Button';
 import { InterseccionObjerver } from "../controllers/InterseccionObjerver"
 const urlContext = createContext();
 
-import fondo from '../assets/img/alimentos.jpg'
+import fondo from '../assets/img/alimentos.webp'
 
 
 

@@ -95,7 +95,11 @@ const Navbar = () => {
                 <div className={style.item}> 
                     <li onClick={togleNav}><Link to="/about">Sobre Nosotros</Link></li>
                     <li onClick={togleNav}><Link to="/preguntas">Preguntas</Link></li>
-                    <li onClick={togleNav}><Link to="/contacto">Contacto</Link></li>                    
+                    {
+                        /*
+                        <li onClick={togleNav}><Link to="/contacto">Contacto</Link></li>                    
+                         */
+                    }
                     {
                     (rol=="voluntario")&&<Voluntario togleNav={togleNav}/>
                     }
