@@ -100,7 +100,7 @@ const Navbar = () => {
                         <li onClick={togleNav}><Link to="/contacto">Contacto</Link></li>                    
                          */
                     }
-                    {
+                    {/*
                     (rol=="voluntario")&&<Voluntario togleNav={togleNav}/>
                     }
                     {
@@ -108,7 +108,7 @@ const Navbar = () => {
                     }
                     {
                           (rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Receptor togleNav={togleNav}/>                     
-                    }
+                    */}
                     <li onClick={togleNav}><Link to="/">Inicio</Link></li>
                     {(logged)?
                         <MenuCuenta ></MenuCuenta>          
