@@ -4,8 +4,11 @@ import alimento from "../assets/img/home/alimento.jpg"
 import dinero from "../assets/img/home/dinero.png"
 import producto from "../assets/img/home/producto.jpg"
 
+import { useInView } from 'react-intersection-observer';
+
+
 import { createContext, useContext, useEffect, useState } from 'react';
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 // UI
 import Divider from '@mui/material/Divider';
@@ -13,54 +16,105 @@ import Button from '@mui/material/Button';
 import { InterseccionObjerver } from "../controllers/InterseccionObjerver"
 const urlContext = createContext();
 
+import fondo from '../assets/img/alimentos.jpg'
+
+
+
 
 const Home = () => {
 
     const [change, setChange] = useState(null);
 
+
     if (change) {
         return <Navigate to={`/${change}`} />
     }
 
-    // Configura las opciones para el Intersection Observer
+
+
     const opciones = {
         root: null, // el área de la ventana se utiliza como área de observación
-        //rootMargin:'200px 1000px',
-        threshold: [0, 1] // Observa solo la parte superior e inferior del elemento
+        rootMargin: '40px',
+        threshold: 0 // Observa solo la parte superior e inferior del elemento
     };
-
-    // Función de callback que se ejecutará cuando cambie la intersección
+    let elementoObservadoAnterior = null;
     function callbackInterseccion(entries, observer) {
-        // Itera sobre las entradas de intersección
         entries.forEach(entry => {
-           const elementoObservado = entry.target;
-            if (entry.isIntersecting ) {
-                 elementoObservado.classList.add('animate__animated','animate__zoomIn')
-           //     console.log('El elemento', elementoObservado, 'está en la vista');                
-            } else {
-                elementoObservado.classList.remove('animate__animated','animate__zoomIn')
-             //   console.log('El elemento', elementoObservado, 'No está en la vista');                
+            const elementoObservado = entry.target;
+            if (elementoObservadoAnterior !== elementoObservado) {
+
+                if (elementoObservado.classList.contains(style.texto)) {
+                    // Si el elemento observado tiene la clase "texto"
+                    if (entry.isIntersecting) {
+                        elementoObservado.classList.add('animate__animated', 'animate__flipInY');
+                        elementoObservadoAnterior = elementoObservado;
+                    } else {
+                        elementoObservado.classList.remove('animate__animated', 'animate__flipInY');
+                        elementoObservadoAnterior = null;
+                    }
+                } else if (elementoObservado.classList.contains(style.optimizacion)) {
+                    // Si el elemento observado tiene la clase "optimizacion"
+                    if (entry.isIntersecting) {
+                        elementoObservado.classList.add('animate__animated', 'animate__jackInTheBox');
+                        elementoObservadoAnterior = elementoObservado;
+                    } else {
+                        elementoObservado.classList.remove('animate__animated', 'animate__jackInTheBox');
+                        elementoObservadoAnterior = null;
+                    }
+                } else if (elementoObservado.classList.contains(style.right)) {
+                    if (entry.isIntersecting) {
+                        elementoObservado.classList.add('animate__animated', 'animate__fadeInRight');
+                        elementoObservadoAnterior = elementoObservado;
+                    } else {
+                        elementoObservado.classList.remove('animate__animated', 'animate__fadeInRight');
+                        elementoObservadoAnterior = null;
+                    }
+                } else if (elementoObservado.classList.contains(style.left)) {
+                    if (entry.isIntersecting) {
+                        elementoObservado.classList.add('animate__animated', 'animate__fadeInLeft');
+                        elementoObservadoAnterior = elementoObservado;
+                    } else {
+                        elementoObservado.classList.remove('animate__animated', 'animate__fadeInLeft');
+                        elementoObservadoAnterior = null;
+                    }
+                }
             }
+
+
         });
     }
 
-    // Crea una nueva instancia de Intersection Observer con la función de callback y las opciones
-    const observador =   new IntersectionObserver(callbackInterseccion, opciones);
+
+    const obs = new IntersectionObserver(callbackInterseccion, opciones)
 
     useEffect(() => {
-        //observador.setClases(['animate__animated','animate__zoomIn'])
-        //observador.callbackInterseccion(); 
 
-        const elementoInterseccion=document.querySelector("."+style.texto); 
-        observador.observe(elementoInterseccion);
-    }, []); 
+            obs.observe(document.querySelector("." + style.texto));
+            obs.observe(document.querySelector("." + style.optimizacion));
+    
+            obs.observe(document.querySelectorAll("." + style.right)[0]);
+            
+    
+            obs.observe(document.querySelectorAll("." + style.left)[0]);
+            obs.observe(document.querySelectorAll("." + style.left)[1]);
+
+        return () => {
+            //        obs.unobserve(document.querySelector("."+style.texto));
+            //       obs.unobserve(document.querySelector("."+style.optimizacion));
+
+        }
+    }, []);
 
 
     return (
         <urlContext.Provider value={{ setChange }}>
+            <figure className={style.fondo}>
+                <img src={fondo} alt="donacion" />
+            </figure>
             <main>
+
                 <Portada />
-                <section className={style.optimizacion + " animate__animated animate__jackInTheBox"}>
+                <section className={style.optimizacion}>
                     <div className={style.card}>
                         <br></br>
                         <h1>Optimiza tus donaciones de alimentos</h1>
@@ -84,9 +138,10 @@ const Home = () => {
 }
 
 function Portada() {
-    const { setChange } = useContext(urlContext);
+    
+    
     return <section className={style.portada}>
-        <div className={style.texto }>
+        <div className={style.textoFondo}>
             <h1 style={{ color: "var(--color-secundario)" }}>
                 Simplifica tus donaciones de alimentos y productos
             </h1>
@@ -98,21 +153,26 @@ function Portada() {
             <br></br>
             <BtnAction texto="Solicitar registro" url="registro" />
         </div>
-        <figure className={style.figure + "  animate__animated animate__bounceInRight"}>
-            <img src={persona} alt="donacion" />
-        </figure>
+        
+             {
+                /*
+                <figure className={style.figure +" "+style.right}>
+                        <img src={persona} alt="donacion" />
+                    </figure>
+                */
+             }
+        
     </section>
 }
 
 function Alimentos() {
-    const { setChange } = useContext(urlContext);
+    
     return <section className={style.portada}>
-        <figure className={style.figure}>
+        <figure className={style.figure + " " + style.left}>
             <img src={alimento} alt="donacion" />
         </figure>
         <div className={style.texto}>
             <h1>Dona alimentos de forma inteligente</h1>
-
             <p>
                 Gestiona, rastrea y reporta tus donaciones con facilidad
             </p>
@@ -143,7 +203,7 @@ function Producto() {
             <BtnAction texto="Contactanos" url="contacto" />
 
         </div>
-        <figure className={style.figure}>
+        <figure className={style.figure + " " + style.right}>
             <img src={producto} alt="donacion" />
         </figure>
     </section>
@@ -151,8 +211,9 @@ function Producto() {
 
 function Dinero() {
 
-    return <section className={style.portada}>
-        <figure className={style.figure}>
+
+    return <section className={style.portada} >
+        <figure className={style.figure + " " + style.left}>
             <img src={dinero} alt="donacion" />
         </figure>
         <div className={style.texto}>
@@ -167,9 +228,12 @@ function Dinero() {
 }
 
 function BtnAction({ texto = "Hola", url = "#", variant = "outlined" }) {
-    const { setChange } = useContext(urlContext);
+    const navegar =useNavigate(); 
+    function cambiar(data){
+        navegar(`/${data}`); 
+    }
     return (
-        <Button style={{ textTransform: "none", fontSize: "1.1rem" }} variant={variant} onClick={() => { setChange(() => url) }}>
+        <Button style={{ textTransform: "none", fontSize: "1.1rem" }} variant={variant} onClick={() => { cambiar(url);  }}>
             {texto}
         </Button>
     )

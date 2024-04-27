@@ -15,11 +15,13 @@ body{
   background-color: var(--color-cuaternario);
   min-height: 100vh;
   overflow-x: hidden ;
+  position: relative;
 }
 
 .main{
   min-height: calc( 90vh - var(--nav-height)); 
   padding: 10px 20px ;
+  
   
 }
 /*

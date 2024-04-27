@@ -73,11 +73,11 @@
     border-bottom: 2px solid rgba(141, 12, 12, 0);
     transition: border-bottom 0.2s ease, background 0.2s ease; 
     min-width: 80px;
-    height: calc( var(--nav-height) - 20px );
+    height: calc( var(--nav-height) - 30px );
     display: flex;
     align-items: center;      
     justify-content: center;
-    border-radius: 5px;    
+    border-radius: 30px;    
 }
 
 .item li a {

@@ -1,23 +1,25 @@
 export class InterseccionObjerver{
 
    
-    constructor(){
-        
+    self=this
+    constructor(clases ,elemento){
+        self.clases = clases ;   
+        self.html = elemento; 
     }
 
     setClases(clases){
-        this.clases=clases ; 
+        self.clases=clases ; 
     }
 
     agregarClases(elemento){
 
-        this.clases.forEach(element => {
+        self.clases.forEach(element => {
             elemento.classList.add(element)
         });
     }
     eliminarClases(elemento){
 
-        this.clases.forEach(element => {
+        self.clases.forEach(element => {
             elemento.classList.remove(element)
         });
     }
@@ -36,21 +38,30 @@ export class InterseccionObjerver{
             if (entry.isIntersecting ) {
 
                  //elementoObservado.classList.add('animate__animated','animate__zoomIn')
-                 agregarClases(elementoObservado)
+                 
+                 self.clases.forEach(element => {
+                    elementoObservado.classList.add(element)
+                });
            //     console.log('El elemento', elementoObservado, 'está en la vista');                
             } else {
                 //elementoObservado.classList.remove('animate__animated','animate__zoomIn')
-                eliminarClases(elementoObservado)
+                self.clases.forEach(element => {
+                    elementoObservado.classList.remove(element)
+                });
              //   console.log('El elemento', elementoObservado, 'No está en la vista');                
             }
         });
     }
 
     // Crea una nueva instancia de Intersection Observer con la función de callback y las opciones
-    observador = new IntersectionObserver(callbackInterseccion, opciones);
+    observador = new IntersectionObserver(this.callbackInterseccion, this.opciones);
 
-    getObservador(){
-        return this.observador; 
+    Observar(){
+        this.observador.observe(document.querySelector(self.html)); 
+    }
+
+    DesObservar(){
+        this.observador.unobserve(document.querySelector(self.html)); 
     }
 
     

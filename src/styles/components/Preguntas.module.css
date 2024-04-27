@@ -1,7 +1,38 @@
+.containerPreguntas{
+   display: grid;
+   position: relative;
+   grid-template-columns: 1fr 1.5fr ;
+  
+}
+.containerPreguntas figure {     
+    padding: 50px 0px ;
+    
+     width: 100%;
+     max-height: 400px;
+   
+}
+.containerPreguntas figure >img  {
+   position: relative;    
+   height: 100%;
+   left: 50%;
+   transform: translateX(-50%);
+}
 .hr{
     margin: 10px 0;
 }
 .containerP{
     max-width: 90%;
     margin: 0 auto;
+}
+@media screen and (max-width: 850px) {
+    .containerPreguntas{
+        grid-template-columns: 1fr;
+        
+    }
+    .containerPreguntas figure {     
+        padding: 0;
+         width: 100%;
+         max-height: 250px;
+       
+    }
 }
