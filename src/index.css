@@ -19,6 +19,21 @@
   padding: 0;  
 }
 
+body::-webkit-scrollbar {
+  width: 0px ; 
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color de fondo de la pista del scrollbar */
+}
+
+/* Estilos del pulgar del scrollbar */
+body::-webkit-scrollbar-thumb {
+  background: #888; /* Color del pulgar del scrollbar */
+}
+
+
+
 
 /*
 a {

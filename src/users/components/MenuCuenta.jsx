@@ -81,6 +81,7 @@ export default function MenuCuenta() {
         localStorage.clear();
         navigate('/');
     }
+    
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -88,7 +89,7 @@ export default function MenuCuenta() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
+    
     function animacion() {
 
         const elemento = document.querySelector('.' + style.rol)
@@ -111,11 +112,13 @@ export default function MenuCuenta() {
         <>
             <p className={style.rol}>{rolesMessages[rol] || rol}</p>
 
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', cursor:'pointer' }} 
+            onClick={handleClick}
+            >
                 <Typography>{user}</Typography>
                 <Tooltip title="Configuraciones">
                     <IconButton
-                        onClick={handleClick}
+                        
                         size="small"
                         sx={{ ml: 0 }}
                         aria-controls={open ? 'account-menu' : undefined}

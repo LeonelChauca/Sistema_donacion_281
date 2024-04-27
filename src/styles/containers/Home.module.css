@@ -29,7 +29,7 @@
   height: 100vh;
 }
 .fondo img {
-    width: 100%;
+    width: 105%;
     height: 100%;
     object-fit: cover;
     object-position: center center;
