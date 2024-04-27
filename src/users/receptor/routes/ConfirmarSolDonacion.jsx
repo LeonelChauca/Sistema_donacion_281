@@ -1,4 +1,4 @@
-import { useState,createContext, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import style from '../../donante/styles/realizarDonacion.module.css'
 import Typography from '@mui/material/Typography';
 import { ProductContext } from "../../donante/Dontante";
@@ -12,36 +12,36 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useStore } from "../../../controllers/Auth.js"
 import {okConfirmacion,errorFConfirmacion} from "../../donante/js/alertas.js";
-import { useForm } from "react-hook-form";
-import dayjs from 'dayjs'
 import Alert from '@mui/material/Alert';
 
 import Axios from "axios";
 export const ConfirmarSolDonacion = () => {
-  const { Productos,actualizarId,actualizarFecha,agregarDinero,agregarAlimento,agregarProducto} = useContext(ProductContext);
+  const { Productos,actualizarId,actualizarFechaS} = useContext(ProductContext);
     const idUser=useStore((state)=>state.id_user);
     const [loading, setloading] = useState(false);
     const token=useStore((state)=>state.token);
     const formatoFecha=(date)=>{
+        if(!date){ return ""}
         return date.format("YYYY-MM-DD");
     }
     const onsubmit=(event)=>{
       event.preventDefault();
+      actualizarId(idUser);
       setloading(true);
-      if(Productos.fecha_d){
-          Axios.post('https://proyecto-281-production.up.railway.app/api/donation/addDonation',Productos,{
+      if(Productos.fecha_solicitud){
+          Axios.post('https://proyecto-281-production.up.railway.app/api/delivery/addSolicitud',Productos,{
               headers:{
                   'x-token':token
               },
           })
           .then((response)=>{
               okConfirmacion();
+              console.log(response);
               console.log(Productos);
           })
           .finally(() => {
               setloading(false); 
           })
-          console.log(Productos);
       }
       else{
           errorFConfirmacion();
@@ -58,7 +58,7 @@ export const ConfirmarSolDonacion = () => {
                             name="fecha_dn" 
                             label="Fecha de la donacion"
                             value={null}
-                            onChange={(date) => actualizarFecha(formatoFecha(date))}
+                            onChange={(date) => actualizarFechaS(formatoFecha(date))}
                             format="DD-MM-YYYY"
                             views={['day','month','year']}
                             slotProps={{

@@ -92,6 +92,8 @@ function App() {
                  {(rol=="donante_natural" || rol=="encargado_donante" || rol=="donante")&&<Route path='/Agrega-donacion' element={<RealizarDonacion />} />}
                  {(rol=="donante_natural" || rol=="encargado_donante" || rol=="donante")&&<Route path='/Confirma-donacion' element={<ConfirmaDonacion />} />}                
 
+                 {(rol=="receptor_natural" || rol=="encargado_receptor" || rol=="encargado_org_ben")&&<Route path='/Solicitar-donacion' element={<SolicitarDonacion />} />}
+                 {(rol=="receptor_natural" || rol=="encargado_receptor" || rol=="encargado_org_ben")&&<Route path='/Confirma-solicitud-donacion' element={<ConfirmarSolDonacion />} />}
 
                  {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/receptor' element={<Receptor />} />}       
                  {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/Menu1' element={<Receptor />} />}       
