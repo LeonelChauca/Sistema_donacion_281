@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useStore } from "../../../controllers/Auth.js"
+import { useStore } from "../../../../controllers/Auth.js"
 
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -13,23 +13,24 @@ import TableRow from '@mui/material/TableRow';
 
 import Button from '@mui/material/Button';
 
-import style from "../css/postulacion.module.css"
+import style from "../../css/postulacion.module.css"
 
 import axios from 'axios';
-import { AlertaConfirmacionDonacion, masInfo,envPostulacion } from "../js/Alertas.js";
-import setScrollTop from "../../../controllers/setPostScroll.js";
+import { AlertaConfirmacionDonacion, masInfo,envPostulacion } from "../../js/Alertas.js";
+import setScrollTop from "../../../../controllers/setPostScroll.js";
 
-export default function P_Entregar() {
+export default function P_Representante() {
 
   const [disponibles, setDisponibles] = useState({ indice: [], data: [] });
   const token = useStore((state) => state.token);
   const id_user = useStore((state) => state.id_user);
 
-  const postular = (donacion) => {
+  const postular = (id_solicitud) => {
     envPostulacion().then((numero)=>{
       if(numero){
-        axios.post('https://proyecto-281-production.up.railway.app/api/donation/postularResponsableDonacion', {
-          id_donacion: donacion,
+        
+        axios.post('https://proyecto-281-production.up.railway.app/api/delivery/postularResponsableDelivery', {
+          id_solicitud: id_solicitud,
           id_user,
           cantidad:numero,
           }, {
@@ -45,13 +46,14 @@ export default function P_Entregar() {
           .catch((error)=>{
             console.log(error);
           })
+          
       }
-    })
-    
+      
+    })    
   }
 
   const getDonaciones = () => {
-    axios.get('https://proyecto-281-production.up.railway.app/api/donation/postularResponsableDelivery', {
+    axios.get('https://proyecto-281-production.up.railway.app/api/delivery/getPendingSolicitudesResponsableVoluntario',{
       headers: {
         "x-token": token,
         "id_user": id_user
@@ -59,19 +61,19 @@ export default function P_Entregar() {
     }
     ).then((response) => {
       console.log(response);
-      setDisponibles({ indice: ["id_donacion", "fecha_d", "nombre_donante","ap_paterno_donante"], data: response.data.donaciones });
+      setDisponibles({ indice: ["id_solicitud", "fecha_solicitud", "nombre_solicitante","ap_paterno_solicitante"], data: response.data.solicitudes });
     })
   }
 
-  const masInfoDonacion = (id_donacion) => {
-    axios.get('https://proyecto-281-production.up.railway.app/api/donation/getDetalleDonacion', {
+  const masInfoDonacion = (id_solicitud) => {
+    axios.get('https://proyecto-281-production.up.railway.app/api/delivery/getDetalleSolicitud', {
       headers: {
         "x-token": token,
-        "id_donacion":id_donacion
+        "id_solicitud":id_solicitud
       }
     }
     ).then((response) => {
-      console.log(response.data.body);
+      console.log(response.data);
       masInfo(response.data.body); 
       //setDisponibles({ indice: ["id_donacion", "fecha_d", "userD"], data: response.data.donaciones });
     })
@@ -80,13 +82,13 @@ export default function P_Entregar() {
 
   useEffect(() => {
     setScrollTop(0);   
-    getDonaciones();
+ getDonaciones();
   }, [])
 
   return (
     <>
       <br />
-      <h2>Postulacion  para la entregacion</h2>
+      <h2>Postulacion a Representante de las entregas</h2>
       <h4>Informacion de las donaciones </h4>
       <br/>
       <StickyHeadTable dataTabla={disponibles} setDataTabla={setDisponibles} postular={postular}  masInfoDonacion={masInfoDonacion}/>
@@ -110,6 +112,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
   function esVector(valor) {
     return Array.isArray(valor);
   }
+
   useEffect(() => {
     console.log(dataTabla)
   }, [])
@@ -121,9 +124,8 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
           <TableHead>
             <TableRow>
 
-              
-            {
-                ["id_donacion", "Fecha",[2,"Nombre del donante"]].map((elemento, i) =>{
+              {
+                ["id_solicitud", "Fecha",[2,"Nombre del solicitante"]].map((elemento, i) =>{
                   
                   return <TableCell
                     key={i}
@@ -149,7 +151,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((fila, i) => {
                   return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_donacion}>
+                    <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_solicitud+parseInt(Math.random()*1000)}>
                       {dataTabla.indice.map((index, p) => {
                         return (
                           <TableCell key={fila[index]} align={"left"} style={{ minWidth: 5 }}>
@@ -160,14 +162,14 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
 
                       <TableCell align={"center"} className={style.acciones} style={{ minWidth: 80 }}>
                         <Button variant="contained" onClick={(e) => {
-                          console.log(fila['id_donacion']);
-                          postular(fila['id_donacion']);
+                          console.log(fila['id_solicitud']);
+                          postular(fila['id_solicitud']);
                         }}
                           style={{ background: "green", borderRadius: "8px", textTransform: "none" }}>
                           Postular
                         </Button>
                         <Button variant="contained" onClick={(e) => {
-                          masInfoDonacion(fila['id_donacion']); 
+                          masInfoDonacion(fila['id_solicitud']); 
                         }}
                           style={{ marginLeft:5, background: "blue", borderRadius: "8px", textTransform: "none" }}>
                           Ver

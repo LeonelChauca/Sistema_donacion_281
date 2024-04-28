@@ -17,6 +17,7 @@ import style from "../css/postulacion.module.css"
 
 import axios from 'axios';
 import { AlertaConfirmacionDonacion, masInfo,envPostulacion } from "../js/Alertas.js";
+import setScrollTop from "../../../controllers/setPostScroll.js";
 
 export default function P_Representante() {
 
@@ -78,6 +79,7 @@ export default function P_Representante() {
 
 
   useEffect(() => {
+    setScrollTop(0);   
     getDonaciones();
   }, [])
 

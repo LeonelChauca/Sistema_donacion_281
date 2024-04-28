@@ -17,6 +17,7 @@ import { InterseccionObjerver } from "../controllers/InterseccionObjerver"
 const urlContext = createContext();
 
 import fondo from '../assets/img/alimentos.webp'
+import setScrollTop from "../controllers/setPostScroll"
 
 
 
@@ -89,6 +90,9 @@ const Home = () => {
 
     useEffect(() => {
 
+        
+            setScrollTop(0); 
+         
             obs.observe(document.querySelector("." + style.texto));
             obs.observe(document.querySelector("." + style.optimizacion));
     
@@ -104,7 +108,7 @@ const Home = () => {
 
         }
     }, []);
-
+   
 
     return (
         <urlContext.Provider value={{ setChange }}>

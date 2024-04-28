@@ -13,6 +13,7 @@ import style from "../css/postulacion.module.css"
 
 import {useState, useEffect} from 'react'
 import { useStore } from "../../../controllers/Auth.js"
+import setScrollTop from '../../../controllers/setPostScroll.js';
 
 export default function VerPostulaciones() {
      const [datosAceptadas , setDatosAceptadas ]=useState({ indice: [], data: [] }); 
@@ -40,7 +41,8 @@ export default function VerPostulaciones() {
     return (
         <>
         <br></br>
-          <h2>Ver Postulaciones</h2>                  
+        <h3>Ver los estados de las postulaciones a <u>Representante</u> a donacion </h3>                                
+        <br></br>              
         {
           <StickyHeadTable setDataTabla={setDatosAceptadas} dataTabla={datosAceptadas} setDataTablaPendientes={setDatosPendientes}  dataTablaPendientes={datosPendientes}/>          
         }
@@ -63,6 +65,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, setDataTablaPendientes, data
 
 
   useEffect(() => {
+    setScrollTop(0);   
     console.log(dataTabla)
   }, [])
 

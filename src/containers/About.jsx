@@ -5,9 +5,17 @@ import style from "../styles/components/About.module.css"
 
 
 import team from '../assets/img/team.png'
+import { useEffect } from "react";
+import setScrollTop from "../controllers/setPostScroll";
+
+
 
 
 const About = () => {
+
+   useEffect(()=>{
+      setScrollTop(0); 
+   }, []); 
    return (
       <>
          <h3 style={{ textAlign: "center" }}>Sobre Nosotros</h3>

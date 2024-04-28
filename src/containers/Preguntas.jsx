@@ -7,7 +7,13 @@ import Acordeon from '../components/Acordeon';
 import s from '../styles/components/Preguntas.module.css';
 
 import imagen  from '../assets/img/preguntas.png'; 
+import { useEffect } from 'react';
+import setScrollTop from '../controllers/setPostScroll';
 const Preguntas =()=>{
+
+    useEffect(()=>{
+        setScrollTop(0); 
+    },[]); 
     return (
      < div className={s.containerPreguntas}>
         <figure>

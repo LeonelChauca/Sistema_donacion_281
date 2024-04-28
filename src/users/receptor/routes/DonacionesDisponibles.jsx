@@ -38,6 +38,7 @@ import { ListaDonacion } from './Realizar-donacion/ListaDonacion';
 */
 import MenuItem from '@mui/material/MenuItem'
 
+import setScrollTop from "../../../controllers/setPostScroll.js";
 
 export default function VerEstado() {
     const [datosAceptadas, setDatosAceptadas] = useState({ indice: [], data: [] });
@@ -73,6 +74,7 @@ export default function VerEstado() {
     }
 
     useEffect(() => {
+        setScrollTop(0); 
         getPostulaciones();
     }, []);
 
@@ -160,7 +162,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, thead, setDataTablaPendiente
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((fila, i) => {
                                     return (
-                                        <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_donacion}>
+                                        <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_donacion+parseInt(Math.random()*100)}>
                                             {dataTabla.indice.map((index, p) => {
                                                 return (
                                                     <TableCell key={fila[index]} align={"left"} style={{ minWidth: 5 }}>

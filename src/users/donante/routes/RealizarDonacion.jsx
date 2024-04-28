@@ -1,4 +1,4 @@
-import { useState,createContext, useContext } from "react";
+import { useState,createContext, useContext, useEffect } from "react";
 import style from '../styles/realizarDonacion.module.css'
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -16,11 +16,17 @@ import { RegistrarDonacionDinero } from './Realizar-donacion/RegistrarDonacionDi
 import { ListaDonacion } from './Realizar-donacion/ListaDonacion';
 import MenuItem from '@mui/material/MenuItem'
 
+import setScrollTop from "../../../controllers/setPostScroll.js";
+
 export const RealizarDonacion = ({tabla,setTabla}) => {
     const [groupRadio, setgroupRadio] = useState('');
     const handleChange = (event) => {
         setgroupRadio(event.target.value);
     };
+
+    useEffect(()=>{
+        setScrollTop(0); 
+    },[])
   return (
     <div className={style.containerMain}>
         <h2>Realiza Donacion</h2>

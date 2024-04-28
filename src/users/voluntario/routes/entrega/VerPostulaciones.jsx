@@ -9,27 +9,28 @@ import TableRow from '@mui/material/TableRow';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 
-import style from "../css/postulacion.module.css"
+import style from "../../css/postulacion.module.css"
 
 import {useState, useEffect} from 'react'
-import { useStore } from "../../../controllers/Auth.js"
-import setScrollTop from '../../../controllers/setPostScroll.js';
+import { useStore } from "../../../../controllers/Auth.js"
+import setScrollTop from '../../../../controllers/setPostScroll.js';
 
-export default function VerPostulacionesColab() {
+export default function VerPostulaciones() {
      const [datosAceptadas , setDatosAceptadas ]=useState({ indice: [], data: [] }); 
+     const [datosPendientes  , setDatosPendientes ]=useState({ indice: [], data: [] }); 
      const token = useStore((state) => state.token);
      const id_user = useStore((state) => state.id_user);
      const getPostulaciones = () => {
-      axios.get('https://proyecto-281-production.up.railway.app/api/donation/getPostulacionColaborador', {
+      axios.get('https://proyecto-281-production.up.railway.app/api/delivery/getEstadoPostulacionResponsable', {
         headers: {
           "x-token": token,
           "id_user": id_user
         }
       }
       ).then((response) => {
-        console.log(response.data.body.postulaciones);
-        setDatosAceptadas({ indice: ["id_user", "id_donacion", ], data: [...response.data.body.postulaciones] });
-        
+        console.log(response.data.body);
+        setDatosAceptadas({ indice: ["id_solicitud", "cantidad", ], data: [...response.data.body.postulacionesAceptadas,...response.data.body.postulacionesPendientes] });
+        setDatosPendientes({ indice: ["id_solicitud", "cantidad"], data: response.data.body.postulacionesPendientes });
       })
     }
 
@@ -41,10 +42,10 @@ export default function VerPostulacionesColab() {
     return (
         <>
         <br></br>
-        <h3>Ver los estados de las postulaciones a <u>Representante</u> a donacion</h3>                                
-        <br></br>                   
+        <h3>Ver los estados de las postulaciones a <u>Representante</u></h3>                                
+        <br></br>
         {
-          <StickyHeadTable setDataTabla={setDatosAceptadas} dataTabla={datosAceptadas}/>          
+          <StickyHeadTable setDataTabla={setDatosAceptadas} dataTabla={datosAceptadas} setDataTablaPendientes={setDatosPendientes}  dataTablaPendientes={datosPendientes}/>          
         }
         </>
     )
@@ -77,7 +78,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, setDataTablaPendientes, data
             <TableRow>
 
               {
-                ["id_user", "id_donacion"].map((elemento, i) =>
+                ["id_solicitud", "Cantidad"].map((elemento, i) =>
                   <TableCell
                     key={i}
                     align={"left"}
@@ -101,7 +102,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, setDataTablaPendientes, data
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((fila, i) => {
                   return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_donacion}>
+                    <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_solicitud}>
                       {dataTabla.indice.map((index, p) => {
                         return (
                           <TableCell key={fila[index]} align={"left"} style={{ minWidth: 5 }}>
@@ -111,13 +112,21 @@ function StickyHeadTable({ setDataTabla, dataTabla, setDataTablaPendientes, data
                       })}
 
                       <TableCell align={"center"} className={style.acciones} style={{ minWidth: 80 }}>
-                                                  <Button variant="contained" onClick={(e) => {
-                          console.log(fila['id_donacion']);
+                        {
+                          fila['estado']?<Button variant="contained" onClick={(e) => {
+                            console.log(fila['id_donacion']);
                           }}
                             style={{ background: "green", borderRadius: "8px", textTransform: "none" }}>
                             Habilitado
+                          </Button>: 
+                          <Button variant="contained" onClick={(e) => {
+                            console.log(fila['id_donacion']);
+                          }}
+                            style={{ background: "blue", borderRadius: "8px", textTransform: "none" }}>
+                            Pendiente
                           </Button>
-                          
+                        }
+                        
                       </TableCell>
                     </TableRow>
                   );

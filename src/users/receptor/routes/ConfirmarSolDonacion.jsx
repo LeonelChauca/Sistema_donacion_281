@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import style from '../../donante/styles/realizarDonacion.module.css'
 import Typography from '@mui/material/Typography';
 import { ProductContext } from "../../donante/Dontante";
@@ -13,6 +13,8 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useStore } from "../../../controllers/Auth.js"
 import {okConfirmacion,errorFConfirmacion} from "../../donante/js/alertas.js";
 import Alert from '@mui/material/Alert';
+
+import setScrollTop from "../../../controllers/setPostScroll.js";
 
 import Axios from "axios";
 export const ConfirmarSolDonacion = () => {
@@ -48,6 +50,10 @@ export const ConfirmarSolDonacion = () => {
           setloading(false); 
       }
   }
+
+  useEffect(()=>{
+    setScrollTop(0); 
+  },[])
   return (
     <div className={style.containerMain}>
             <h2>Confirma Donacion</h2>

@@ -36,6 +36,12 @@ import P_Representante from './users/voluntario/routes/P_Representante.jsx';
 import P_Colaborador from './users/voluntario/routes/P_Colaborador.jsx';
 import VerPostulaciones from './users/voluntario/routes/VerPostulaciones.jsx';
 
+import P_Representante_E  from './users/voluntario/routes/entrega/P_Representante.jsx';
+import P_Colaborador_E  from './users/voluntario/routes/entrega/P_Colaborador.jsx';
+
+import VerPostulaciones_E from './users/voluntario/routes/entrega/VerPostulaciones.jsx';
+import VerPostulacionesColab_E from './users/voluntario/routes/entrega/VerPostulacionesColab.jsx';
+
 
 import { RealizarDonacion } from './users/donante/routes/RealizarDonacion.jsx';
 import { ConfirmaDonacion } from './users/donante/routes/ConfirmaDonacion.jsx';
@@ -88,6 +94,13 @@ function App() {
                 {(rol=="voluntario")&&<Route path='/p_entregar' element={<P_Entregar />} />}
                 {(rol=="voluntario")&&<Route path='/ver_postulaciones' element={<VerPostulaciones />} />}  
                 {(rol=="voluntario")&&<Route path='/ver_postulaciones_colab' element={<VerPostulacionesColab/>} />}  
+
+                {(rol=="voluntario")&&<Route path='/entrega/p_representante' element={<P_Representante_E/>} />}  
+                {(rol=="voluntario")&&<Route path='/entrega/p_colaborador' element={<P_Colaborador_E/>} />}  
+
+                {(rol=="voluntario")&&<Route path='/entrega/ver_postulaciones' element={<VerPostulaciones_E />} />}  
+                {(rol=="voluntario")&&<Route path='/entrega/ver_postulaciones_colab' element={<VerPostulacionesColab_E/>} />}  
+        
                 
                  {(rol=="donante_natural" || rol=="encargado_donante" || rol=="donante")&&<Route path='/Agrega-donacion' element={<RealizarDonacion />} />}
                  {(rol=="donante_natural" || rol=="encargado_donante" || rol=="donante")&&<Route path='/Confirma-donacion' element={<ConfirmaDonacion />} />}                

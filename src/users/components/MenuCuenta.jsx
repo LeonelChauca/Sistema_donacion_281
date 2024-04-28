@@ -81,7 +81,7 @@ export default function MenuCuenta() {
         localStorage.clear();
         navigate('/');
     }
-    
+
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -89,7 +89,7 @@ export default function MenuCuenta() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    
+
     function animacion() {
 
         const elemento = document.querySelector('.' + style.rol)
@@ -112,13 +112,13 @@ export default function MenuCuenta() {
         <>
             <p className={style.rol}>{rolesMessages[rol] || rol}</p>
 
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', cursor:'pointer' }} 
-            onClick={handleClick}
+            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', cursor: 'pointer' }}
+                onClick={handleClick}
             >
                 <Typography>{user}</Typography>
                 <Tooltip title="Configuraciones">
                     <IconButton
-                        
+
                         size="small"
                         sx={{ ml: 0 }}
                         aria-controls={open ? 'account-menu' : undefined}
@@ -164,16 +164,15 @@ export default function MenuCuenta() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem onClick={handleClose} >
-                    <Avatar /> Perfil
+                <MenuItem  style={{width:'50%'}}  onClick={handleClose}>
+                    <Avatar  /> Perfil                     
                 </MenuItem>
-                <MenuItem onClick={handleClose} >
-                <ListItemIcon>
-                <CloseFullscreenIcon/>
-                    </ListItemIcon>
-                    
-                  Cerrar
-                </MenuItem>
+                <MenuItem style={{position:'absolute' , width:'50%', top:'10px', right:0}} onClick={handleClose} >
+                        <ListItemIcon>
+                            <CloseFullscreenIcon />
+                        </ListItemIcon>
+                        Cerrar
+                     </MenuItem>
                 <Divider />
                 {
                     rol == "admin" && <MenuItem onClick={handleClose}>
@@ -209,18 +208,28 @@ export default function MenuCuenta() {
 function Voluntario({ handleClose }) {
 
     const listaItemsPostulantes = [
-        { 'url': '/p_representante', 'nombreItem': 'Representante', 'icon':<AdminPanelSettingsIcon fontSize="small" />  },
-        { 'url': '/p_colaborador', 'nombreItem': 'Colaborador', 'icon': <PeopleAltIcon fontSize="small" /> },
-        { 'url': '/p_entregar', 'nombreItem': 'Entregar', 'icon': <LocalShippingIcon fontSize="small" /> }
+        { 'url': '/p_representante', 'nombreItem': 'Representante', 'icon': <AdminPanelSettingsIcon fontSize="small" /> },
+        { 'url': '/p_colaborador', 'nombreItem': 'Colaborador', 'icon': <PeopleAltIcon fontSize="small" /> }
     ]
     const listaVerPostulantes = [
         { 'url': '/ver_postulaciones', 'nombreItem': 'Responsable', 'icon': <BallotIcon fontSize="small" /> },
         { 'url': '/ver_postulaciones_colab', 'nombreItem': 'Colaborador', 'icon': <FormatListNumberedIcon fontSize="small" /> },
     ]
+    const listaItemEntrega = [
+        { 'url': '/entrega/p_representante', 'nombreItem': 'Responsable', 'icon': <BallotIcon fontSize="small" /> },
+        { 'url': '/entrega/p_colaborador', 'nombreItem': 'Colaborador', 'icon': <FormatListNumberedIcon fontSize="small" /> },
+    ]
+
+    const listaVerPostulantesEntrega = [
+        { 'url': '/entrega/ver_postulaciones', 'nombreItem': 'Responsable', 'icon': <BallotIcon fontSize="small" /> },
+        { 'url': '/entrega/ver_postulaciones_colab', 'nombreItem': 'Colaborador', 'icon': <FormatListNumberedIcon fontSize="small" /> },
+    ]
     return (
         <>
-            <ListaItemsMenu titulo="Postular"  icono={<FolderSharedIcon fontSize="small" />} handleClose={handleClose} listaElementos={[...listaItemsPostulantes]} />
-            <ListaItemsMenu titulo="Ver Postulaciones" icono={<FactCheckIcon/>} handleClose={handleClose} listaElementos={[...listaVerPostulantes]} />
+            <ListaItemsMenu titulo="Postular a Donacion" icono={<FolderSharedIcon fontSize="small" />} handleClose={handleClose} listaElementos={[...listaItemsPostulantes]} />
+            <ListaItemsMenu titulo="Ver Post. Donacion" icono={<FactCheckIcon />} handleClose={handleClose} listaElementos={[...listaVerPostulantes]} />
+            <ListaItemsMenu titulo="Postular a Entrega" icono={<LocalShippingIcon fontSize="small" />} handleClose={handleClose} listaElementos={[...listaItemEntrega]} />
+            <ListaItemsMenu titulo="Ver Post. Entrega" icono={<FactCheckIcon />} handleClose={handleClose} listaElementos={[...listaVerPostulantesEntrega]} />
         </>
     )
 }
@@ -235,8 +244,8 @@ function Receptor({ handleClose }) {
     ]
     return (
         <>
-            <ListaItemsMenu titulo="Receptor"  icono={<CallReceivedIcon/>} handleClose={handleClose} listaElementos={[...listaItemsReceptor]} />
-            <ListaItemsMenu titulo="Ver Donaciones" icono={<RemoveRedEyeIcon/>} handleClose={handleClose}  listaElementos={[...listaVerDonaciones]} />
+            <ListaItemsMenu titulo="Receptor" icono={<CallReceivedIcon />} handleClose={handleClose} listaElementos={[...listaItemsReceptor]} />
+            <ListaItemsMenu titulo="Ver Donaciones" icono={<RemoveRedEyeIcon />} handleClose={handleClose} listaElementos={[...listaVerDonaciones]} />
         </>
     )
 }
@@ -249,7 +258,7 @@ function Donante({ handleClose }) {
     ]
     return (
         <>
-            <ListaItemsMenu titulo="Donacion" icono={<VolunteerActivismIcon/>} handleClose={handleClose} listaElementos={[...listaItemsDonacion]} />
+            <ListaItemsMenu titulo="Donacion" icono={<VolunteerActivismIcon />} handleClose={handleClose} listaElementos={[...listaItemsDonacion]} />
         </>
     )
 }
@@ -258,7 +267,7 @@ function Donante({ handleClose }) {
 
 
 
-function ListaItemsMenu({ titulo, listaElementos, handleClose , icono}) {
+function ListaItemsMenu({ titulo, listaElementos, handleClose, icono }) {
     const [open, setOpen] = React.useState(false);
     const navigate = useNavigate();
     const handleClick = () => {
@@ -269,7 +278,7 @@ function ListaItemsMenu({ titulo, listaElementos, handleClose , icono}) {
         <>
             <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
-                    {icono||<Settings fontSize="small" />}
+                    {icono || <Settings fontSize="small" />}
                 </ListItemIcon>
                 <ListItemText primary={titulo} />
                 {open ? <ExpandLess /> : <ExpandMore />}

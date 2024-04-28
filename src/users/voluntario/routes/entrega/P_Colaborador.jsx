@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { useStore } from "../../../controllers/Auth.js"
+import { useStore } from "../../../../controllers/Auth.js"
+import axios from 'axios';
+import style from "../../css/postulacion.module.css"
 
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -9,92 +11,71 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-
-
 import Button from '@mui/material/Button';
 
-import style from "../css/postulacion.module.css"
 
-import axios from 'axios';
-import { AlertaConfirmacionDonacion, masInfo,envPostulacion } from "../js/Alertas.js";
-import setScrollTop from "../../../controllers/setPostScroll.js";
+import { AlertaConfirmacionColaboracior, AlertaErrorColaboracior } from "../../js/Alertas.js"
+import setScrollTop from "../../../../controllers/setPostScroll.js";
 
-export default function P_Entregar() {
-
+export default function P_Colaborador() {
   const [disponibles, setDisponibles] = useState({ indice: [], data: [] });
   const token = useStore((state) => state.token);
   const id_user = useStore((state) => state.id_user);
 
-  const postular = (donacion) => {
-    envPostulacion().then((numero)=>{
-      if(numero){
-        axios.post('https://proyecto-281-production.up.railway.app/api/donation/postularResponsableDonacion', {
-          id_donacion: donacion,
-          id_user,
-          cantidad:numero,
-          }, {
-            headers: {
-              'x-token': token
-            }
-          })
-          .then((response) => {
-            console.log(response);
-            AlertaConfirmacionDonacion();
-            getDonaciones();
-          })
-          .catch((error)=>{
-            console.log(error);
-          })
-      }
-    })
-    
-  }
-
   const getDonaciones = () => {
-    axios.get('https://proyecto-281-production.up.railway.app/api/donation/postularResponsableDelivery', {
+    axios.get('https://proyecto-281-production.up.railway.app/api/delivery/getPostulacionColaborador', {
       headers: {
         "x-token": token,
         "id_user": id_user
       }
     }
     ).then((response) => {
-      console.log(response);
-      setDisponibles({ indice: ["id_donacion", "fecha_d", "nombre_donante","ap_paterno_donante"], data: response.data.donaciones });
+      console.log(response.data.body.postulaciones);
+      //setDisponibles({ indice: ["id_donacion", "cantidad", "nombre", "ap_paterno"], data: response.data.don });
     })
   }
 
-  const masInfoDonacion = (id_donacion) => {
-    axios.get('https://proyecto-281-production.up.railway.app/api/donation/getDetalleDonacion', {
-      headers: {
-        "x-token": token,
-        "id_donacion":id_donacion
-      }
-    }
-    ).then((response) => {
-      console.log(response.data.body);
-      masInfo(response.data.body); 
-      //setDisponibles({ indice: ["id_donacion", "fecha_d", "userD"], data: response.data.donaciones });
-    })
+  const postularColaborador = (donacion) => {
+    axios.post('https://proyecto-281-production.up.railway.app/api/donation/postularColaboradorDonacion', {
+      "id_user":parseInt(id_user),   
+      "id_donacion": parseInt(donacion)      
+      }, {
+        headers: {
+          'x-token': token
+        }
+      })
+      .then((response) => {
+        if(response.data.ok){
+          AlertaConfirmacionColaboracior();
+          getDonaciones();  
+        }else {
+          AlertaErrorColaboracior(); 
+        }
+      })
+      .catch((error)=>{
+        console.log(error);
+        AlertaErrorColaboracior(); 
+      })
   }
-
 
   useEffect(() => {
     setScrollTop(0);   
     getDonaciones();
-  }, [])
+  }, []);
 
   return (
     <>
-      <br />
-      <h2>Postulacion  para la entregacion</h2>
-      <h4>Informacion de las donaciones </h4>
-      <br/>
-      <StickyHeadTable dataTabla={disponibles} setDataTabla={setDisponibles} postular={postular}  masInfoDonacion={masInfoDonacion}/>
+      <br></br>
+      <h2>Postulacion a colaborador de las entregas</h2>
+      <StickyHeadTable setDataTabla={setDisponibles} dataTabla={disponibles} thead={["id_donacion", "Cantidad", "Nombre", "Parterno"]} postularColaborador={postularColaborador} />
     </>
   )
+
 }
 
-function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) {
+
+
+function StickyHeadTable({ setDataTabla, dataTabla, thead = ["id"], postularColaborador }) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -107,9 +88,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
     setPage(0);
   };
 
-  function esVector(valor) {
-    return Array.isArray(valor);
-  }
+
   useEffect(() => {
     console.log(dataTabla)
   }, [])
@@ -121,18 +100,15 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
           <TableHead>
             <TableRow>
 
-              
-            {
-                ["id_donacion", "Fecha",[2,"Nombre del donante"]].map((elemento, i) =>{
-                  
-                  return <TableCell
+              {
+                thead.map((elemento, i) =>
+                  <TableCell
                     key={i}
                     align={"left"}
-                    style={{ minWidth: 80, fontWeight: 'bold' }}                    
-                    colSpan={esVector(elemento)?2:1}
+                    style={{ minWidth: 80, fontWeight: 'bold' }}
                   >
-                    {esVector(elemento)?elemento[1]:elemento}
-                  </TableCell>}
+                    {elemento}
+                  </TableCell>
                 )
               }
               <TableCell
@@ -144,8 +120,8 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
             </TableRow>
           </TableHead>
           <TableBody>
-            {
-              dataTabla?.data
+            {              
+              dataTabla?.data.length>0&&dataTabla?.data
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((fila, i) => {
                   return (
@@ -161,22 +137,17 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
                       <TableCell align={"center"} className={style.acciones} style={{ minWidth: 80 }}>
                         <Button variant="contained" onClick={(e) => {
                           console.log(fila['id_donacion']);
-                          postular(fila['id_donacion']);
+                          postularColaborador(fila['id_donacion']);
                         }}
                           style={{ background: "green", borderRadius: "8px", textTransform: "none" }}>
                           Postular
-                        </Button>
-                        <Button variant="contained" onClick={(e) => {
-                          masInfoDonacion(fila['id_donacion']); 
-                        }}
-                          style={{ marginLeft:5, background: "blue", borderRadius: "8px", textTransform: "none" }}>
-                          Ver
                         </Button>
                       </TableCell>
                     </TableRow>
                   );
                 })
-            }
+              }
+            
           </TableBody>
         </Table>
       </TableContainer>

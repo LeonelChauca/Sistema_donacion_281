@@ -16,6 +16,8 @@ import { useForm } from "react-hook-form";
 import dayjs from 'dayjs'
 import Alert from '@mui/material/Alert';
 
+import setScrollTop from "../../../controllers/setPostScroll.js";
+
 import Axios from "axios";
 
 
@@ -50,6 +52,10 @@ export const ConfirmaDonacion = () => {
             errorFConfirmacion();
         }
     }
+
+    useEffect(()=>{
+        setScrollTop(0); 
+    },[])
     return (
         <div className={style.containerMain}>
             <h2>Confirma Donacion</h2>
