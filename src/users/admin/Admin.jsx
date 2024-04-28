@@ -20,6 +20,7 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 
 import { ResponsableDonacion } from "./routes/Responsable-donacion/ResponsableDonacion.jsx";
+import { ResponsableEntrega } from "./routes/Responsable-entrega/ResponsableEntrega.jsx";
 
 export default function Admin() {
     const [closeNav, setCloseNav] = useState(true);
@@ -45,6 +46,9 @@ export default function Admin() {
                 <MenuItem texto="Usuarios pendientes " url="/usuarios-pendiente" >
                     <PeopleAltIcon />
                 </MenuItem>
+                <MenuItem texto="Responsable Entrega " url="/Responsable-entrega" >
+                    <ViewListRoundedIcon />
+                </MenuItem>
             </NavAdm>
             <Main closeNav={closeNav} >
                 <Routes>
@@ -53,6 +57,7 @@ export default function Admin() {
                     <Route path="/productos" element={<Productos />} />
                     <Route path='/Usuarios-pendiente' element={<UserPendiente />} />
                     <Route path='/Responsable-donacion' element={<ResponsableDonacion />} />
+                    <Route path='/Responsable-entrega' element={<ResponsableEntrega />} />
                     <Route path='/*' element={<NotFound />} />
                 </Routes>
             </Main>

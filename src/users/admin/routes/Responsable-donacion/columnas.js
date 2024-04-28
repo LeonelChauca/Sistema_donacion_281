@@ -35,4 +35,31 @@ export const createDataRD=[
       minWidth: 250,
       align: 'center',
     },
- ] 
+ ]
+ export const createDataSD=[
+  {
+    id: 'Accion',
+    label: 'Acciones',
+    minWidth: 350,
+    align: 'center',
+  },
+  {
+    id: 'id_user',
+    label: 'id Usuario',
+    minWidth: 170,
+    align: 'center',
+  },
+  {
+    id: 'id_solicitud',
+    label: 'id Solicitud',
+    minWidth: 170,
+    align: 'center',
+  },
+  {
+    id: 'fecha_solicitud',
+    label: 'fecha de solicitud',
+    minWidth: 170,
+    align: 'center',
+  },
+]  
+
