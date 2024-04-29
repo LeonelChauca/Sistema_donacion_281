@@ -136,7 +136,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, setDataTablaPendientes, data
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 15]}
+        rowsPerPageOptions={[5]}
         component="div"
         count={dataTabla?.data.length}
         rowsPerPage={rowsPerPage}

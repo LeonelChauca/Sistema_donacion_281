@@ -67,7 +67,6 @@ const Navbar = () => {
         return ()=>{
             window.removeEventListener('scroll', animacion)
             window.removeEventListener("resize", togleNav);
-
         }
     },[])
     return (<>
