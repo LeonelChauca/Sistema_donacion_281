@@ -21,6 +21,7 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 import { ResponsableDonacion } from "./routes/Responsable-donacion/ResponsableDonacion.jsx";
 import { ResponsableEntrega } from "./routes/Responsable-entrega/ResponsableEntrega.jsx";
+import { SresponsableEntrega } from "./routes/Responsable-entrega/SresponsableEntrega.jsx";
 
 export default function Admin() {
     const [closeNav, setCloseNav] = useState(true);
@@ -37,6 +38,9 @@ export default function Admin() {
                 <MenuItem texto="Responsable donacion" url="/Responsable-donacion" >
                     <ViewListRoundedIcon />
                 </MenuItem>
+                <MenuItem texto="Responsable Entrega" url="/Responsable-entrega" >
+                    <ViewListRoundedIcon />
+                </MenuItem>
                 <MenuItem texto="Dinero" url="/productos" >
                     <MonetizationOnIcon />
                 </MenuItem>
@@ -46,7 +50,7 @@ export default function Admin() {
                 <MenuItem texto="Usuarios pendientes " url="/usuarios-pendiente" >
                     <PeopleAltIcon />
                 </MenuItem>
-                <MenuItem texto="Responsable Entrega " url="/Responsable-entrega" >
+                <MenuItem texto="Solicitud receptor " url="/Solicitud-entrega" >
                     <ViewListRoundedIcon />
                 </MenuItem>
             </NavAdm>
@@ -57,7 +61,8 @@ export default function Admin() {
                     <Route path="/productos" element={<Productos />} />
                     <Route path='/Usuarios-pendiente' element={<UserPendiente />} />
                     <Route path='/Responsable-donacion' element={<ResponsableDonacion />} />
-                    <Route path='/Responsable-entrega' element={<ResponsableEntrega />} />
+                    <Route path='/Solicitud-entrega' element={<ResponsableEntrega />} />
+                    <Route path='/Responsable-entrega' element={<SresponsableEntrega />} />
                     <Route path='/*' element={<NotFound />} />
                 </Routes>
             </Main>

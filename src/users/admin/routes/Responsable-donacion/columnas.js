@@ -40,7 +40,7 @@ export const createDataRD=[
   {
     id: 'Accion',
     label: 'Acciones',
-    minWidth: 350,
+    minWidth: 550,
     align: 'center',
   },
   {

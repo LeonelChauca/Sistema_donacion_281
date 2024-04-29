@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Paper from '@mui/material/Paper';
 import { BotonesRd } from './BotonesRd';
-export const TableRD = ({columns,rows,idDon,setAct,Act}) => {
+export const TableRD = ({columns,rows,idDon,setAct,Act,ruta}) => {
 
   return (
     <TableContainer component={Paper}>
@@ -33,7 +33,7 @@ export const TableRD = ({columns,rows,idDon,setAct,Act}) => {
                         const value = row[column.id];
                         return (
                             <TableCell key={column.id} align={column.align}>{
-                                column.id=="Accion" ? <BotonesRd idUser={row.id_user} idDon={idDon} setAct={setAct} Act={Act}/> : value
+                                column.id=="Accion" ? <BotonesRd idUser={row.id_user} idDon={idDon} setAct={setAct} Act={Act} ruta={ruta}/> : value
                             }
                             </TableCell>
                         );

@@ -44,8 +44,7 @@ export const CreatePersona = () => {
         })
         .finally(()=>{
             setLoading(false);
-        })
-        
+        }) 
       }
   return (
     <div  className={"animate__animated animate__backInLeft "+style.containerMain}>

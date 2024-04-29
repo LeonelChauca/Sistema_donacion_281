@@ -5,14 +5,15 @@ import {AlertaErrorEncargado,ConfirmacionOkEncargado} from '../../js/swetAlertAd
 import Axios from 'axios';
 
 
-export const BotonesRd = ({idUser,idDon,setAct,Act}) => {
+export const BotonesRd = ({idUser,idDon,setAct,Act,ruta}) => {
     const token=useStore((state)=>state.token);
     const data={
         'id_user':idUser,
         'id_donacion':idDon,
+        'id_solicitud':idDon,
     }
     const Accion=()=>{
-        Axios.post('https://proyecto-281-production.up.railway.app/api/donation/confirmarResponsableDonacion',data,{
+        Axios.post(ruta,data,{
             headers:{
                 'x-token':token,
             }
