@@ -23,22 +23,23 @@ export default function P_Colaborador() {
   const id_user = useStore((state) => state.id_user);
 
   const getDonaciones = () => {
-    axios.get('https://proyecto-281-production.up.railway.app/api/delivery/getPostulacionColaborador', {
+    axios.get('https://proyecto-281-production.up.railway.app/api/delivery/getSolicitudColaborador', {
       headers: {
         "x-token": token,
         "id_user": id_user
       }
     }
     ).then((response) => {
-      console.log(response.data.body.postulaciones);
+      //console.log(response.data.body.postulaciones);
+      console.log(response);
       //setDisponibles({ indice: ["id_donacion", "cantidad", "nombre", "ap_paterno"], data: response.data.don });
     })
   }
 
-  const postularColaborador = (donacion) => {
-    axios.post('https://proyecto-281-production.up.railway.app/api/donation/postularColaboradorDonacion', {
+  const postularColaborador = (id_solicitud) => {
+    axios.post('https://proyecto-281-production.up.railway.app/api/delivery/postularColaboradorSolicitud', {
       "id_user":parseInt(id_user),   
-      "id_donacion": parseInt(donacion)      
+      "id_solicitud": parseInt(id_solicitud)      
       }, {
         headers: {
           'x-token': token
@@ -66,8 +67,8 @@ export default function P_Colaborador() {
   return (
     <>
       <br></br>
-      <h2>Postulacion a colaborador de las entregas</h2>
-      <StickyHeadTable setDataTabla={setDisponibles} dataTabla={disponibles} thead={["id_donacion", "Cantidad", "Nombre", "Parterno"]} postularColaborador={postularColaborador} />
+      <h2>Postulacion a <u>colaborador</u> de las entregas</h2>
+      <StickyHeadTable setDataTabla={setDisponibles} dataTabla={disponibles} thead={["id_solicitud", "Cantidad", "Nombre", "Parterno"]} postularColaborador={postularColaborador} />
     </>
   )
 
@@ -125,7 +126,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, thead = ["id"], postularCola
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((fila, i) => {
                   return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_donacion}>
+                    <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_solicitud}>
                       {dataTabla.indice.map((index, p) => {
                         return (
                           <TableCell key={fila[index]} align={"left"} style={{ minWidth: 5 }}>
@@ -136,8 +137,8 @@ function StickyHeadTable({ setDataTabla, dataTabla, thead = ["id"], postularCola
 
                       <TableCell align={"center"} className={style.acciones} style={{ minWidth: 80 }}>
                         <Button variant="contained" onClick={(e) => {
-                          console.log(fila['id_donacion']);
-                          postularColaborador(fila['id_donacion']);
+                          console.log(fila['id_solicitud']);
+                          postularColaborador(fila['id_solicitud']);
                         }}
                           style={{ background: "green", borderRadius: "8px", textTransform: "none" }}>
                           Postular

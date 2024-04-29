@@ -89,7 +89,7 @@ export default function P_Representante() {
     <>
       <br />
       <h2>Postulacion a Representante de las entregas</h2>
-      <h4>Informacion de las donaciones </h4>
+      <h4>Informacion de las solicitures  </h4>
       <br/>
       <StickyHeadTable dataTabla={disponibles} setDataTabla={setDisponibles} postular={postular}  masInfoDonacion={masInfoDonacion}/>
     </>
@@ -151,10 +151,11 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((fila, i) => {
                   return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_solicitud+parseInt(Math.random()*1000)}>
+                    <TableRow hover role="checkbox" tabIndex={-1} key={fila['id_solicitud']||""+parseInt(Math.random()*1000)}>
+                      
                       {dataTabla.indice.map((index, p) => {
                         return (
-                          <TableCell key={fila[index]} align={"left"} style={{ minWidth: 5 }}>
+                          <TableCell key={fila[index]+parseInt(Math.random()*1000)} align={"left"} style={{ minWidth: 5 }}>
                             {fila[index]}
                           </TableCell>
                         );
@@ -162,7 +163,6 @@ function StickyHeadTable({ setDataTabla, dataTabla, postular ,masInfoDonacion}) 
 
                       <TableCell align={"center"} className={style.acciones} style={{ minWidth: 80 }}>
                         <Button variant="contained" onClick={(e) => {
-                          console.log(fila['id_solicitud']);
                           postular(fila['id_solicitud']);
                         }}
                           style={{ background: "green", borderRadius: "8px", textTransform: "none" }}>
