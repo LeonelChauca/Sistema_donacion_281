@@ -69,7 +69,6 @@ export default function VerEstado() {
             setDatosAlimentos({ indice: ["id_alimento", "nombre_a", "cantidad_a", "medida_unitaria_a"], data: [...response.data.alimentos] });
             setDatosDinero({ indice: ["id_dinero", "monto", "cambio"], data: [...response.data.dineros] });
             setDatosProductos({ indice: ["id_producto", "nombre_p", "tipo_p", "cantidad_p"], data: [...response.data.productos] });
-
         })
     }
 
@@ -100,7 +99,7 @@ export default function VerEstado() {
                                 <FormControlLabel value="Alimento" control={<Radio />} label="Alimento" type="select" />
                             </RadioGroup>
                         </FormControl>
-                        {groupRadio == "Producto" && <StickyHeadTable setDataTabla={setDatosProductos} dataTabla={datosProductos} setDataTablaPendientes={setDatosPendientes} dataTablaPendientes={datosPendientes} thead={["id", "Nombre", "Cantidad", "Medida"]} />}
+                        {groupRadio == "Producto" && <StickyHeadTable setDataTabla={setDatosProductos} dataTabla={datosProductos} setDataTablaPendientes={setDatosPendientes} dataTablaPendientes={datosPendientes} thead={["id", "Nombre", "Tipo", "Catidad"]} />}
                         {groupRadio == "Dinero" && <StickyHeadTable setDataTabla={setDatosDinero} dataTabla={datosDinero} setDataTablaPendientes={setDatosPendientes} dataTablaPendientes={datosPendientes} thead={["id", "Monto", "Cambio"]} />}
                         {groupRadio == "Alimento" && <StickyHeadTable setDataTabla={setDatosAlimentos} dataTabla={datosAlimentos} setDataTablaPendientes={setDatosPendientes} dataTablaPendientes={datosPendientes} thead={["id", "Nombre", "Cantidad", "Medida"]} />}
                     </div>
@@ -162,10 +161,10 @@ function StickyHeadTable({ setDataTabla, dataTabla, thead, setDataTablaPendiente
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((fila, i) => {
                                     return (
-                                        <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_donacion+parseInt(Math.random()*100)}>
+                                        <TableRow hover role="checkbox" tabIndex={-1} key={fila[dataTabla.indice[0]]||""+parseInt(Math.random()*100)}>
                                             {dataTabla.indice.map((index, p) => {
                                                 return (
-                                                    <TableCell key={fila[index]} align={"left"} style={{ minWidth: 5 }}>
+                                                    <TableCell key={fila[index]+parseInt(Math.random()*100)} align={"left"} style={{ minWidth: 5 }}>
                                                         {fila[index]}
                                                     </TableCell>
                                                 );
@@ -174,13 +173,13 @@ function StickyHeadTable({ setDataTabla, dataTabla, thead, setDataTablaPendiente
                                             <TableCell align={"center"} className={style.acciones} style={{ minWidth: 80 }}>
                                                 {
                                                     fila['estado'] ? <Button variant="contained" onClick={(e) => {
-                                                        console.log(fila['id_donacion']);
+                                                        //console.log(fila['id_donacion']);
                                                     }}
                                                         style={{ background: "green", borderRadius: "8px", textTransform: "none" }}>
                                                         Habilitado
                                                     </Button> :
                                                         <Button variant="contained" onClick={(e) => {
-                                                            console.log(fila['id_donacion']);
+                                                            //console.log(fila['id_donacion']);
                                                         }}
                                                             style={{ background: "blue", borderRadius: "8px", textTransform: "none" }}>
                                                             Disponible
