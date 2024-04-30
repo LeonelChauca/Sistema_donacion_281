@@ -23,7 +23,7 @@ export default function Perfil (){
     }
 
     useEffect(()=>{
-        GetInfoPerfil(); 
+       // GetInfoPerfil(); 
     },[]); 
     return (
 
