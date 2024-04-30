@@ -42,10 +42,6 @@ export default function NavAdm({children, closeNav, setCloseNav }) {
 
             <div className={style.menu_bar}>
                 <div className={style.menu}>
-                    <li className={style.search_box}>
-                        <i className={style.icon}></i>
-                        <input type="text" placeholder="Buscar..." />
-                    </li>
                   {
                     children
                   }

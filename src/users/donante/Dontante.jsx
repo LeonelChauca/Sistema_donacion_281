@@ -40,6 +40,18 @@ export const ProductProvider = ({ children }) => {
 
         }));
       };
+
+      const eliminarTodosLosDatos = () => {
+        setProductos({
+          id_user: null,
+          dinero: [],
+          alimento: [],
+          producto: [],
+          fecha_d: null,
+          fecha_solicitud: null
+        });
+      };
+      
       const agregarDinero = nuevoDinero => {
 
         //Productos.dinero.map((valor)=>{
@@ -118,7 +130,7 @@ export const ProductProvider = ({ children }) => {
         add(Productos.producto,nuevoProducto,"nombre_p","cantidad_p","producto");
       };
     return (
-      <ProductContext.Provider value={{ Productos,actualizarId,actualizarFecha,agregarAlimento,agregarDinero,agregarProducto,actualizarFechaS }}>
+      <ProductContext.Provider value={{ Productos,actualizarId,actualizarFecha,agregarAlimento,agregarDinero,agregarProducto,actualizarFechaS,eliminarTodosLosDatos }}>
         {children}
       </ProductContext.Provider>
     );

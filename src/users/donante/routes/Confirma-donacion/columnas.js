@@ -1,5 +1,5 @@
 export const createDataAlimento=[
-    { id: 'Accion', label: 'Accion', minWidth: 170, align: 'center' },
+  
     {
       id: 'nombre_a',
       label: 'Nombre de Alimento',
@@ -27,7 +27,6 @@ export const createDataAlimento=[
  ] 
 
  export const createDataDinero=[
-  { id: 'Accion', label: 'Accion', minWidth: 170, align: 'center' },
   {
     id: 'monto',
     label: 'Monto de dinero',
@@ -43,7 +42,6 @@ export const createDataAlimento=[
 ] 
 
 export const createDataProducto=[
-  { id: 'Accion', label: 'Accion', minWidth: 170, align: 'center' },
   {
     id: 'nombre_p',
     label: 'Nombre de Producto',
