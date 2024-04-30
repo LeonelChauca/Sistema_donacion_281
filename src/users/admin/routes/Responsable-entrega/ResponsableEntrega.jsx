@@ -65,13 +65,13 @@ export const ResponsableEntrega = () => {
             }
         })
         .then((response)=>{
-            console.log(response);
+            console.log(response.data.solicitudes);
             setData([...response.data.solicitudes]);
         })
     }, [Act])
   return (
     <div className={style.containerMain}>
-        <h2>Solicitude de donacion pendientes</h2>
+        <h2>Solicitud de donacion pendientes</h2>
         <div className={style.containerVista}>
             {
                 data.length===0 ? <Alert severity='info'>No existen solicitudes pendientes</Alert> :
@@ -102,7 +102,11 @@ export const ResponsableEntrega = () => {
                                 return (
                                     <TableCell key={column.id} align={column.align}>
                                     {column.id=="Accion"
-                                        ? <div><Button variant="contained" onClick={(()=>aceptarSoli(row.id_solicitud))}>Aceptar Solicitud</Button> <Button variant="contained" color='success' onClick={()=>verCuentas(row.id_solicitud)}  >Ver Productos</Button></div>
+                                        ? <div  style={{display:'flex', gap:3}}>
+                                            <Button variant="contained" onClick={(()=>aceptarSoli(row.id_solicitud))}>Aceptar Solicitud
+                                            </Button> 
+                                            <Button variant="contained" color='success' onClick={()=>verCuentas(row.id_solicitud)}  >Ver Productos
+                                            </Button></div>
                                         : value}
                                     </TableCell>
                                 );

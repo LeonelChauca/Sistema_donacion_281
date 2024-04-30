@@ -40,12 +40,24 @@ export const createDataRD=[
   {
     id: 'Accion',
     label: 'Acciones',
-    minWidth: 550,
+    minWidth: 100,
     align: 'center',
   },
   {
-    id: 'id_user',
-    label: 'id Usuario',
+    id: 'id_usuario',
+    label: 'id User',
+    minWidth: 170,
+    align: 'center',
+  },
+  {
+    id: 'nombre',
+    label: 'Nombre',
+    minWidth: 170,
+    align: 'center',
+  },
+  {
+    id: 'ap_paterno',
+    label: 'Paterno',
     minWidth: 170,
     align: 'center',
   },
@@ -54,12 +66,7 @@ export const createDataRD=[
     label: 'id Solicitud',
     minWidth: 170,
     align: 'center',
-  },
-  {
-    id: 'fecha_solicitud',
-    label: 'fecha de solicitud',
-    minWidth: 170,
-    align: 'center',
-  },
+  }
+ 
 ]  
 

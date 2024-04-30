@@ -39,7 +39,7 @@ export default function Usuarios() {
             headers: {
                 'x-token': token
             }
-        })
+         })
             .then((response) => {
                 console.log(response.data);
                 if (response.status === 200) {
@@ -135,13 +135,17 @@ function StickyHeadTable({ setDataTabla, dataTabla }) {
                               </TableCell>
                                 )
                             }
-                             <TableCell
+                             {
+                                /*
+                                <TableCell
                                         
                                         align={"center"}
                                         style={{ minWidth: 80 , fontWeight: 'bold'}}
                                     >
                                         Acciones
                               </TableCell>
+                               */
+                             }
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -151,7 +155,7 @@ function StickyHeadTable({ setDataTabla, dataTabla }) {
                             .map((fila, i ) => {
                                 return (
                                     <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_user}>
-                                        {dataTabla.indice.map((index, p) => {                                            
+                                        {dataTabla.indice.slice(0, 5 + 1).map((index, p) => {                                            
                                             return (
                                                 <TableCell key={p} align={"left"} style={{ minWidth:5 }}>
                                                     {fila[index]}
@@ -159,10 +163,16 @@ function StickyHeadTable({ setDataTabla, dataTabla }) {
                                             );
                                         })}
 
+                                        {
+
+                                            /*
+                                            
                                          <TableCell align={"center"} className={style.acciones} style={{ minWidth: 80 }}>
-                                         <IconButton>
+                                        
+                                        <IconButton>
                                             <EditIcon />
-                                         </IconButton>
+                                         </IconButton> 
+                                        
                                          <IconButton onClick={
                                             (e) => 
                                             ConfirmacionEliminarUser("Eliminar a",fila['nombre'],EliminarUser,fila) 
@@ -171,6 +181,8 @@ function StickyHeadTable({ setDataTabla, dataTabla }) {
                                             <DeleteIcon />
                                          </IconButton>                                         
                                           </TableCell>
+                                            */
+                                        }
                                     </TableRow>
                                 );
                             })}
@@ -178,7 +190,7 @@ function StickyHeadTable({ setDataTabla, dataTabla }) {
                 </Table>
             </TableContainer>
             <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
+                rowsPerPageOptions={[5,10]}
                 component="div"
                 count={dataTabla?.data.length}
                 rowsPerPage={rowsPerPage}
