@@ -22,19 +22,18 @@ export const ConfirmarSolDonacion = () => {
   const { Productos,actualizarId,actualizarFechaS,eliminarTodosLosDatos} = useContext(ProductContext);
   const idUser=useStore((state)=>state.id_user);
     useEffect(() => {
-        actualizarId(idUser);
         console.log(Productos);
     }, [])
     
     
     const [loading, setloading] = useState(false);
-    const token=useStore((state)=>state.token);
     const formatoFecha=(date)=>{
         if(!date){ return ""}
         return date.format("YYYY-MM-DD");
     }
     const onsubmit=(event)=>{
       event.preventDefault();
+      actualizarId(localStorage.getItem('id_user'));
       const fechaSeleccionada=Productos.fecha_solicitud;
       if(fechaSeleccionada && dayjs(fechaSeleccionada).isAfter(today) || dayjs(fechaSeleccionada).isSame(today, 'day')){
         setloading(true);  
