@@ -31,7 +31,7 @@ export default function P_Colaborador() {
     }
     ).then((response) => {
       console.log(response.data.don);
-      setDisponibles({ indice: ["id_donacion", "cantidad", "nombre", "ap_paterno"], data: response.data.don });
+      setDisponibles({ indice: ["id_donacion", "nombre", "ap_paterno"], data: response.data.don });
     })
   }
 
@@ -70,7 +70,7 @@ export default function P_Colaborador() {
       <h2>Postulacion a <u>Colaborador</u> a las donaciones</h2>
       <h3>Informacion  del los usuarios Representante a  donaciones  </h3>
       <br></br>
-      <StickyHeadTable setDataTabla={setDisponibles} dataTabla={disponibles} thead={["id_donacion", "Cantidad", "Nombre", "Parterno"]} postularColaborador={postularColaborador} />
+      <StickyHeadTable setDataTabla={setDisponibles} dataTabla={disponibles} thead={["id_donacion", "Nombre", "Paterno"]} postularColaborador={postularColaborador} />
     </>
   )
 
@@ -131,7 +131,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, thead = ["id"], postularCola
                     <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_donacion}>
                       {dataTabla.indice.map((index, p) => {
                         return (
-                          <TableCell key={fila[index]} align={"left"} style={{ minWidth: 5 }}>
+                          <TableCell key={fila[index]+parseInt(Math.random()*100)} align={"left"} style={{ minWidth: 5 }}>
                             {fila[index]}
                           </TableCell>
                         );

@@ -164,8 +164,8 @@ export default function MenuCuenta() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem  style={{width:'50%'}}  onClick={handleClose}>
-                    <Avatar  /> Perfil                     
+                <MenuItem  style={{width:'50%'}}  onClick={(e)=>{handleClose(e); navigate("/Perfil")}}>
+                    <Avatar /> Perfil                     
                 </MenuItem>
                 <MenuItem style={{position:'absolute' , width:'50%', top:'10px', right:0}} onClick={handleClose} >
                         <ListItemIcon>

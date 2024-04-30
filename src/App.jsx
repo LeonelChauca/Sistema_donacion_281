@@ -45,6 +45,7 @@ import VerPostulacionesColab from './users/voluntario/routes/VerPostulacionesCol
 import P_Entregar from './users/voluntario/routes/P_Entregar.jsx';
 import { SolicitarDonacion } from './users/receptor/routes/SolicitarDonacion.jsx';
 import { ConfirmarSolDonacion } from './users/receptor/routes/ConfirmarSolDonacion.jsx';
+import Perfil from './components/Perfil.jsx';
 
 
 function App() {
@@ -109,6 +110,9 @@ function App() {
                  {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/Menu2' element={<Receptor />} />}       
                  {(rol=="encargado_org_ben" || rol=="encargado_receptor" || rol=="receptor_natural")&&<Route path='/donaciones_disponibles' element={<DonacionesDisponibles />} />}       
 
+                {
+                  logged&&<Route path="/Perfil" element={<Perfil />} />
+                }
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/preguntas" element={<Preguntas />} />
