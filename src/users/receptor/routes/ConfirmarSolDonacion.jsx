@@ -21,6 +21,8 @@ export const ConfirmarSolDonacion = () => {
     const today = dayjs();
   const { Productos,actualizarId,actualizarFechaS,eliminarTodosLosDatos} = useContext(ProductContext);
   const idUser=useStore((state)=>state.id_user);
+  const token=useStore((state)=>state.token);
+
     useEffect(() => {
         console.log(Productos);
     }, [])

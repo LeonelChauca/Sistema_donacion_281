@@ -26,6 +26,7 @@ export const ConfirmaDonacion = () => {
     const { Productos,actualizarId,actualizarFecha,agregarDinero,agregarAlimento,agregarProducto,eliminarTodosLosDatos} = useContext(ProductContext);
     const [loading, setloading] = useState(false);
     const idUser=useStore((state)=>state.id_user);
+    const token=useStore((state)=>state.token);
     useEffect(() => {
         actualizarId(idUser);
         console.log(Productos);
