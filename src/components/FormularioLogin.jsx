@@ -147,11 +147,6 @@ const FormularioLogin = () => {
                 </Alert>}
                 
                 <div className={style.contText}>
-                    <div>
-                        <Link href="#" variant="body2">
-                        Se te olvido la contraseña
-                        </Link>
-                    </div>
                     <div >
                         <Link component={RouterLink}  to="/registro" variant="body2">
                         Crear una nueva cuenta

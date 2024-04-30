@@ -20,26 +20,25 @@ import Axios from "axios";
 export const ConfirmarSolDonacion = () => {
     const today = dayjs();
   const { Productos,actualizarId,actualizarFechaS,eliminarTodosLosDatos} = useContext(ProductContext);
-  const idUser=useStore((state)=>state.id_user);
-  const token=useStore((state)=>state.token);
-
-    useEffect(() => {
-        console.log(Productos);
-    }, [])
-    
-    
     const [loading, setloading] = useState(false);
+    const token=useStore((state)=>state.token);
     const formatoFecha=(date)=>{
         if(!date){ return ""}
         return date.format("YYYY-MM-DD");
     }
+
+    useEffect(() => {
+      console.log(Productos)
+    }, [Productos])
+    
     const onsubmit=(event)=>{
       event.preventDefault();
       actualizarId(localStorage.getItem('id_user'));
+
+      setloading(true);
       const fechaSeleccionada=Productos.fecha_solicitud;
       if(fechaSeleccionada && dayjs(fechaSeleccionada).isAfter(today) || dayjs(fechaSeleccionada).isSame(today, 'day')){
-        setloading(true);  
-        Axios.post('https://proyecto-281-production.up.railway.app/api/delivery/addSolicitud',Productos,{
+          Axios.post('https://proyecto-281-production.up.railway.app/api/delivery/addSolicitud',Productos,{
               headers:{
                   'x-token':token
               },
@@ -52,6 +51,7 @@ export const ConfirmarSolDonacion = () => {
           })
           .catch((res)=>{
             setloading(false); 
+            console.log(res)
         })
           .finally(() => {
               setloading(false); 
@@ -60,7 +60,6 @@ export const ConfirmarSolDonacion = () => {
       else{
           errorFConfirmacion();
           setloading(false); 
-    
       }
   }
 

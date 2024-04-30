@@ -24,26 +24,18 @@ import Axios from "axios";
 export const ConfirmaDonacion = () => {
     const today = dayjs();
     const { Productos,actualizarId,actualizarFecha,agregarDinero,agregarAlimento,agregarProducto,eliminarTodosLosDatos} = useContext(ProductContext);
+    const idUser=localStorage.getItem('id_user');
     const [loading, setloading] = useState(false);
-    const idUser=useStore((state)=>state.id_user);
-    const token=localStorage.getItem('token');
-    useEffect(() => {
-        actualizarId(idUser);
-        console.log(Productos);
-    }, [])
-    
-    
+    const token=useStore((state)=>state.token);
     const formatoFecha=(date)=>{
         return date.format("YYYY-MM-DD");
     }
     const onsubmit=(event)=>{
         event.preventDefault();
-        actualizarId(localStorage.getItem('id_user'));
-
+        actualizarId(idUser);
+        setloading(true);
         const fecha=Productos.fecha_d;
-
         if(fecha && dayjs(fecha).isAfter(today) || dayjs(fecha).isSame(today, 'day')){
-            setloading(true);
             Axios.post('https://proyecto-281-production.up.railway.app/api/donation/addDonation',Productos,{
                 headers:{
                     'x-token':token
@@ -64,9 +56,7 @@ export const ConfirmaDonacion = () => {
         }
         else{
             errorFConfirmacion();
-            setloading(false); 
         }
-
     }
     const limpiar=()=>{
         eliminarTodosLosDatos();
