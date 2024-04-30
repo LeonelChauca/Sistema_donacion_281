@@ -26,7 +26,7 @@ export const ConfirmaDonacion = () => {
     const { Productos,actualizarId,actualizarFecha,agregarDinero,agregarAlimento,agregarProducto,eliminarTodosLosDatos} = useContext(ProductContext);
     const [loading, setloading] = useState(false);
     const idUser=useStore((state)=>state.id_user);
-    const token=useStore((state)=>state.token);
+    const token=localStorage.getItem('token');
     useEffect(() => {
         actualizarId(idUser);
         console.log(Productos);
@@ -38,6 +38,8 @@ export const ConfirmaDonacion = () => {
     }
     const onsubmit=(event)=>{
         event.preventDefault();
+        actualizarId(localStorage.getItem('id_user'));
+
         const fecha=Productos.fecha_d;
 
         if(fecha && dayjs(fecha).isAfter(today) || dayjs(fecha).isSame(today, 'day')){
