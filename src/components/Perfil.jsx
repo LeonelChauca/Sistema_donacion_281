@@ -52,6 +52,6 @@ function MostraDatos({datos}) {
 
         <div><p> <span>Correo:  </span>{datos.correo} </p></div>
         <div><p> <span>Fecha: </span> {datos.fecha_nac} </p></div>
-        <div><p> <span></span> <center >{datos.tipo}</center> </p></div>
+        <div><p> <span></span> <center ><u>{datos.tipo}</u></center> </p></div>
     </>)
 }
