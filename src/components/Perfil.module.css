@@ -3,3 +3,23 @@
     padding: 12px;
     border-radius: 10px;
 }
+.lista_datos {
+    font-size: 1.09rem;
+    width: 200px;
+    margin: auto;
+}
+.lista_datos > div{
+    padding: 2px 5px;
+    border-bottom: 2px solid rgb(34, 32, 165) ;
+}
+.lista_datos > div:nth-child(7) >p  {
+     background: rgb(2, 69, 214,0.5);
+     
+     border-radius: 2px;
+}
+
+
+.lista_datos span{
+    font-weight: bold;
+
+}

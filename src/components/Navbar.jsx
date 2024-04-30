@@ -82,7 +82,7 @@ const Navbar = () => {
                 <img src="/icon.png" alt="Icono"></img>
                 </picture>
                 <h3>
-                Sis Donación
+                Dona Facil
                 </h3>
             </div>        
             <ul className={style.items}>
