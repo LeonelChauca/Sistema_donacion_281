@@ -20,7 +20,7 @@ import { useStore } from "../../controllers/Auth.js"
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    const [Productos, setProductos] = useState({id_user:useStore((state)=>state.id_user),dinero:[],alimento:[],producto:[]});
+    const [Productos, setProductos] = useState({id_user:'',dinero:[],alimento:[],producto:[]});
       const actualizarId = nuevoId => {
         setProductos(prevState => ({
           ...prevState,

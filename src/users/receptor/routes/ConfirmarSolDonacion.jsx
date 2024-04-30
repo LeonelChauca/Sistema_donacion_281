@@ -20,7 +20,13 @@ import Axios from "axios";
 export const ConfirmarSolDonacion = () => {
     const today = dayjs();
   const { Productos,actualizarId,actualizarFechaS,eliminarTodosLosDatos} = useContext(ProductContext);
-    const idUser=useStore((state)=>state.id_user);
+  const idUser=useStore((state)=>state.id_user);
+    useEffect(() => {
+        actualizarId(idUser);
+        console.log(Productos);
+    }, [])
+    
+    
     const [loading, setloading] = useState(false);
     const token=useStore((state)=>state.token);
     const formatoFecha=(date)=>{
@@ -29,11 +35,10 @@ export const ConfirmarSolDonacion = () => {
     }
     const onsubmit=(event)=>{
       event.preventDefault();
-      actualizarId(idUser);
-      setloading(true);
       const fechaSeleccionada=Productos.fecha_solicitud;
       if(fechaSeleccionada && dayjs(fechaSeleccionada).isAfter(today) || dayjs(fechaSeleccionada).isSame(today, 'day')){
-          Axios.post('https://proyecto-281-production.up.railway.app/api/delivery/addSolicitud',Productos,{
+        setloading(true);  
+        Axios.post('https://proyecto-281-production.up.railway.app/api/delivery/addSolicitud',Productos,{
               headers:{
                   'x-token':token
               },
@@ -54,6 +59,7 @@ export const ConfirmarSolDonacion = () => {
       else{
           errorFConfirmacion();
           setloading(false); 
+    
       }
   }
 
