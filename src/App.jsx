@@ -1,10 +1,8 @@
-
 import './App.css'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx';
 
 import { Route, Routes } from 'react-router-dom';
-
 
 //Rutas 
 import Preguntas from './containers/Preguntas.jsx';
@@ -30,7 +28,6 @@ import Donante, { ProductProvider } from './users/donante/Dontante.jsx';
 import Receptor from './users/receptor/Receptor.jsx'
 import DonacionesDisponibles from './users/receptor/routes/DonacionesDisponibles';
 
-
 //import Voluntario from './users/voluntario/Voluntario.jsx';
 import P_Representante from './users/voluntario/routes/P_Representante.jsx';
 import P_Colaborador from './users/voluntario/routes/P_Colaborador.jsx';
@@ -41,7 +38,6 @@ import P_Colaborador_E  from './users/voluntario/routes/entrega/P_Colaborador.js
 
 import VerPostulaciones_E from './users/voluntario/routes/entrega/VerPostulaciones.jsx';
 import VerPostulacionesColab_E from './users/voluntario/routes/entrega/VerPostulacionesColab.jsx';
-
 
 import { RealizarDonacion } from './users/donante/routes/RealizarDonacion.jsx';
 import { ConfirmaDonacion } from './users/donante/routes/ConfirmaDonacion.jsx';

@@ -42,7 +42,7 @@ export default function VerPostulaciones() {
     return (
         <>
         <br></br>
-        <h3>Ver los estados de las postulaciones a <u>Representante</u></h3>                                
+        <h3>Estados  en las  postulaciones a <u>Representante</u> para la entrega </h3>                                
         <br></br>
         {
           <StickyHeadTable setDataTabla={setDatosAceptadas} dataTabla={datosAceptadas} setDataTablaPendientes={setDatosPendientes}  dataTablaPendientes={datosPendientes}/>          

@@ -88,8 +88,8 @@ export default function P_Representante() {
   return (
     <>
       <br />
-      <h2>Postulacion a Representante de las entregas</h2>
-      <h4>Informacion de las solicitures  </h4>
+      <h2>Postulacion a <u>Representante</u> de las entregas</h2>
+      <h4>Informacion de las solicitantes  </h4>
       <br/>
       <StickyHeadTable dataTabla={disponibles} setDataTabla={setDisponibles} postular={postular}  masInfoDonacion={masInfoDonacion}/>
     </>

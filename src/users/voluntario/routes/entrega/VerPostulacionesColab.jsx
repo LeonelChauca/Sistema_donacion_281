@@ -20,7 +20,7 @@ export default function VerPostulacionesColab() {
      const token = useStore((state) => state.token);
      const id_user = useStore((state) => state.id_user);
      const getPostulaciones = () => {
-      axios.get('https://proyecto-281-production.up.railway.app/api/donation/getPostulacionColaborador', {
+      axios.get('https://proyecto-281-production.up.railway.app/api/delivery/getPostulacionColaborador', {
         headers: {
           "x-token": token,
           "id_user": id_user
@@ -28,7 +28,7 @@ export default function VerPostulacionesColab() {
       }
       ).then((response) => {
         console.log(response.data.body.postulaciones);
-        setDatosAceptadas({ indice: ["id_user", "id_donacion", ], data: [...response.data.body.postulaciones] });
+        setDatosAceptadas({ indice: ["id_user", "id_solicitud", ], data: [...response.data.body.postulaciones] });
         
       })
     }
@@ -41,7 +41,7 @@ export default function VerPostulacionesColab() {
     return (
         <>
         <br></br>
-        <h3>Ver los estados de las postulaciones a <u>Colaboradores</u></h3>                                
+        <h3>Estados de las postulaciones a  <u>Colaboradores</u> de las entregas </h3>                                
         <br></br>
         {
           <StickyHeadTable setDataTabla={setDatosAceptadas} dataTabla={datosAceptadas}/>          
@@ -77,7 +77,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, setDataTablaPendientes, data
             <TableRow>
 
               {
-                ["id_user", "id_donacion"].map((elemento, i) =>
+                ["id_user", "id_solicitud"].map((elemento, i) =>
                   <TableCell
                     key={i}
                     align={"left"}
@@ -101,15 +101,14 @@ function StickyHeadTable({ setDataTabla, dataTabla, setDataTablaPendientes, data
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((fila, i) => {
                   return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_donacion}>
+                    <TableRow hover role="checkbox" tabIndex={-1} key={fila.id_solicitud+parseInt(Math.random()*10)}>
                       {dataTabla.indice.map((index, p) => {
                         return (
-                          <TableCell key={fila[index]} align={"left"} style={{ minWidth: 5 }}>
+                          <TableCell key={fila[index]+parseInt(Math.random()*10)} align={"left"} style={{ minWidth: 5 }}>
                             {fila[index]}
                           </TableCell>
                         );
                       })}
-
                       <TableCell align={"center"} className={style.acciones} style={{ minWidth: 80 }}>
                                                   <Button variant="contained" onClick={(e) => {
                           console.log(fila['id_donacion']);

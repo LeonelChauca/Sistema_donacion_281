@@ -66,7 +66,10 @@ export default function P_Colaborador() {
   return (
     <>
       <br></br>
-      <h2>Postulacion a colaborador de las donaciones</h2>
+      
+      <h2>Postulacion a <u>Colaborador</u> a las donaciones</h2>
+      <h3>Informacion  del los usuarios Representante a  donaciones  </h3>
+      <br></br>
       <StickyHeadTable setDataTabla={setDisponibles} dataTabla={disponibles} thead={["id_donacion", "Cantidad", "Nombre", "Parterno"]} postularColaborador={postularColaborador} />
     </>
   )
