@@ -19,7 +19,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import Alert from '@mui/material/Alert';
 import { useForm } from "react-hook-form";
 import axios  from 'axios';
-import { useStore } from "../controllers/Auth.js"
+import { useStore } from "../controllers/Auth.js";
 import * as jose from 'jose'
 
 const FormularioLogin = () => {
@@ -50,8 +50,7 @@ const FormularioLogin = () => {
     setErrorMessage(null);
     axios.post('https://proyecto-281-production.up.railway.app/api/auth/', data)
     .then(response => {
-      if(response.status=='200'){
-        console.log(response); 
+      if(response.status=='200'){ 
         const jwtDecode=jose.decodeJwt(response.data.token) 
         setUser(jwtDecode.name);
         setToken(response.data.token);

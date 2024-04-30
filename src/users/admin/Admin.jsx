@@ -4,6 +4,9 @@ import { useState } from "react";
 
 import MenuItem from "../components/MenuItem.jsx"
 import { useStore } from "../../controllers/Auth.js"
+import PeopleIcon from '@mui/icons-material/People';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 
 import NotFound from "../../components/NotFound.jsx";
 import Home from "./routes/Home.jsx";
@@ -36,16 +39,13 @@ export default function Admin() {
                     <PeopleAltIcon />
                 </MenuItem>}
                 <MenuItem texto="Responsable donacion" url="/Responsable-donacion" >
-                    <ViewListRoundedIcon />
+                    <AssignmentIndIcon />
                 </MenuItem>
                 <MenuItem texto="Responsable Entrega" url="/Responsable-entrega" >
                     <ViewListRoundedIcon />
                 </MenuItem>
-                <MenuItem texto="Dinero" url="/productos" >
-                    <MonetizationOnIcon />
-                </MenuItem>
                 <MenuItem texto="Productos" url="/productos" >
-                    <ViewListRoundedIcon />
+                    <StorefrontIcon />
                 </MenuItem>
                 <MenuItem texto="Usuarios pendientes " url="/usuarios-pendiente" >
                     <PeopleAltIcon />

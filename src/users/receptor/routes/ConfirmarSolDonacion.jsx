@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import CircularProgress from '@mui/material/CircularProgress';
-
+import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useStore } from "../../../controllers/Auth.js"
 import {okConfirmacion,errorFConfirmacion} from "../../donante/js/alertas.js";
@@ -18,7 +18,8 @@ import setScrollTop from "../../../controllers/setPostScroll.js";
 
 import Axios from "axios";
 export const ConfirmarSolDonacion = () => {
-  const { Productos,actualizarId,actualizarFechaS} = useContext(ProductContext);
+    const today = dayjs();
+  const { Productos,actualizarId,actualizarFechaS,eliminarTodosLosDatos} = useContext(ProductContext);
     const idUser=useStore((state)=>state.id_user);
     const [loading, setloading] = useState(false);
     const token=useStore((state)=>state.token);
@@ -30,7 +31,8 @@ export const ConfirmarSolDonacion = () => {
       event.preventDefault();
       actualizarId(idUser);
       setloading(true);
-      if(Productos.fecha_solicitud){
+      const fechaSeleccionada=Productos.fecha_solicitud;
+      if(fechaSeleccionada && dayjs(fechaSeleccionada).isAfter(today) || dayjs(fechaSeleccionada).isSame(today, 'day')){
           Axios.post('https://proyecto-281-production.up.railway.app/api/delivery/addSolicitud',Productos,{
               headers:{
                   'x-token':token
@@ -40,7 +42,11 @@ export const ConfirmarSolDonacion = () => {
               okConfirmacion();
               console.log(response);
               console.log(Productos);
+              eliminarTodosLosDatos();
           })
+          .catch((res)=>{
+            setloading(false); 
+        })
           .finally(() => {
               setloading(false); 
           })
@@ -66,6 +72,7 @@ export const ConfirmarSolDonacion = () => {
                             value={null}
                             onChange={(date) => actualizarFechaS(formatoFecha(date))}
                             format="DD-MM-YYYY"
+                            minDate={today}
                             views={['day','month','year']}
                             slotProps={{
                             textField: {

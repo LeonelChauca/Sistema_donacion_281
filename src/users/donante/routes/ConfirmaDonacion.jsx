@@ -22,7 +22,8 @@ import Axios from "axios";
 
 
 export const ConfirmaDonacion = () => {
-    const { Productos,actualizarId,actualizarFecha,agregarDinero,agregarAlimento,agregarProducto} = useContext(ProductContext);
+    const today = dayjs();
+    const { Productos,actualizarId,actualizarFecha,agregarDinero,agregarAlimento,agregarProducto,eliminarTodosLosDatos} = useContext(ProductContext);
     const idUser=useStore((state)=>state.id_user);
     const [loading, setloading] = useState(false);
     const token=useStore((state)=>state.token);
@@ -33,8 +34,8 @@ export const ConfirmaDonacion = () => {
         event.preventDefault();
         actualizarId(idUser);
         setloading(true);
-        console.log(Productos);
-        if(Productos.fecha_d){
+        const fecha=Productos.fecha_d;
+        if(fecha && dayjs(fecha).isAfter(today) || dayjs(fecha).isSame(today, 'day')){
             Axios.post('https://proyecto-281-production.up.railway.app/api/donation/addDonation',Productos,{
                 headers:{
                     'x-token':token
@@ -43,14 +44,22 @@ export const ConfirmaDonacion = () => {
             .then((response)=>{
                 okConfirmacion();
                 console.log(Productos);
+                eliminarTodosLosDatos();
+            })
+            .catch((res)=>{
+                setloading(false); 
             })
             .finally(() => {
                 setloading(false); 
+                console.log('holi');
             })
         }
         else{
             errorFConfirmacion();
         }
+    }
+    const limpiar=()=>{
+        eliminarTodosLosDatos();
     }
 
     useEffect(()=>{
@@ -103,6 +112,9 @@ export const ConfirmaDonacion = () => {
                     :<div className={style.formAction}>
                         {
                             !loading ? <Button variant="contained" type="submit">Realizar Donacion</Button> : <Button disabled variant="contained" type="submit"><CircularProgress size={20} thickness={5} /></Button> 
+                        }
+                        {
+                            Productos ? <Button style={{marginLeft:'20px'}} variant="contained" onClick={()=>limpiar()}>Limpiar</Button>:''
                         }
                     </div>
                 }
