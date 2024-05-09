@@ -65,6 +65,6 @@ export const RealizaSolDonacionAlimento = () => {
             </LocalizationProvider>
             
             </div>
-            <Button variant="contained" type="submit">Agregar donacion</Button>
+            <Button variant="contained" type="submit">Agregar a la lista solicitud</Button>
         </form>  )
 }

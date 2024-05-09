@@ -43,7 +43,7 @@ export const RealizaSolDonacionProducto = () => {
           <TextField {...register("cantidad_p")} label="Cantidad" variant="outlined" type="number"/>
           <TextField {...register("medida_unitaria_p")} label="Medida Unitaria" value={'Unidades'} variant="outlined" type="text" disabled={formState.isSubmitting}/>
         </div>
-        <Button variant="contained" type='submit'>Agregar donacion</Button>
+        <Button variant="contained" type='submit'>Agregar a la lista solicitud</Button>
     </form>
   )
 }
