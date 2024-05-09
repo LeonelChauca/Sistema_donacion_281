@@ -1,57 +1,90 @@
 
 import { useEffect, useState } from 'react';
-import {useStore } from '../controllers/Auth.js'
-import style from './Perfil.module.css'; 
-import axios from 'axios'; 
-export default function Perfil (){
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+import { useStore } from '../controllers/Auth.js'
+import style from './Perfil.module.css';
+import axios from 'axios';
+export default function Perfil() {
     const user = useStore((state) => state.user);
     const id_user = useStore((state) => state.id_user);
     const rol = useStore((state) => state.rol);
     const token = useStore((state) => state.token);
-    const [data, setData ]=useState(null); 
+    const [data, setData] = useState(null);
 
     function GetInfoPerfil() {
-        axios.get('https://proyecto-281-production.up.railway.app/api/auth/mostrarDatos',{
+        axios.get('https://proyecto-281-production.up.railway.app/api/auth/mostrarDatos', {
             headers: {
-              "x-token": token,
-              "id_user": id_user
+                "x-token": token,
+                "id_user": id_user
             }
-          })
-        .then(response => {
-           console.log(response.data);
-           setData(response.data); 
         })
-        .catch(error => {
-            console.log(error);            
-        })
+            .then(response => {
+                console.log(response.data);
+                setData(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
-    useEffect(()=>{
-        GetInfoPerfil(); 
-    },[]); 
+    useEffect(() => {
+        GetInfoPerfil();
+    }, []);
     return (
 
         <div className={style.formulario}>
             <h3>Perfil</h3>
             <div className={style.lista_datos}>
-            <div><p><span>User:</span> {user}</p></div>
-            <div><p><span>Rol: </span>  {rol}</p></div>
-            {data&&<MostraDatos datos={data}/>}
+
+                {data && <MostraDatos datos={data} rol={rol} user={user} />}
+
+
             </div>
-        </div> 
-        
+        </div>
+
+
+
     )
 }
 
-function MostraDatos({datos}) {
-    
+function MostraDatos({ datos, rol, user }) {
+
 
     return (<>
-        <div ><p> <span>Nombre: </span>{datos.nombre}</p></div>
-        <div><p> <span>Apellidos: </span> {datos.ap_paterno}  {datos.ap_materno}</p></div>
 
-        <div><p> <span>Correo:  </span>{datos.correo} </p></div>
-        <div><p> <span>Fecha: </span> {datos.fecha_nac} </p></div>
-        <div><p> <span></span> <center ><u>{datos.tipo}</u></center> </p></div>
+
+        <Card sx={{ maxWidth: 320 }} style={{margin:'auto'}}>
+            <CardActionArea>
+                <Typography gutterBottom variant="h5" component="div">
+                    {user}
+                </Typography>
+                <CardMedia
+                    component="img"
+                    height="140"
+                    image="fondoUser.jpg"
+                    alt="Fondo User "
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {datos.nombre}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        {datos.ap_paterno} {datos.ap_materno}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        {datos.correo}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        {datos.fecha_nac}
+                    </Typography>
+
+                </CardContent>
+            </CardActionArea>
+        </Card>
     </>)
 }

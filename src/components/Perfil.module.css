@@ -5,8 +5,8 @@
 }
 .lista_datos {
     font-size: 1.09rem;
-    width: 200px;
     margin: auto;
+
 }
 .lista_datos > div{
     padding: 2px 5px;

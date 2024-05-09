@@ -1,4 +1,4 @@
-import { useState,createContext, useContext, useEffect } from "react";
+import { useState,createContext, useContext, useEffect, useRef } from "react";
 import {TextField } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -18,6 +18,7 @@ import Paper from '@mui/material/Paper';
 import dayjs from 'dayjs'
 
 export const RegistrarDonacionDinero = () => {
+  const form_ref__donMoney  =useRef(); 
   const [cambio, setCambio] = useState('');
   const { Productos,actualizarId,agregarDinero} = useContext(ProductContext);
   useEffect(() => {
@@ -33,13 +34,15 @@ export const RegistrarDonacionDinero = () => {
     try{
       agregarDinero({...data});
       AlertaOkAddListaDonacion();
+      form_ref__donMoney.current.reset();  
+      setCambio(''); 
     }
     catch{
       AlertaNoAddListaDonacion();
     }
   }
   return (
-    <form className={style.container} onSubmit={handleSubmit(onSubmit)}>
+    <form  ref={form_ref__donMoney} className={style.container} onSubmit={handleSubmit(onSubmit)}>
       <div className={style.imgDiv2}>
             <h2>Dinero</h2>
         </div>

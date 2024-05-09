@@ -169,7 +169,7 @@ body.dark .sidebar header .toggle{
     align-items: center;
     height: 100%;
     width: 100%;
-    gap:20px; 
+    
     border-radius: 6px;
     text-decoration: none;
     transition: var(--tran-03);

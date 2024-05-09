@@ -1,4 +1,4 @@
-import { useState,createContext, useContext, useEffect } from "react";
+import { useState,createContext, useContext, useEffect, useRef } from "react";
 import {TextField } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -15,6 +15,7 @@ import { ProductContext } from "../../../donante/Dontante";
 import {AlertaOkAddListaDonacion,AlertaNoAddListaDonacion} from '../../../donante/routes/sweetAlertDonante';
 import Paper from '@mui/material/Paper';
 export const RealizaSolDonacionDinero = () => {
+     const form_control_money = useRef(); 
     const [cambio, setCambio] = useState('');
     const { Productos,actualizarId,agregarDinero} = useContext(ProductContext);
     useEffect(() => {
@@ -29,13 +30,14 @@ export const RealizaSolDonacionDinero = () => {
         try{
             agregarDinero({...data});
             AlertaOkAddListaDonacion();
+            form_control_money.current.reset();             
         }
         catch{
             AlertaNoAddListaDonacion();
         }
     }
     return (
-        <form className={style.container} onSubmit={handleSubmit(onSubmit)}>
+        <form ref={form_control_money} className={style.container} onSubmit={handleSubmit(onSubmit)}>
       <div className={style.containerMain}>
         <TextField {...register("monto")} label="Monto" variant="outlined" type="number"/>
         <FormControl>

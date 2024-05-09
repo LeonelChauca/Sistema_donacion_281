@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import style from '../styles/components/CreatePersona.module.css';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -18,7 +18,7 @@ import Button from '@mui/material/Button';
 import { useStore } from '../controllers/Auth.js';
 
 export const CreateEmpresa = () => {
-
+   const form_ref1= useRef(); 
   const setLogged = useStore((state)=>state.setLogged) 
   const [Loading, setLoading] = useState(false);
 
@@ -31,11 +31,12 @@ export const CreateEmpresa = () => {
       setLoading(true);
         axios.post('https://proyecto-281-production.up.railway.app/api/auth/new',data)
         .then(response => {
-          
+       
  //         console.log(response.data.ok);
    //       setLogged(response.data.ok); 
-            AlertaOkRegistro();
-          
+            AlertaOkRegistro();                          
+        }).then((respuesta)=>{
+          form_ref1.current.reset();             
         })
         .catch(error => {
             console.log(error);
@@ -49,7 +50,7 @@ export const CreateEmpresa = () => {
     <>
       <div  className={"animate__animated animate__backInLeft "+style.containerMain}>
         <h1>Tipo de organizacion :</h1>
-        <form className={style.containerF} onSubmit={handleSubmit(onSubmit)}>
+        <form  ref={form_ref1} className={style.containerF} onSubmit={handleSubmit(onSubmit)}>
             <FormControl className={style.containerSelect}>
                 <Select
                     displayEmpty

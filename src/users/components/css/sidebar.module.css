@@ -143,6 +143,9 @@ body.dark .sidebar header .toggle{
     
 }
 
+.sidebar .menu ul li {
+    margin: 0;
+}
 .sidebar li.search_box{
     border-radius: 6px;
     background-color: var(--primary-color-light);
@@ -172,7 +175,7 @@ body.dark .sidebar header .toggle{
     height: 100%;
     width: 100%;
     gap:20px; 
-    padding-left: 20px;
+    padding-left: 15px;
     border-radius: 6px;
     text-decoration: none;
     transition: var(--tran-03);

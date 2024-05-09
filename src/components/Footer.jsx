@@ -2,12 +2,22 @@ import React from 'react'
 import styles from '../styles/components/Footer.module.css';
 import { Link } from 'react-router-dom';
  import fondo from '../assets/footer.png'
-
+ import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
+ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 //componente Footer
 const Footer = () => {
   return (
+    <>
     <div className={styles.Mainfooter}>
-      
+    <div className={styles.author}> 
+      <span>Desarrollado por </span>
+      <CodeOutlinedIcon/>
+       <span>Leonel Chauca </span>
+       <a href="https://api.whatsapp.com/send?phone=59178929199&text=Hola" target="_blank">
+       <WhatsAppIcon/>
+       </a>
+
+    </div>      
         <div className={styles.secondfooter}>
           <div className={styles.img}>  
             <img src="/icon.png" alt="Icono " /> 
@@ -30,6 +40,7 @@ const Footer = () => {
             
         </div>
     </div>
+    </>
   )
 }
 
