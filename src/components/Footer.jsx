@@ -10,13 +10,7 @@ const Footer = () => {
     <>
     <div className={styles.Mainfooter}>
     <div className={styles.author}> 
-      <span>Desarrollado por </span>
-      <CodeOutlinedIcon/>
-       <span>Leonel Chauca </span>
-       <a href="https://api.whatsapp.com/send?phone=59178929199&text=Hola" target="_blank">
-       <WhatsAppIcon/>
-       </a>
-
+      <span><pre> let Devs = new Dev( [Leo , Cimar , Roman , Omar]) </pre> </span>
     </div>      
         <div className={styles.secondfooter}>
           <div className={styles.img}>  
@@ -24,8 +18,7 @@ const Footer = () => {
             <center><p> Dona Facil   </p></center>
           </div>
             <h1>Sistema de Donación</h1>
-            <div className={styles.container}>
-                
+            <div className={styles.container}>                
                 <ul>
                     <li><Link to="/about">Sobre Nosotros</Link></li>
                     <li><Link to="/preguntas">Preguntas</Link></li>

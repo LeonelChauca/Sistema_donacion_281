@@ -16,10 +16,10 @@ export const AlertaConfirmacionColaboracior=()=>{
   })
 }
 
-export const AlertaErrorColaboracior=()=>{  
+export const AlertaErrorColaboracior=(mensajeError='Intente de nuevo')=>{  
   Swal.fire({
      title:"Error en su postulacion al colaborador",
-     text: `Intente de nuevo`,
+     text: mensajeError,
      icon:"error"
   })
 }
