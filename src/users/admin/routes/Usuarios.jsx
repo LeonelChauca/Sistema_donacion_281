@@ -93,6 +93,9 @@ function Card({ children, titulo = "All", url = "#", cardActive = "", setCardAct
 }
 
 
+
+
+
 const handleDownload = async (datos) => {
     const blob = await pdf(<Recibo data={datos.data}/>).toBlob();
     const url = URL.createObjectURL(blob);
