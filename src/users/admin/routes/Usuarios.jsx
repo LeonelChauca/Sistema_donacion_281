@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useStore } from "../../../controllers/Auth.js"
 import axios from "axios";
 import style from '../css/Usuarios.module.css'
-
-
+import Recibo from '../js/Recibo.jsx'
+import { PDFDownloadLink, pdf } from '@react-pdf/renderer';
 
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -13,13 +13,17 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import Button from '@mui/material/Button';
 
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import ArticleIcon from '@mui/icons-material/Article';
 
 
 import {ConfirmacionEliminarUser} from "../../../components/sweetAlert.js"
+import { DrawOutlined } from "@mui/icons-material";
 
 export default function Usuarios() {
 
@@ -89,7 +93,17 @@ function Card({ children, titulo = "All", url = "#", cardActive = "", setCardAct
 }
 
 
-
+const handleDownload = async (datos) => {
+    const blob = await pdf(<Recibo data={datos.data}/>).toBlob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Datos_usuario.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
 function StickyHeadTable({ setDataTabla, dataTabla }) {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -198,6 +212,11 @@ function StickyHeadTable({ setDataTabla, dataTabla }) {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
+            <div style={{ width:'80%' , margin: '0 auto', padding:'20px', display: "flex", gap:'10px'}}>
+                <Button onClick={()=>{handleDownload(dataTabla)}} variant="contained" color="error" style={{ fontSize:'15px'}}>Generar <PictureAsPdfIcon/></Button>
+                <Button onClick={()=>{}} variant="contained" color="success" style={{ fontSize:'15px'}}>Generar Excel<ArticleIcon/></Button>
+            </div>
         </Paper>
+        
     );
 }
