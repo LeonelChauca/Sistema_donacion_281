@@ -1,4 +1,4 @@
-import {useState,createContext,useContext,useEffect} from 'react'
+import {useState,createContext,useContext,useEffect, useRef} from 'react'
 import Button from '@mui/material/Button';
 import style from '../../../donante/styles/realizarDonacionAlimento.module.css'
 import { ProductContext } from "../../../donante/Dontante";
@@ -12,6 +12,7 @@ import { Tipoinp } from '../../../donante/routes/Realizar-donacion/Tipoinp';
 import Autocomplete from '@mui/material/Autocomplete';
 import Paper from '@mui/material/Paper';
 export const RealizaSolDonacionProducto = () => {
+  const form_control_producto = useRef(); 
     const { Productos,actualizarId,agregarDinero,agregarAlimento,agregarProducto} = useContext(ProductContext);
   const { register, handleSubmit,formState,setValue } = useForm();
   const [tipo, setTipo] = useState('');  
@@ -20,13 +21,15 @@ export const RealizaSolDonacionProducto = () => {
     try{
       agregarProducto({...data});
       AlertaOkAddListaDonacion();
+      form_control_producto.current.reset(); 
+      setTipo(''); 
     }
     catch{
       AlertaNoAddListaDonacion();
     }
   }
   return (
-    <form className={style.container} onSubmit={handleSubmit(onSubmit)}>
+    <form  ref={form_control_producto} className={style.container} onSubmit={handleSubmit(onSubmit)}>
         <div className={style.containerMain}>
           <Tipoinp register={register} tipo={tipo} setTipo={setTipo} valorTipo={tipoProducto}/>
           <Autocomplete
@@ -40,7 +43,7 @@ export const RealizaSolDonacionProducto = () => {
           <TextField {...register("cantidad_p")} label="Cantidad" variant="outlined" type="number"/>
           <TextField {...register("medida_unitaria_p")} label="Medida Unitaria" value={'Unidades'} variant="outlined" type="text" disabled={formState.isSubmitting}/>
         </div>
-        <Button variant="contained" type='submit'>Agregar donacion</Button>
+        <Button variant="contained" type='submit'>Agregar a la lista solicitud</Button>
     </form>
   )
 }

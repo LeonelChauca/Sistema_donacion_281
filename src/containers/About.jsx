@@ -23,7 +23,7 @@ const About = () => {
             <div className={style.card}>
                <h4>Quienes Somos? </h4>
                <p>
-                  Sis Donación es una plataforma innovadora dedicada a recepción y donación de productos y alimentos  para combatir el hambre y el desperdicio de alimentos.
+                  Dona Facil es una plataforma innovadora dedicada a recepción y donación de productos y alimentos  para combatir el hambre y el desperdicio de alimentos.
                </p>
                <p> Nuestra misión es conectar donantes de alimentos con organizaciones benéficas y personas necesitadas de manera eficiente y transparente. Impulsados por valores como la solidaridad, la transparencia y la innovación, estamos comprometidos a construir un mundo donde cada persona tenga acceso a alimentos nutritivos y ninguna comida se desperdicie.
                </p>
@@ -36,7 +36,7 @@ const About = () => {
             <div className={style.card}>
                <h4>Historia</h4>
                <p>
-                  En Sis Donación, creemos en un mundo donde ningún alimento se desperdicie y donde cada persona tenga acceso a comida nutritiva. Nuestra historia comenzó con la visión de hacer una diferencia significativa en la lucha contra el hambre y el desperdicio de alimentos. Inspirados por la necesidad y motivados por el deseo de crear un impacto positivo, nos embarcamos en un viaje para desarrollar una solución innovadora que abordara estos desafíos de manera efectiva y eficiente.
+                  En Dona Facil, creemos en un mundo donde ningún alimento se desperdicie y donde cada persona tenga acceso a comida nutritiva. Nuestra historia comenzó con la visión de hacer una diferencia significativa en la lucha contra el hambre y el desperdicio de alimentos. Inspirados por la necesidad y motivados por el deseo de crear un impacto positivo, nos embarcamos en un viaje para desarrollar una solución innovadora que abordara estos desafíos de manera efectiva y eficiente.
                </p>
                <p>
                   Desde nuestros humildes comienzos, hemos trabajado incansablemente para construir un sistema integral que conecte a donantes de alimentos con organizaciones benéficas y personas necesitadas. Nos enorgullece ofrecer una plataforma tecnológica avanzada que simplifica y agiliza el proceso de donación, recolección y entrega de alimentos, permitiendo una distribución más equitativa y efectiva de recursos.
@@ -46,7 +46,7 @@ const About = () => {
          <section className={style.valores + " " + style.section}>
             <div className={style.card}>
                <h4>Nuestro valores</h4>
-               <p>En Sis Donación, nos guiamos por un conjunto de valores fundamentales que reflejan nuestra dedicación a la causa y orientan cada aspecto de nuestro trabajo:
+               <p>En Dona Facil, nos guiamos por un conjunto de valores fundamentales que reflejan nuestra dedicación a la causa y orientan cada aspecto de nuestro trabajo:
                </p>
                <div className={style.card}>
                <CustomAcordion title="Compromiso con la comunidad" texto="Estamos comprometidos con el bienestar de nuestras comunidades y nos esforzamos por crear un impacto positivo y duradero en la lucha contra el hambre"/>

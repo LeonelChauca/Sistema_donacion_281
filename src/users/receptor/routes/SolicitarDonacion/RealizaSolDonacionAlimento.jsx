@@ -1,4 +1,4 @@
-import { useState,createContext, useContext, useEffect } from "react";
+import { useState,createContext, useContext, useEffect, useRef } from "react";
 import {TextField } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -23,7 +23,9 @@ export const RealizaSolDonacionAlimento = () => {
     const { Productos,actualizarId,agregarDinero,agregarAlimento} = useContext(ProductContext);
     const { register, handleSubmit,formState,setValue } = useForm()
     const [tipo, setTipo] = useState('');  
-  
+    
+    const form_control = useRef(); 
+
     const formatoFecha=(date)=>{
       return date.format("DD-MM-YYYY");
     }
@@ -31,13 +33,15 @@ export const RealizaSolDonacionAlimento = () => {
       try{
         agregarAlimento({...data});
         AlertaOkAddListaDonacion();
+        form_control.current.reset(); 
+        setTipo(''); 
       }
       catch{
         AlertaNoAddListaDonacion();
       }
     }
     return (
-        <form className={style.container} onSubmit={handleSubmit(onSubmit)} >
+        <form  ref={form_control} className={style.container} onSubmit={handleSubmit(onSubmit)} >
             <div className={style.containerMain}>
             <Tipoinp register={register} tipo={tipo} setTipo={setTipo} valorTipo={tipoAlimento} />
             <Autocomplete
@@ -61,6 +65,6 @@ export const RealizaSolDonacionAlimento = () => {
             </LocalizationProvider>
             
             </div>
-            <Button variant="contained" type="submit">Agregar donacion</Button>
+            <Button variant="contained" type="submit">Agregar a la lista solicitud</Button>
         </form>  )
 }

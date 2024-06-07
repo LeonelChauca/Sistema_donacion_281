@@ -1,4 +1,4 @@
-import { useState,createContext, useContext, useEffect } from "react";
+import { useState,createContext, useContext, useEffect, useRef } from "react";
 import {TextField } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -19,6 +19,7 @@ import Paper from '@mui/material/Paper';
 
 
 export const RegistrarDonacionAlimento = () => {
+  const form_ref_donAlim  =useRef(); 
   const { Productos,actualizarId,agregarDinero,agregarAlimento} = useContext(ProductContext);
   const { register, handleSubmit,formState,setValue } = useForm()
   const [tipo, setTipo] = useState('');  
@@ -30,6 +31,9 @@ export const RegistrarDonacionAlimento = () => {
     try{
       agregarAlimento({...data});
       AlertaOkAddListaDonacion();
+      form_ref_donAlim.current.reset();  
+      setTipo((old)=>''); 
+      
     }
     catch{
       AlertaNoAddListaDonacion();
@@ -37,7 +41,7 @@ export const RegistrarDonacionAlimento = () => {
   }
 
   return (
-    <form className={style.container} onSubmit={handleSubmit(onSubmit)} >
+    <form ref={form_ref_donAlim} className={style.container} onSubmit={handleSubmit(onSubmit)} >
         <div className={style.imgDiv3}>
             <h2>Alimento</h2>
         </div>
@@ -45,11 +49,11 @@ export const RegistrarDonacionAlimento = () => {
             <h4>¡Tu donación de alimentos puede llenar los corazones hambrientos y alimentar el futuro! Cada grano de arroz, cada lata de comida, cuenta. Únete a nosotros en nuestra misión de combatir el hambre y proporcionar alimentos nutritivos a quienes más lo necesitan. ¡Haz tu donación hoy y marca la diferencia en la vida de alguien!</h4>
         </Paper>
         <div className={style.containerMain}>
-          <Tipoinp register={register} tipo={tipo} setTipo={setTipo} valorTipo={tipoAlimento} />
+          <Tipoinp register={register} tipo={tipo} setTipo={setTipo} valorTipo={tipoAlimento}  />
           <Autocomplete
             disablePortal
             id="combo-box-demo"
-            options={tipoAlimento[tipo] || []}
+            options={tipo!=''?tipoAlimento[tipo] : []}
             noOptionsText="Elija primero el tipo de producto"
             sx={{ width:'100%' }}
             renderInput={(params) => <TextField {...register("nombre_a")} {...params} disabled={formState.isSubmitting} label="Nombre de Alimento" />}
@@ -61,7 +65,6 @@ export const RegistrarDonacionAlimento = () => {
                 {...register("caducidad_a")} 
                 name="caducidad_a" 
                 label="Fecha de caducidad"
-                value={null}
                 onChange={(date) => setValue("caducidad_a", formatoFecha(date))}
             />
           </LocalizationProvider>

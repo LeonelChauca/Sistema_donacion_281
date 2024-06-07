@@ -1,6 +1,6 @@
 import {TextField } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { useState,createContext, useContext, useEffect } from "react";
+import { useState,createContext, useContext, useEffect, useRef } from "react";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { FormControlLabel, FormLabel, FormHelperText } from '@mui/material';
@@ -19,6 +19,8 @@ import Paper from '@mui/material/Paper';
 
 
 export const RegistrarDonacionProducto = () => {
+  const form_DonPro  =useRef(); 
+  const form_nombre_pro =useRef(); 
   const { Productos,actualizarId,agregarDinero,agregarAlimento,agregarProducto} = useContext(ProductContext);
   const { register, handleSubmit,formState,setValue } = useForm();
   const [tipo, setTipo] = useState('');  
@@ -27,14 +29,19 @@ export const RegistrarDonacionProducto = () => {
     try{
       agregarProducto({...data});
       AlertaOkAddListaDonacion();
+      form_DonPro.current.reset();  
+      setTipo('');      
     }
     catch{
       AlertaNoAddListaDonacion();
     }
   }
 
+  useEffect(()=>{
+        
+  }); 
   return (
-    <form className={style.container} onSubmit={handleSubmit(onSubmit)}>
+    <form ref={form_DonPro} className={style.container} onSubmit={handleSubmit(onSubmit)}>
         <div className={style.imgDiv}>
             <h2>Productos</h2>
         </div>
@@ -46,10 +53,11 @@ export const RegistrarDonacionProducto = () => {
           <Autocomplete
             disablePortal
             id="combo-box-demo"
-            options={tipoProducto[tipo] || []}
+            options={tipo!==''?tipoProducto[tipo] : []}
             noOptionsText="Elija primero el tipo de producto"
             sx={{ width:'100%' }}
-            renderInput={(params) => <TextField {...register("nombre_p")} {...params} label="Nombre de producto" />}
+            
+            renderInput={(params) => <TextField {...register("nombre_p")} {...params}    label="Nombre de producto" />}
           />
           <TextField {...register("cantidad_p")} label="Cantidad" variant="outlined" type="number"/>
           <TextField {...register("medida_unitaria_p")} label="Medida Unitaria" value={'Unidades'} variant="outlined" type="text" disabled={formState.isSubmitting}/>

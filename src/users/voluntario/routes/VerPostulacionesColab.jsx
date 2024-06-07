@@ -111,15 +111,38 @@ function StickyHeadTable({ setDataTabla, dataTabla, setDataTablaPendientes, data
                         );
                       })}
 
-                      <TableCell align={"center"} className={style.acciones} style={{ minWidth: 80 }}>
-                                                  <Button variant="contained" onClick={(e) => {
-                          console.log(fila['id_donacion']);
+{
+                          fila['estado_p']===1&&<Button variant="contained" onClick={(e) => {
+                            console.log(fila['estado_p']);
                           }}
                             style={{ background: "green", borderRadius: "8px", textTransform: "none" }}>
                             Habilitado
                           </Button>
-                          
-                      </TableCell>
+                        }
+                        {
+                          fila['estado_p']===0&&<Button variant="contained" onClick={(e) => {
+                            console.log(fila['id_donacion']);
+                          }}
+                            style={{ background: "red", borderRadius: "8px", textTransform: "none" }}>
+                            Pendiente
+                          </Button>
+                        }
+                        {
+                          fila['estado_p']===2&&<Button variant="contained" onClick={(e) => {
+                            console.log(fila['id_donacion']);
+                          }}
+                            style={{ background: "blue", borderRadius: "8px", textTransform: "none" }}>
+                            En curso
+                          </Button>
+                        }
+                        {
+                          fila['estado_p']===3&&<Button variant="contained" onClick={(e) => {
+                            console.log(fila['id_donacion']);
+                          }}
+                            style={{ background: "purple", borderRadius: "8px", textTransform: "none" }}>
+                            Finalizado
+                          </Button>
+                        }
                     </TableRow>
                   );
                 })

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import style from '../styles/components/CreatePersona.module.css';
 import { AlertaOkRegistro, AlertaErrorRegistro } from './sweetAlert.js';
 import Box from '@mui/material/Box';
@@ -21,7 +21,7 @@ import { PersonaReceptora } from './PersonaReceptora.jsx';
 export const CreatePersona = () => {
 //    const setLogged = useStore((state)=>state.setLogged) 
  //   const logged = useStore((state)=>state.logged) 
-
+     const form_ref2= useRef(); 
     const [selectP, setselectP] = useState('');
     const [Loading, setLoading] = useState(false);
     const handleChange = (event) => {
@@ -38,6 +38,8 @@ export const CreatePersona = () => {
         .then(response => {
             console.log(response);
             AlertaOkRegistro();
+        }).then((res)=>{
+            form_ref2.current.reset();  
         })
         .catch(error => {
             AlertaErrorRegistro(error.response.data.msg);
@@ -49,7 +51,7 @@ export const CreatePersona = () => {
   return (
     <div  className={"animate__animated animate__backInLeft "+style.containerMain}>
         <h1>Tipo de persona :</h1>
-        <form className={style.containerF} onSubmit={handleSubmit(onSubmit)}>
+        <form ref={form_ref2} className={style.containerF} onSubmit={handleSubmit(onSubmit)}>
             <FormControl className={style.containerSelect}>
             <FormHelperText>Seleccione un las las opciones</FormHelperText>
                 <Select

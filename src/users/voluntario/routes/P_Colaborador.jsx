@@ -49,7 +49,8 @@ export default function P_Colaborador() {
           AlertaConfirmacionColaboracior();
           getDonaciones();  
         }else {
-          AlertaErrorColaboracior(); 
+          console.log(response.data.msg)
+          AlertaErrorColaboracior(response.data.msg); 
         }
       })
       .catch((error)=>{

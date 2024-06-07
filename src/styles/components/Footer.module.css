@@ -11,8 +11,8 @@
 .secondfooter{
     
     position: relative;
-    top:0; 
-    padding: 20px 0;
+    top:20px; 
+    padding: 10px 0px ;
     position: absolute;
     min-width: 500px;
     left: 50%; 
@@ -75,4 +75,12 @@ ul{
     width: 100px;
     
 }
-
+.author{
+   display: flex;
+    gap: 5px;
+    background: rgb(33, 80, 167) ;
+    height: 30px;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 10px;
+}

@@ -113,7 +113,7 @@ function StickyHeadTable({ setDataTabla, dataTabla, setDataTablaPendientes, data
                       })}
 
                       <TableCell align={"center"} className={style.acciones} style={{ minWidth: 80 }}>
-                        {
+                        {/* {
                           fila['estado']?<Button variant="contained" onClick={(e) => {
                             console.log(fila['id_donacion']);
                           }}
@@ -125,6 +125,40 @@ function StickyHeadTable({ setDataTabla, dataTabla, setDataTablaPendientes, data
                           }}
                             style={{ background: "blue", borderRadius: "8px", textTransform: "none" }}>
                             Pendiente
+                          </Button>
+
+                          
+                        } */}
+                        {
+                          fila['estado']===1&&<Button variant="contained" onClick={(e) => {
+                            console.log(fila['id_donacion']);
+                          }}
+                            style={{ background: "green", borderRadius: "8px", textTransform: "none" }}>
+                            Habilitado
+                          </Button>
+                        }
+                        {
+                          fila['estado']===0&&<Button variant="contained" onClick={(e) => {
+                            console.log(fila['id_donacion']);
+                          }}
+                            style={{ background: "red", borderRadius: "8px", textTransform: "none" }}>
+                            Pendiente
+                          </Button>
+                        }
+                        {
+                          fila['estado']===2&&<Button variant="contained" onClick={(e) => {
+                            console.log(fila['id_donacion']);
+                          }}
+                            style={{ background: "blue", borderRadius: "8px", textTransform: "none" }}>
+                            En curso
+                          </Button>
+                        }
+                        {
+                          fila['estado']===3&&<Button variant="contained" onClick={(e) => {
+                            console.log(fila['id_donacion']);
+                          }}
+                            style={{ background: "purple", borderRadius: "8px", textTransform: "none" }}>
+                            Finalizado
                           </Button>
                         }
                         

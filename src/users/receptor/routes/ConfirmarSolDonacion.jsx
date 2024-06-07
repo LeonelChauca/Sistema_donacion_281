@@ -68,7 +68,7 @@ export const ConfirmarSolDonacion = () => {
   },[])
   return (
     <div className={style.containerMain}>
-            <h2>Confirma Donacion</h2>
+            <h2>Confirma la solicitud  de la Donacion</h2>
             <form className={style.containerForm} onSubmit={(event)=>onsubmit(event)}>
                 <div className={style.formAction}>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -109,11 +109,11 @@ export const ConfirmarSolDonacion = () => {
                 {
                     Productos.alimento.length===0 && Productos.dinero.length===0 && Productos.producto.length===0 ? <div className={style.formAction}>
                         <Alert severity="error" style={{margin:'20px 0'}}>No existen donaciones para confirmar</Alert>
-                        <Button disabled variant="contained" type="submit">Realizar Donacion</Button>
+                        <Button disabled variant="contained" type="submit">Solicitado</Button>
                     </div>
                     :<div className={style.formAction}>
                         {
-                            !loading ? <Button variant="contained" type="submit">Realizar Donacion</Button> : <Button disabled variant="contained" type="submit"><CircularProgress size={20} thickness={5} /></Button> 
+                            !loading ? <Button variant="contained" type="submit">Realizar la solicitud Donacion </Button> : <Button disabled variant="contained" type="submit"><CircularProgress size={20} thickness={5} /></Button> 
                         }
                     </div>
                 }
