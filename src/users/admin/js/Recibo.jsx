@@ -161,6 +161,7 @@ const Recibo = ({data}) => {
         </View>
       </View>
       
+      
       {/* <View style={styles.summaryContainer}>
         <View>
           <Text style={styles.summaryText}><Text style={styles.bold}>SUBTOTAL:</Text> $40.00</Text>
