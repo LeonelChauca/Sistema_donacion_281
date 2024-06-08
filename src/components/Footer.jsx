@@ -10,7 +10,7 @@ const Footer = () => {
     <>
     <div className={styles.Mainfooter}>
     <div className={styles.author}> 
-      <span><pre> let Devs = new Dev( [Leo , Cimar , Roman , Omar]) </pre> </span>
+      <span><pre data-dev="let Devs = new Dev( [Leo , Cimar , Roman , Omar])" data-dev-res="{'Devs':[Leo,Cimar,Roman,Omar]}">  </pre> </span>
     </div>      
         <div className={styles.secondfooter}>
           <div className={styles.img}>  

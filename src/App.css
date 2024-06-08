@@ -28,7 +28,15 @@ body{
     font-size: 18px; 
   }
 }
-
+@media (max-width: 850px) {
+  .main {
+    padding: 5px ;
+    
+  }
+  :root {
+    font-size: 13px; 
+  }
+}
 /*
 #root {
   max-width: 1280px;
