@@ -40,3 +40,10 @@
     border-radius: 5px;
 }
 
+@media (max-width: 850px) {
+    .about {
+        grid-template-columns: 1fr;
+        overflow: hidden;
+    }
+  }
+  

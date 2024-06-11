@@ -1,6 +1,6 @@
 .Mainfooter{    
     color: white;
-    height: 170px;
+    height: 210px;
     top:30px; 
     position: relative;
     overflow: hidden;
@@ -8,8 +8,7 @@
     box-shadow: 0px 0px 15px rgb(4 22 231); 
     width: 100%;
 }
-.secondfooter{
-    
+.secondfooter{    
     position: relative;
     top:20px; 
     padding: 10px 0px ;
@@ -83,4 +82,56 @@ ul{
     align-items: center;
     cursor: pointer;
     padding-left: 10px;
+    
 }
+.author span {
+    position: relative;
+    width: 100%;
+    display: block;
+    
+}
+.author  pre::before{
+  content: attr(data-dev); 
+
+}
+@media (max-width: 850px) {
+    .img {
+       display: none;
+    }
+    .container{
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0;
+    }
+    .container ul{
+        margin-left: 10px;
+
+    }
+    .container ul:nth-child(1) > li{
+        display: inline;
+        background: rgb(46, 0, 250) ;
+        border-radius: 20px;
+        color: white ;
+        font-weight: bold; 
+        padding: 5 15px ;
+        
+    }
+    .secondfooter{
+        top:0; 
+        position: relative;
+        min-width: auto;
+        
+    }
+    .Mainfooter{
+        min-height: 200px;
+        width: 100%;       
+        }
+     .author  pre::before{
+            content: attr(data-dev-res); 
+            
+     }
+     .author span {
+       text-align: center;   
+    }
+  }
+  

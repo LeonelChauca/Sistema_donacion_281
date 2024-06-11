@@ -4,17 +4,35 @@
     min-height: 100vh;    
     left: calc(var(--witdhNavOpen) + 20px);  
     transition: all 0.5s;      
-    width: calc(100vw - var(--witdhNavOpen) - 22px );    
+    width: calc(100vw - var(--witdhNavOpen) - 22px );   
+    overflow-x: hidden; 
 }
 .close {
     left: calc(var(--witdhNavClose) + 20px);    
     width: calc(100vw - var(--witdhNavClose) - 22px );
 }
-
+.main > div > div{
+    width: 80% !important;
+    padding: 10px;
+}
 @media screen and (max-width: 500px) {
     .main{
         position: absolute;
         left: calc(var(--witdhNavClose) + 20px);            
-        width: calc(100vw - var(--witdhNavClose) - 22px );    
+        width: calc(100vw - 22px );            
     }    
+}
+
+
+@media screen and (max-width: 850px) {
+    .main{
+        position: absolute;
+        left: 12px;            
+        min-width: 100vw;   
+         
+    }    
+    .main > div > div {
+        width: 100% !important;
+        padding: 0;
+    }
 }

@@ -39,11 +39,14 @@ const Navbar = () => {
                 
             }    
    }
-    function togleNav() {
+    function togleNav(e) {
+        
         if(window.innerWidth < 850){
-            document.querySelector("."+style.baras).classList.toggle(style.animacionBar); 
-            document.querySelector("."+style.item).classList.toggle(style.animacionItems);
-            document.querySelector("."+style.proteger).classList.toggle(style.protegerTogle);
+            if(e.type=="click"){
+                document.querySelector("."+style.baras).classList.toggle(style.animacionBar); 
+                document.querySelector("."+style.item).classList.toggle(style.animacionItems);
+                document.querySelector("."+style.proteger).classList.toggle(style.protegerTogle);
+            }
             
             if(document.querySelector("."+style.proteger).classList.contains(style.protegerTogle)){
                 document.addEventListener('wheel',scrollerBlock, { passive: false });            
