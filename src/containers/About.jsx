@@ -56,6 +56,14 @@ const About = () => {
                </div>
             </div>
          </section>
+         <section className={style.valores + " " + style.section}>
+            <div>
+               <h2>Contacto</h2>
+               <p>Leonel Moises Chauca Maydana 78929199 chaucaleonel2002@gmail.com</p>
+               <p>Roman Olegario Nina Gutierrez 69947191 romanong321@gmail.com</p>
+               <p>Cimar Rodrigo Morales </p>
+            </div>
+         </section>
       </>
    )
 }

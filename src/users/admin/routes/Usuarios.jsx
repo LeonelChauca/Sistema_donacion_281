@@ -215,10 +215,39 @@ function StickyHeadTable({ setDataTabla, dataTabla }) {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
-            <div style={{ width:'80%' , margin: '0 auto', padding:'20px', display: "flex", gap:'10px'}}>
-                <Button onClick={()=>{handleDownload(dataTabla)}} variant="contained" color="error" style={{ fontSize:'15px'}}>Generar <PictureAsPdfIcon/></Button>
-                <Button onClick={()=>{}} variant="contained" color="success" style={{ fontSize:'15px'}}>Generar Excel<ArticleIcon/></Button>
-            </div>
+            <div style={{
+      width: '80%',
+      margin: '0 auto',
+      padding: '20px',
+      display: 'flex',
+      gap: '10px',
+      flexWrap: 'wrap'
+    }}>
+      <Button 
+        onClick={() => { handleDownload(dataTabla) }} 
+        variant="contained" 
+        color="error" 
+        style={{
+          fontSize: '15px',
+          flex: '1 1 auto',
+          minWidth: '150px'
+        }}
+      >
+        Generar <PictureAsPdfIcon />
+      </Button>
+      <Button 
+        onClick={() => { }} 
+        variant="contained" 
+        color="success" 
+        style={{
+          fontSize: '15px',
+          flex: '1 1 auto',
+          minWidth: '150px'
+        }}
+      >
+        Generar Excel <ArticleIcon />
+      </Button>
+    </div>
         </Paper>
         
     );
